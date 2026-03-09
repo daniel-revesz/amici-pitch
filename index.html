@@ -111,16 +111,23 @@
   /* NAVIGATION */
   .nav {
     position: fixed;
-    bottom: 14px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     z-index: 100;
-    background: none;
+    background: linear-gradient(to top, var(--bg-primary) 0%, var(--bg-primary) 40%, transparent 100%);
     border: none;
-    padding: 0;
+    padding: 24px 40px 14px;
+    width: 100%;
+    pointer-events: none;
+  }
+
+  .nav > * {
+    pointer-events: auto;
   }
 
   .nav-dots {
@@ -369,13 +376,9 @@
   }
 
   .timeline-content p {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--text-secondary);
-    line-height: 1.4;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    line-height: 1.45;
   }
 
   /* FLOW DIAGRAM */
@@ -775,6 +778,7 @@
   }
 
   /* STAGGER ANIMATIONS */
+  .slide:not(.active) .stagger { opacity: 0 !important; }
   .slide.active .stagger { animation: fadeUp 0.5s ease forwards; opacity: 0; }
   .slide.active .stagger:nth-child(1) { animation-delay: 0.1s; }
   .slide.active .stagger:nth-child(2) { animation-delay: 0.2s; }
@@ -787,6 +791,105 @@
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  /* VISION FLOW DIAGRAM */
+  .vision-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+    position: relative;
+  }
+
+  .vision-nodes-right {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .vision-node {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 24px;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-align: center;
+    min-width: 130px;
+  }
+
+  .vision-node.amici {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 24px;
+    border: 1px solid var(--accent);
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.25), 0 0 4px rgba(59, 130, 246, 0.15);
+  }
+
+  .vision-node.api {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 24px;
+  }
+
+  .vision-flow svg.flow-lines {
+    flex-shrink: 0;
+  }
+
+  .flow-line {
+    stroke: var(--accent);
+    stroke-width: 2;
+    stroke-dasharray: 8 4;
+    opacity: 0.5;
+  }
+
+  .slide.active .flow-line {
+    animation: flowLeft 1.5s linear infinite;
+  }
+
+  .slide.active .flow-line-down {
+    animation: flowDown 1.5s linear infinite;
+  }
+
+  .slide.active .flow-line-up {
+    animation: flowUp 1.5s linear infinite;
+  }
+
+  .flow-line-down, .flow-line-up {
+    stroke: var(--accent);
+    stroke-width: 2;
+    stroke-dasharray: 8 4;
+    opacity: 0.5;
+  }
+
+  @keyframes flowLeft {
+    from { stroke-dashoffset: 24; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes flowDown {
+    from { stroke-dashoffset: 24; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes flowUp {
+    from { stroke-dashoffset: 24; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes flowLineDown {
+    from { stroke-dashoffset: -24; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes flowLineUp {
+    from { stroke-dashoffset: 24; }
+    to { stroke-dashoffset: 0; }
+  }
+
 
   /* RESPONSIVE - SMALL DESKTOP */
   @media (max-width: 1280px) {
@@ -1190,7 +1293,7 @@
     </div>
     <div class="slide-inner cover-slide">
       <h1 class="headline stagger">Company events,<br>without the <span class="accent">chaos</span></h1>
-      <p class="subheadline stagger">The event platform for businesses without an event team. One tool to book chefs, venues, transport, and equipment.</p>
+      <p class="subheadline stagger">The digital event agency for businesses without an event team. One tool to book chefs, venues, transport, and equipment.</p>
       <div class="cover-meta stagger">
         <div class="cover-meta-item">Round: <span>Pre-Seed</span></div>
         <div class="cover-meta-item">Raising: <span>5M SEK</span></div>
@@ -1214,7 +1317,7 @@
           <div class="stat-label">One dinner requires a chef, venue, transport, and equipment. Each from a different platform, with zero coordination.</div>
         </div>
         <div class="problem-stat">
-          <div class="stat-value">8+ hrs</div>
+          <div class="stat-value">5–8 hrs</div>
           <div class="stat-title">Hours wasted coordinating</div>
           <div class="stat-label">Emails, phone calls, spreadsheets. The office manager becomes a part-time event planner nobody asked for.</div>
         </div>
@@ -1264,56 +1367,51 @@
     <div class="slide-header">
       <div class="section-label stagger">Traction</div>
       <h2 class="headline stagger">We ran events by hand. <span class="accent">On purpose.</span></h2>
-      <p class="subheadline stagger">Before building the platform, we operated as a concierge service to learn how companies actually buy events. That hands-on experience shaped every product decision.</p>
+      <p class="subheadline stagger">Before building the platform, we operated as a concierge service, which taught us how companies actually buy events.</p>
     </div>
     <div class="slide-inner">
-      <div class="stagger" style="display: flex; gap: 48px; align-items: flex-start;">
+      <div class="stagger" style="display: flex; gap: 80px; align-items: center;">
         <!-- Timeline (left) -->
         <div class="timeline" style="flex: 1; max-width: 620px;">
           <div class="timeline-item">
             <div class="timeline-dot filled">✓</div>
             <div class="timeline-content">
-              <h3>V1: Chef bookings as customer discovery</h3>
-              <p>Started by booking private chefs for corporate events. Every booking taught us how companies find, compare, and buy event services.</p>
+              <h3>V1: A consumer app for private chef bookings</h3>
+              <p>Started connecting private customers with chefs. Early traction, but we learned the real demand was coming from businesses.</p>
             </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot filled">✓</div>
             <div class="timeline-content">
-              <h3>Trusted by Hermès, Prada, Sail Racing, Chimi</h3>
-              <p>Quality that earned repeat bookings and word-of-mouth. These brands validated our approach before we wrote a line of platform code.</p>
+              <h3>The pivot: from app to B2B platform</h3>
+              <p>Built V2 from scratch for business customers: authentication, transactional emails, and an admin platform to operate at scale.</p>
             </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot filled">✓</div>
             <div class="timeline-content">
-              <h3>V2: Full service platform, live now</h3>
-              <p>User accounts, event management, transaction messaging and admin system. Built on everything we learned from the concierge phase.</p>
+              <h3>The crossroads: supplier or orchestrator?</h3>
+              <p>We could become a premium supplier ourselves. But customers kept saying the same thing: there's no way to orchestrate a whole event online without hiring an agency. We chose the bigger problem.</p>
             </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot">→</div>
             <div class="timeline-content">
               <h3>Next: Automating what we proved works</h3>
-              <p>Expanding beyond chefs into a multi-supplier marketplace. This raise funds the transition from concierge to platform.</p>
+              <p>Expanding beyond chefs into a full digital event agency. This raise funds the transition from concierge to platform.</p>
             </div>
           </div>
         </div>
-        <!-- Stats (right, vertical, subtle) -->
-        <div style="flex-shrink: 0; width: 180px; display: flex; flex-direction: column; gap: 24px; padding-top: 8px;">
+        <!-- Trusted by — brand grid (right, subtle) -->
+        <div style="flex: 1; max-width: 620px; display: flex; align-items: center; justify-content: center; opacity: 0.5;">
           <div>
-            <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--text-primary); line-height: 1;">~20</div>
-            <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Events delivered</div>
-          </div>
-          <div style="height: 1px; background: var(--border);"></div>
-          <div>
-            <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--text-primary); line-height: 1;">~50K</div>
-            <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">SEK/month booking value</div>
-          </div>
-          <div style="height: 1px; background: var(--border);"></div>
-          <div>
-            <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--text-primary); line-height: 1;">20%</div>
-            <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Service fee retained</div>
+            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; margin-bottom: 12px; text-align: center;">Trusted by</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; width: 240px;">
+              <div style="display: flex; align-items: center; justify-content: center; padding: 22px 12px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); font-size: 13px; font-weight: 600; color: white; letter-spacing: 0.1em; text-transform: uppercase;">Hermès</div>
+              <div style="display: flex; align-items: center; justify-content: center; padding: 22px 12px; border-bottom: 1px solid var(--border); font-size: 13px; font-weight: 600; color: white; letter-spacing: 0.1em; text-transform: uppercase;">Prada</div>
+              <div style="display: flex; align-items: center; justify-content: center; padding: 22px 12px; border-right: 1px solid var(--border); font-size: 11px; font-weight: 600; color: white; letter-spacing: 0.1em; text-transform: uppercase;">Sail Racing</div>
+              <div style="display: flex; align-items: center; justify-content: center; padding: 22px 12px; font-size: 13px; font-weight: 600; color: white; letter-spacing: 0.1em; text-transform: uppercase;">Chimi</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1330,8 +1428,8 @@
     <div class="slide-inner">
       <div class="card-grid cols-3 stagger">
         <div class="card">
-          <div class="card-stat">1st</div>
-          <div class="card-stat-label">Step: Google it</div>
+          <div class="card-stat">First step</div>
+          <div class="card-stat-label">Google it</div>
           <h3>The buyer starts from zero every time</h3>
           <p>It's the office manager, HR lead, or EA. No supplier network, no event training. They Google, ask around, and hope for the best. Every single time.</p>
         </div>
@@ -1339,25 +1437,25 @@
           <div class="card-stat">3–5</div>
           <div class="card-stat-label">Vendors per event</div>
           <h3>Most events need more than one supplier</h3>
-          <p>A company dinner often needs a chef, a venue, sometimes transport and equipment. That means managing multiple vendor relationships with no coordination.</p>
+          <p>A company event often needs a chef, a venue, sometimes transport and equipment. That means managing multiple vendor relationships with no coordination.</p>
         </div>
         <div class="card">
-          <div class="card-stat">15–20%</div>
-          <div class="card-stat-label">Willingness to pay</div>
-          <h3>They'd pay for convenience</h3>
-          <p>Companies happily pay agencies 15–20% markup just to avoid the hassle. But most events don't need a full agency. They need a smarter tool.</p>
+          <div class="card-stat">5–8 hrs</div>
+          <div class="card-stat-label">Per event, manually</div>
+          <h3>Orchestrating without help is a time sink</h3>
+          <p>Finding suppliers, comparing quotes, aligning schedules, chasing confirmations. Without an agency, the office manager spends days stitching it all together.</p>
         </div>
       </div>
 
       <div class="quote-block stagger" style="margin-top: 16px; border-color: var(--accent);">
         <p style="font-size: 18px; color: var(--text-primary); font-style: normal; font-weight: 700; line-height: 1.5;">The real value isn't matching a single supplier to a client. It's coordinating the entire event.</p>
-        <p style="font-size: 15px; color: var(--text-secondary); margin-top: 8px; font-style: normal;">That's what nobody else is doing for the mid-market. This is why we're building a multi-service platform, not another single-vendor marketplace.</p>
+        <p style="font-size: 15px; color: var(--text-secondary); margin-top: 8px; font-style: normal;">That's what nobody else is doing for the mid-market. That's why we're building the digital event agency — full orchestration, delivered online, with no customer markup.</p>
       </div>
     </div>
   </div>
 
   <!-- SLIDE 6: THE VISION -->
-  <div class="slide has-header" data-slide="5">
+  <div class="slide has-header" data-slide="5" style="overflow: visible !important;">
     <div class="glow-orb" style="top: -100px; right: -200px;"></div>
     <div class="slide-header">
       <div class="section-label stagger">The Vision</div>
@@ -1366,7 +1464,8 @@
     </div>
     <div class="slide-inner">
       <!-- Mobile phone (organizers) + Desktop (suppliers) side by side -->
-      <div style="display: flex; align-items: flex-start; justify-content: center; gap: 56px; margin-top: 40px;" class="stagger">
+      <div style="transform: scale(1.2); transform-origin: top center; margin-top: 56px;">
+      <div style="display: flex; align-items: flex-start; justify-content: center; gap: 56px;" class="stagger">
 
         <!-- LEFT: Event Organizer - Mobile Phone -->
         <div style="flex-shrink: 0; display: flex; flex-direction: column;">
@@ -1406,7 +1505,7 @@
                   </div>
                   <div style="background: var(--bg-card-hover); border-radius: 8px; padding: 8px 10px;">
                     <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">Budget</div>
-                    <div style="font-size: 12px; font-weight: 600; margin-top: 2px;">~800 SEK/pp</div>
+                    <div style="font-size: 12px; font-weight: 600; margin-top: 2px;">800 SEK/pp</div>
                   </div>
                 </div>
 
@@ -1511,9 +1610,9 @@
                       </div>
                       <span style="background: rgba(59,130,246,0.15); color: var(--accent); font-size: 8px; font-weight: 700; padding: 2px 7px; border-radius: 4px; text-transform: uppercase;">New</span>
                     </div>
-                    <div style="font-size: 10px; color: var(--text-secondary); line-height: 1.4; margin-bottom: 8px;">3-course Mediterranean or Nordic dinner. Full service including drinks pairing. Budget ~800 SEK/pp.</div>
+                    <div style="font-size: 10px; color: var(--text-secondary); line-height: 1.4; margin-bottom: 8px;">3-course Mediterranean or Nordic dinner. Full service including drinks pairing. Budget 800 SEK/pp.</div>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
-                      <div style="font-family: var(--font-numbers); font-size: 13px; font-weight: 600; color: var(--text-primary);">~32,000 SEK</div>
+                      <div style="font-family: var(--font-numbers); font-size: 13px; font-weight: 600; color: var(--text-primary);">32,000 SEK</div>
                       <div style="background: var(--accent); color: white; padding: 5px 12px; border-radius: 6px; font-size: 10px; font-weight: 600;">Submit Offer</div>
                     </div>
                   </div>
@@ -1524,7 +1623,7 @@
                       <div style="font-size: 11px; font-weight: 600;">Wedding Reception</div>
                       <div style="font-size: 10px; color: var(--text-muted);">Jan 22 · Gothenburg · 80 guests</div>
                     </div>
-                    <div style="font-family: var(--font-numbers); font-size: 11px; font-weight: 600; color: var(--text-secondary);">~88,000 SEK</div>
+                    <div style="font-family: var(--font-numbers); font-size: 11px; font-weight: 600; color: var(--text-secondary);">88,000 SEK</div>
                   </div>
 
                   <!-- Job 3 -->
@@ -1533,7 +1632,7 @@
                       <div style="font-size: 11px; font-weight: 600;">Product Launch Party</div>
                       <div style="font-size: 10px; color: var(--text-muted);">Feb 8 · Stockholm · 120 guests</div>
                     </div>
-                    <div style="font-family: var(--font-numbers); font-size: 11px; font-weight: 600; color: var(--text-secondary);">~54,000 SEK</div>
+                    <div style="font-family: var(--font-numbers); font-size: 11px; font-weight: 600; color: var(--text-secondary);">54,000 SEK</div>
                   </div>
 
                   <!-- Job 4 -->
@@ -1542,7 +1641,7 @@
                       <div style="font-size: 11px; font-weight: 600;">Birthday Dinner</div>
                       <div style="font-size: 10px; color: var(--text-muted);">Mar 1 · Malmö · 20 guests</div>
                     </div>
-                    <div style="font-family: var(--font-numbers); font-size: 11px; font-weight: 600; color: var(--text-secondary);">~16,000 SEK</div>
+                    <div style="font-family: var(--font-numbers); font-size: 11px; font-weight: 600; color: var(--text-secondary);">16,000 SEK</div>
                   </div>
                 </div>
               </div>
@@ -1550,11 +1649,61 @@
           </div>
         </div>
       </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6B: VISION - SUPPLIER ENGINE -->
+  <div class="slide has-header" data-slide="6">
+    <div class="glow-orb" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+    <div class="slide-header">
+      <div class="section-label stagger">The Vision</div>
+      <h2 class="headline stagger">A supplier engine agencies can <span class="accent">plug into</span></h2>
+      <p class="subheadline stagger">As our supplier network grows, agencies and platforms can tap into it via API or embed our widget. The speed, quality, and coordination we build becomes infrastructure anyone can use.</p>
+    </div>
+    <div class="slide-inner">
+      <div class="vision-flow stagger">
+        <!-- API box (left) -->
+        <div class="vision-node api">API</div>
+
+        <!-- Animated line: Amici → API -->
+        <svg class="flow-lines" width="80" height="20" viewBox="0 0 80 20" style="flex-shrink: 0;">
+          <line class="flow-line" x1="80" y1="10" x2="0" y2="10" />
+        </svg>
+
+        <!-- Amici hub (center) -->
+        <div class="vision-node amici">Amici</div>
+
+        <!-- Animated lines: suppliers → trunk → Amici -->
+        <svg class="flow-lines" width="80" height="240" viewBox="0 0 80 240" style="flex-shrink: 0;">
+          <!-- Trunk: horizontal from branch point to Amici (flows left) -->
+          <line class="flow-line" x1="40" y1="120" x2="0" y2="120" />
+          <!-- Vertical spine top half: flows DOWN toward center -->
+          <line class="flow-line-down" x1="40" y1="24" x2="40" y2="120" />
+          <!-- Vertical spine bottom half: flows UP toward center -->
+          <line class="flow-line-up" x1="40" y1="216" x2="40" y2="120" />
+          <!-- Horizontal branches from suppliers (flow left toward spine) -->
+          <line class="flow-line" x1="80" y1="24" x2="40" y2="24" />
+          <line class="flow-line" x1="80" y1="72" x2="40" y2="72" />
+          <line class="flow-line" x1="80" y1="120" x2="40" y2="120" />
+          <line class="flow-line" x1="80" y1="168" x2="40" y2="168" />
+          <line class="flow-line" x1="80" y1="216" x2="40" y2="216" />
+        </svg>
+
+        <!-- Supplier boxes (right) -->
+        <div class="vision-nodes-right">
+          <div class="vision-node">Chef</div>
+          <div class="vision-node">Venue</div>
+          <div class="vision-node">Transport</div>
+          <div class="vision-node">Equipment</div>
+          <div class="vision-node">Staff</div>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- SLIDE 7: HOW IT WORKS -->
-  <div class="slide has-header" data-slide="6">
+  <div class="slide has-header" data-slide="7">
     <div class="slide-header">
       <div class="section-label stagger">Product</div>
       <h2 class="headline stagger">What takes hours today takes <span class="accent">minutes with Amici</span></h2>
@@ -1596,7 +1745,7 @@
               </div>
               <div style="font-size: 24px; color: var(--accent);">→</div>
               <div>
-                <div style="font-family: var(--font-numbers); font-size: 36px; font-weight: 600; color: var(--accent);">~10 min</div>
+                <div style="font-family: var(--font-numbers); font-size: 36px; font-weight: 600; color: var(--accent);">10 min</div>
                 <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">With Amici</div>
               </div>
             </div>
@@ -1609,7 +1758,7 @@
   </div>
 
   <!-- SLIDE 8: MARKET OPPORTUNITY -->
-  <div class="slide has-header slide-green" data-slide="7">
+  <div class="slide has-header slide-green" data-slide="8">
     <div class="slide-header">
       <div class="section-label stagger">Market</div>
       <h2 class="headline stagger">Big market. <span class="accent">Focused start.</span></h2>
@@ -1664,10 +1813,10 @@
   </div>
 
   <!-- SLIDE 9: BUSINESS MODEL -->
-  <div class="slide has-header slide-green" data-slide="8">
+  <div class="slide has-header slide-green" data-slide="9">
     <div class="slide-header">
       <div class="section-label stagger">Business Model</div>
-      <h2 class="headline stagger">Commission today. <span class="accent">Platform tomorrow.</span></h2>
+      <h2 class="headline stagger">Commission today. <span class="accent">Scale tomorrow.</span></h2>
     </div>
     <div class="slide-inner">
       <div class="stagger">
@@ -1676,7 +1825,7 @@
             <div style="font-size: 13px; color: #22C55E; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">Now</div>
             <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">20%</div>
             <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">supplier-side commission</div>
-            <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;">We charge suppliers for qualified leads and bookings. The customer sees transparent, direct pricing with no markup. ~50K SEK/month booking volume.</p>
+            <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;">We charge suppliers for qualified leads and bookings. The customer sees transparent, direct pricing with no markup.</p>
           </div>
           <div class="card" style="border-color: rgba(34,197,94,0.3);">
             <div style="font-size: 13px; color: #22C55E; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">Next</div>
@@ -1703,7 +1852,7 @@
   </div>
 
   <!-- SLIDE 10: COMPETITIVE LANDSCAPE -->
-  <div class="slide has-header" data-slide="9">
+  <div class="slide has-header" data-slide="10">
     <div class="slide-header">
       <div class="section-label stagger">Competitive Landscape</div>
       <h2 class="headline stagger">The sweet spot <span class="accent">nobody owns</span></h2>
@@ -1723,27 +1872,23 @@
           </div>
           <div style="flex: 1.3; background: rgba(59,130,246,0.08); border: 2px solid var(--accent); padding: 16px; display: flex; flex-direction: column; justify-content: center; text-align: center;">
             <div style="font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 4px;">Amici</div>
-            <div style="font-size: 14px; color: var(--text-secondary);">Multi-service orchestration. No markup for the customer. Built for companies that would never hire an agency.</div>
-          </div>
-          <div style="flex: 1; background: var(--bg-card); border: 1px solid var(--border); padding: 16px; display: flex; flex-direction: column; justify-content: center;">
-            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">EventLogic</div>
-            <div style="font-size: 14px; color: var(--text-secondary);">150M SEK. Built for enterprise MICE procurement.</div>
+            <div style="font-size: 14px; color: var(--text-secondary);">Everything an agency does, delivered digitally. Full orchestration, transparent pricing, no customer markup.</div>
           </div>
           <div style="flex: 1; background: var(--bg-card); border: 1px solid var(--border); border-radius: 0 var(--radius) var(--radius) 0; padding: 16px; display: flex; flex-direction: column; justify-content: center;">
-            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Agencies</div>
-            <div style="font-size: 14px; color: var(--text-secondary);">Full-service. 15-20% markup on the customer's total. Built for large enterprise budgets.</div>
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Traditional agencies</div>
+            <div style="font-size: 14px; color: var(--text-secondary);">Full-service but manual. 15-20% markup on the customer's total. Built for large enterprise budgets.</div>
           </div>
         </div>
         <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em;"><span>← Cheaper, more work</span><span>Easier, more expensive →</span></div>
         <div class="card" style="margin-top: 16px; text-align: center; border-color: rgba(59, 130, 246, 0.2);">
-          <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;"><strong style="color: var(--text-primary);">Why can't single platforms just add more services?</strong> Multi-service coordination is an entirely different product. Venuu knows venues. Take a Chef knows chefs. Neither has the cross-category supplier relationships or the orchestration layer to tie it all together. And unlike agencies, Amici charges suppliers, not customers. The buyer gets transparent pricing with no markup.</p>
+          <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;"><strong style="color: var(--text-primary);">Why not just use a traditional agency?</strong> Agencies orchestrate events well, but they charge the customer 15-20% on the total cost and run everything through calls and emails. Amici delivers the same multi-service coordination digitally, charges suppliers instead of customers, and makes event orchestration accessible to the mid-market companies that would never pay agency prices.</p>
         </div>
       </div>
     </div>
   </div>
 
   <!-- SLIDE 11: TEAM -->
-  <div class="slide has-header" data-slide="10">
+  <div class="slide has-header" data-slide="11">
     <div class="slide-header">
       <div class="section-label stagger">The Team</div>
       <h2 class="headline stagger">We know this industry <span class="accent">from the inside</span></h2>
@@ -1784,7 +1929,7 @@
   </div>
 
   <!-- SLIDE 12: THE ASK -->
-  <div class="slide has-header" data-slide="11">
+  <div class="slide has-header" data-slide="12">
     <div class="glow-orb" style="bottom: -200px; left: 50%; transform: translateX(-50%);"></div>
     <div class="slide-header">
       <div class="section-label stagger">The Ask</div>
@@ -1799,7 +1944,7 @@
           </div>
           <div class="card" style="border-left: 2px solid var(--text-muted); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: 12px;">
             <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 6px;">Today</div>
-            <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.5;">Part-time team. Chef-only bookings. Stockholm. Manual coordination. Revenue growing but constrained by capacity.</p>
+            <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.5;">Part-time team. Chef-only bookings. Stockholm. Manual coordination. Demand growing but constrained by capacity.</p>
           </div>
         </div>
         <div>
@@ -1807,11 +1952,11 @@
           <div style="display: flex; flex-direction: column; gap: 10px;">
             <div class="card" style="border-left: 2px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
               <div style="font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 4px;">Month 1-3</div>
-              <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.4;">Go full-time. Expand booking flow to multi-service requests. Seal supplier deals. Start building supplier platform. Stockholm focus.</p>
+              <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.4;">Go full-time. Expand booking flow to multi-service requests. Seal supplier deals. Build the digital event agency infrastructure. Stockholm focus.</p>
             </div>
             <div class="card" style="border-left: 2px solid rgba(59, 130, 246, 0.6); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
               <div style="font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 4px;">Month 4-6</div>
-              <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.4;">Scale sales and marketing. Optimize multi-service orchestration. Build partnerships with large companies as their go-to event platform.</p>
+              <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.4;">Scale sales and marketing. Optimize multi-service orchestration. Build partnerships with large companies as their go-to digital event agency.</p>
             </div>
             <div class="card" style="border-left: 2px solid rgba(59, 130, 246, 0.3); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
               <div style="font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 4px;">Month 7-12</div>

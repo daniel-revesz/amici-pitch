@@ -847,34 +847,35 @@
   }
 
   .slide.active .flow-line {
-    animation: flowLineLeft 1.5s linear infinite;
-  }
-
-  .slide.active .flow-line-to-api {
-    animation: flowLineRight 1.5s linear infinite;
+    animation: flowLeft 1.5s linear infinite;
   }
 
   .slide.active .flow-line-down {
-    animation: flowLineDown 1.5s linear infinite;
+    animation: flowDown 1.5s linear infinite;
   }
 
   .slide.active .flow-line-up {
-    animation: flowLineUp 1.5s linear infinite;
+    animation: flowUp 1.5s linear infinite;
   }
 
-  .flow-line-to-api, .flow-line-down, .flow-line-up {
+  .flow-line-down, .flow-line-up {
     stroke: var(--accent);
     stroke-width: 2;
     stroke-dasharray: 8 4;
     opacity: 0.5;
   }
 
-  @keyframes flowLineLeft {
+  @keyframes flowLeft {
+    from { stroke-dashoffset: 24; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes flowDown {
     from { stroke-dashoffset: -24; }
     to { stroke-dashoffset: 0; }
   }
 
-  @keyframes flowLineRight {
+  @keyframes flowUp {
     from { stroke-dashoffset: 24; }
     to { stroke-dashoffset: 0; }
   }
@@ -1666,7 +1667,7 @@
 
         <!-- Animated line: Amici → API -->
         <svg class="flow-lines" width="80" height="20" viewBox="0 0 80 20" style="flex-shrink: 0;">
-          <line class="flow-line-to-api" x1="80" y1="10" x2="0" y2="10" />
+          <line class="flow-line" x1="80" y1="10" x2="0" y2="10" />
         </svg>
 
         <!-- Amici hub (center) -->

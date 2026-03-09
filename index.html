@@ -1636,13 +1636,18 @@
         <!-- Amici hub (center) -->
         <div class="vision-node amici">Amici</div>
 
-        <!-- Animated lines: Amici ← Suppliers (5 lines fanning out) -->
+        <!-- Animated lines: Amici → trunk → branches to suppliers -->
         <svg class="flow-lines" width="80" height="240" viewBox="0 0 80 240" style="flex-shrink: 0;">
-          <line class="flow-line" x1="80" y1="24" x2="0" y2="120" />
-          <line class="flow-line" x1="80" y1="72" x2="0" y2="120" />
-          <line class="flow-line" x1="80" y1="120" x2="0" y2="120" />
-          <line class="flow-line" x1="80" y1="168" x2="0" y2="120" />
-          <line class="flow-line" x1="80" y1="216" x2="0" y2="120" />
+          <!-- Trunk: horizontal from Amici to branch point -->
+          <line class="flow-line" x1="0" y1="120" x2="40" y2="120" />
+          <!-- Vertical spine -->
+          <line class="flow-line" x1="40" y1="24" x2="40" y2="216" />
+          <!-- Branches to each supplier -->
+          <line class="flow-line" x1="40" y1="24" x2="80" y2="24" />
+          <line class="flow-line" x1="40" y1="72" x2="80" y2="72" />
+          <line class="flow-line" x1="40" y1="120" x2="80" y2="120" />
+          <line class="flow-line" x1="40" y1="168" x2="80" y2="168" />
+          <line class="flow-line" x1="40" y1="216" x2="80" y2="216" />
         </svg>
 
         <!-- Supplier boxes (right) -->

@@ -48,3 +48,9 @@ Amici is a Swedish pre-seed startup building an event platform for mid-market co
 - Follow pitch-copy best practices: no em dashes, no buzzwords, assertion headlines, human tone
 - Source any market claims with credible data
 - The deck is deployed to Vercel via GitHub — changes to main auto-deploy
+- After every decision or direction change agreed with the user, update the "Decision log" section below with what was decided and why
+
+## Decision log
+
+- **2026-03-09:** Replaced the duplicate "15-20% agency markup" card on the Why Now slide with a digitization gap card. Stat: #3 from bottom in digitization. Source: McKinsey Global Institute, Industry Digitization Index. Reason: the agency markup was already shown on the Problem slide.
+- **2026-03-09:** Refined the third Why Now card from "0 platforms that do this" to "0 digital alternatives to agencies." Reframed to acknowledge single-service platforms and agencies exist, but highlight the gap: no platform combines multi-service orchestration with digital delivery. Positions Amici as the "digital event agency" without using that phrase.

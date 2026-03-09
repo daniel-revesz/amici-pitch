@@ -822,22 +822,17 @@
   }
 
   .vision-node.amici {
-    background: rgba(59, 130, 246, 0.08);
-    border: 2px solid var(--accent);
-    color: var(--accent);
-    font-size: 24px;
-    font-weight: 700;
-    padding: 40px 48px;
-    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 24px;
+    border: 1px solid var(--accent);
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.25), 0 0 4px rgba(59, 130, 246, 0.15);
   }
 
   .vision-node.api {
-    background: rgba(34, 197, 94, 0.08);
-    border: 1px solid rgba(34, 197, 94, 0.3);
-    color: #22C55E;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 24px 32px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 24px;
   }
 
   .vision-flow svg.flow-lines {
@@ -860,16 +855,6 @@
     to { stroke-dashoffset: 0; }
   }
 
-  .flow-line-green {
-    stroke: #22C55E;
-    stroke-width: 2;
-    stroke-dasharray: 8 4;
-    opacity: 0.5;
-  }
-
-  .slide.active .flow-line-green {
-    animation: flowLine 1.5s linear infinite;
-  }
 
   /* RESPONSIVE - SMALL DESKTOP */
   @media (max-width: 1280px) {
@@ -1645,7 +1630,7 @@
 
         <!-- Animated lines: API ← Amici -->
         <svg class="flow-lines" width="80" height="20" viewBox="0 0 80 20" style="flex-shrink: 0;">
-          <line class="flow-line-green" x1="80" y1="10" x2="0" y2="10" />
+          <line class="flow-line" x1="80" y1="10" x2="0" y2="10" />
         </svg>
 
         <!-- Amici hub (center) -->

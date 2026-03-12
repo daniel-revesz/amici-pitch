@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amici Pitch Deck - Slide Variants</title>
+<link href="https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Roboto+Mono:wght@400;500;600;700&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0A0A0B;
+    --bg-secondary: #131415;
+    --bg-card: #131415;
+    --bg-card-hover: #1a1b1d;
+    --border: rgba(255, 255, 255, 0.1);
+    --accent: #3B82F6;
+    --accent-soft: rgba(59, 130, 246, 0.15);
+    --accent-glow: rgba(59, 130, 246, 0.3);
+    --text-primary: #F5F5F7;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-muted: #71717A;
+    --success: #22C55E;
+    --warning: #F59E0B;
+    --red: #EF4444;
+    --font-display: 'Quattrocento', Georgia, serif;
+    --font-body: 'Quattrocento Sans', -apple-system, sans-serif;
+    --font-mono: 'Roboto Mono', 'SF Mono', monospace;
+    --font-numbers: 'Roboto', -apple-system, sans-serif;
+    --radius: 24px;
+    --radius-sm: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  /* TABS */
+  .tab-bar {
+    display: flex;
+    gap: 4px;
+    padding: 16px 32px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--bg-primary);
+    z-index: 100;
+    overflow-x: auto;
+  }
+
+  .tab-btn {
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: none;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+
+  .tab-btn:hover { color: var(--text-primary); border-color: rgba(255,255,255,0.2); }
+  .tab-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+  .tab-panel { display: none; padding: 32px; }
+  .tab-panel.active { display: block; }
+
+  /* VARIANT CARDS */
+  .variant-label {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .variant-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+  }
+
+  .variant-block {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    margin-bottom: 32px;
+  }
+
+  /* SLIDE PREVIEW */
+  .slide-preview {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 16px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  .headline {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .headline .accent { color: var(--accent); }
+  .headline .accent-green { color: var(--success); }
+  .headline .accent-red { color: var(--red); }
+
+  .subheadline {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    max-width: 780px;
+  }
+
+  .slide-header { margin-bottom: 24px; }
+
+  /* SHARED COMPONENTS */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover { border-color: rgba(255,255,255,0.15); }
+
+  .card h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .card-grid {
+    display: grid;
+    gap: 16px;
+  }
+
+  .cols-2 { grid-template-columns: 1fr 1fr; }
+  .cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .card-stat {
+    font-family: var(--font-numbers);
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .card-stat-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* FLOW */
+  .flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    justify-content: center;
+  }
+
+  .flow-step {
+    text-align: center;
+    flex: 1;
+    max-width: 220px;
+  }
+
+  .flow-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-size: 20px;
+  }
+
+  .flow-step h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .flow-step p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .flow-arrow {
+    font-size: 20px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    margin: 0 6px;
+    margin-bottom: 20px;
+  }
+
+  /* TAM */
+  .tam-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .tam-bar-label {
+    min-width: 50px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-align: right;
+    font-weight: 600;
+  }
+
+  .tam-bar-fill {
+    height: 40px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    gap: 10px;
+  }
+
+  .tam-bar-value {
+    font-family: var(--font-numbers);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+  }
+
+  .tam-bar-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  .check { color: var(--success); font-size: 18px; }
+  .cross { color: var(--text-muted); font-size: 18px; opacity: 0.4; }
+</style>
+</head>
+<body>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('insights')">Insights</button>
+  <button class="tab-btn" onclick="showTab('product')">Product / Booking</button>
+  <button class="tab-btn" onclick="showTab('market')">Market</button>
+  <button class="tab-btn" onclick="showTab('business')">Business Model</button>
+  <button class="tab-btn" onclick="showTab('competitive')">Competitive Landscape</button>
+  <button class="tab-btn" onclick="showTab('ask')">The Ask</button>
+</div>
+
+<!-- ============================== -->
+<!-- TAB 1: INSIGHTS                -->
+<!-- ============================== -->
+<div class="tab-panel active" id="tab-insights">
+
+  <!-- VARIANT A: Current stat-led cards -->
+  <div class="variant-block">
+    <div class="variant-label">Variant A</div>
+    <div class="variant-title">Current: Stat-led cards with summary bar</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">Insights</div>
+        <h2 class="headline">What running events <span class="accent">taught us</span></h2>
+        <p class="subheadline">We've organized events hands-on. These are the patterns we kept seeing on the buyer side.</p>
+      </div>
+      <div class="card-grid cols-3">
+        <div class="card">
+          <div class="card-stat">0</div>
+          <div class="card-stat-label">Event experience</div>
+          <h3>The buyer is not an event pro</h3>
+          <p>It's the office manager, HR lead, or EA. They don't have a supplier network. They Google, ask colleagues, and hope for the best.</p>
+        </div>
+        <div class="card">
+          <div class="card-stat">3-5</div>
+          <div class="card-stat-label">Vendors per event</div>
+          <h3>One vendor is never enough</h3>
+          <p>A company dinner needs a chef, a venue, maybe transport and equipment. That means 3-5 separate vendor relationships with no coordination.</p>
+        </div>
+        <div class="card">
+          <div class="card-stat">15-20%</div>
+          <div class="card-stat-label">Willingness to pay</div>
+          <h3>They'd pay for convenience</h3>
+          <p>Companies happily pay agencies 15-20% markup just to avoid the hassle. But most events don't need a full agency. They need a smarter tool.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top: 16px; text-align: center; border-color: rgba(59, 130, 246, 0.2);">
+        <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.5;"><strong style="color: var(--text-primary);">The key insight:</strong> The real value isn't matching a single supplier to a client. It's coordinating the entire event. That's what nobody else is doing for the mid-market.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT B: Quote-led with persona -->
+  <div class="variant-block">
+    <div class="variant-label">Variant B</div>
+    <div class="variant-title">Persona-led: Who the buyer is, then pain points</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">Insights</div>
+        <h2 class="headline">The buyer isn't an event pro. <span class="accent">That's the point.</span></h2>
+      </div>
+      <div class="two-col" style="margin-top: 8px;">
+        <div>
+          <div class="card" style="border-color: rgba(59,130,246,0.3); margin-bottom: 16px;">
+            <div style="font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">Typical buyer</div>
+            <h3 style="font-size: 20px; margin-bottom: 4px;">Office manager, HR lead, or EA</h3>
+            <p>No supplier network. No event training. Responsible for organizing 3-5 events a year for their team or clients. They figure it out as they go.</p>
+          </div>
+          <div style="padding: 16px; background: var(--accent-soft); border-radius: var(--radius-sm); border: 1px solid rgba(59,130,246,0.2);">
+            <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.5; font-style: italic;">"The real value isn't matching one supplier. It's coordinating the whole event. That's the gap nobody fills for the mid-market."</p>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; align-items: baseline; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border);">
+            <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: var(--accent); line-height: 1; min-width: 80px;">3-5</div>
+            <div>
+              <div style="font-size: 16px; font-weight: 700; font-family: var(--font-display); margin-bottom: 2px;">Vendors per event</div>
+              <p style="font-size: 15px; color: var(--text-secondary);">Chef, venue, transport, equipment. Every event needs multiple suppliers with zero coordination between them.</p>
+            </div>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border);">
+            <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: var(--accent); line-height: 1; min-width: 80px;">15-20%</div>
+            <div>
+              <div style="font-size: 16px; font-weight: 700; font-family: var(--font-display); margin-bottom: 2px;">Agency markup</div>
+              <p style="font-size: 15px; color: var(--text-secondary);">Companies pay this just to avoid the hassle. But most events are too small for a full agency.</p>
+            </div>
+          </div>
+          <div style="display: flex; align-items: baseline; gap: 14px; padding: 14px 0;">
+            <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: var(--accent); line-height: 1; min-width: 80px;">100%</div>
+            <div>
+              <div style="font-size: 16px; font-weight: 700; font-family: var(--font-display); margin-bottom: 2px;">Manual process</div>
+              <p style="font-size: 15px; color: var(--text-secondary);">Google, email, phone, hope. Every time. No memory, no templates, no learnings carried forward.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT C: Journey narrative -->
+  <div class="variant-block">
+    <div class="variant-label">Variant C</div>
+    <div class="variant-title">Journey narrative: Before / During / After</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">Insights</div>
+        <h2 class="headline">We ran events ourselves. <span class="accent">Here's what we learned.</span></h2>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+        <div class="card" style="border-top: 2px solid var(--red);">
+          <div style="font-size: 13px; color: var(--red); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">Finding suppliers</div>
+          <h3>The search is broken</h3>
+          <p>The buyer Googles, asks around, and sends cold emails. No centralized place to browse quality-vetted suppliers by category, location, or budget.</p>
+          <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border);">
+            <div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600; color: var(--text-primary);">3-5 hrs</div>
+            <div style="font-size: 13px; color: var(--text-muted);">avg. time spent searching</div>
+          </div>
+        </div>
+        <div class="card" style="border-top: 2px solid var(--warning);">
+          <div style="font-size: 13px; color: var(--warning); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">Coordinating</div>
+          <h3>Nobody owns the full picture</h3>
+          <p>Chef doesn't know what venue looks like. Transport doesn't know guest count changed. The organizer becomes the glue holding it all together.</p>
+          <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border);">
+            <div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600; color: var(--text-primary);">3-5</div>
+            <div style="font-size: 13px; color: var(--text-muted);">vendor relationships per event</div>
+          </div>
+        </div>
+        <div class="card" style="border-top: 2px solid var(--success);">
+          <div style="font-size: 13px; color: var(--success); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">Paying for help</div>
+          <h3>They'd pay, but agencies are overkill</h3>
+          <p>Companies willingly pay 15-20% agency markup for coordination alone. But a 40-person dinner doesn't need a full event agency. It needs a platform.</p>
+          <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border);">
+            <div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600; color: var(--text-primary);">15-20%</div>
+            <div style="font-size: 13px; color: var(--text-muted);">typical agency markup</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT D: Single insight, big statement -->
+  <div class="variant-block">
+    <div class="variant-label">Variant D</div>
+    <div class="variant-title">Hero statement with supporting evidence</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">Insights</div>
+        <h2 class="headline">The value isn't in matching one supplier.<br><span class="accent">It's in orchestrating the whole event.</span></h2>
+        <p class="subheadline">After dozens of events run hands-on, we kept seeing the same pattern. The buyer needs coordination, not just a vendor list.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+        <div style="text-align: center; padding: 20px;">
+          <div style="font-family: var(--font-numbers); font-size: 40px; font-weight: 600; color: var(--accent); line-height: 1;">0</div>
+          <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; font-weight: 600;">Event training</div>
+          <div style="height: 1px; background: var(--border); margin: 12px 0;"></div>
+          <p style="font-size: 15px; color: var(--text-secondary);">The buyer is an office manager or EA, not an event pro</p>
+        </div>
+        <div style="text-align: center; padding: 20px;">
+          <div style="font-family: var(--font-numbers); font-size: 40px; font-weight: 600; color: var(--accent); line-height: 1;">3-5</div>
+          <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; font-weight: 600;">Vendors needed</div>
+          <div style="height: 1px; background: var(--border); margin: 12px 0;"></div>
+          <p style="font-size: 15px; color: var(--text-secondary);">Every event requires multiple suppliers with no shared system</p>
+        </div>
+        <div style="text-align: center; padding: 20px;">
+          <div style="font-family: var(--font-numbers); font-size: 40px; font-weight: 600; color: var(--accent); line-height: 1;">15-20%</div>
+          <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; font-weight: 600;">Agency fee</div>
+          <div style="height: 1px; background: var(--border); margin: 12px 0;"></div>
+          <p style="font-size: 15px; color: var(--text-secondary);">Companies pay this just for someone to handle coordination</p>
+        </div>
+        <div style="text-align: center; padding: 20px;">
+          <div style="font-family: var(--font-numbers); font-size: 40px; font-weight: 600; color: var(--accent); line-height: 1;">30K+</div>
+          <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; font-weight: 600;">Companies</div>
+          <div style="height: 1px; background: var(--border); margin: 12px 0;"></div>
+          <p style="font-size: 15px; color: var(--text-secondary);">In Sweden alone, too small for agencies, too busy for DIY</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT E: Before / After split -->
+  <div class="variant-block">
+    <div class="variant-label">Variant E</div>
+    <div class="variant-title">Two-column: Pain on left, insight on right</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">Insights</div>
+        <h2 class="headline">We organized events to <span class="accent">understand the buyer</span></h2>
+      </div>
+      <div class="two-col">
+        <div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 16px;">What we observed</div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div class="card">
+              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                <span style="font-size: 20px;">🔍</span>
+                <h3 style="margin-bottom: 0;">Buyers start from zero every time</h3>
+              </div>
+              <p>No saved suppliers, no templates, no memory from last event. The office manager reinvents the wheel for every booking.</p>
+            </div>
+            <div class="card">
+              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                <span style="font-size: 20px;">🔗</span>
+                <h3 style="margin-bottom: 0;">Coordination is the real cost</h3>
+              </div>
+              <p>It's not finding a chef that's hard. It's aligning the chef, venue, transport, and equipment. That's where hours go and agencies charge 15-20%.</p>
+            </div>
+            <div class="card">
+              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                <span style="font-size: 20px;">💳</span>
+                <h3 style="margin-bottom: 0;">Willingness to pay is proven</h3>
+              </div>
+              <p>Companies already spend on agencies. They want the convenience, not the markup. A self-serve tool captures that same value at a fraction of the cost.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 16px;">What this tells us</div>
+          <div class="card" style="border-color: rgba(59,130,246,0.3); padding: 28px;">
+            <h3 style="font-size: 20px; margin-bottom: 16px;">The opportunity isn't vendor matching. It's event orchestration.</h3>
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <div style="display: flex; align-items: baseline; gap: 10px;">
+                <span style="color: var(--accent); font-size: 15px;">1.</span>
+                <p style="font-size: 15px; color: var(--text-secondary);"><strong style="color: var(--text-primary);">Bundle suppliers</strong> into a single booking experience</p>
+              </div>
+              <div style="display: flex; align-items: baseline; gap: 10px;">
+                <span style="color: var(--accent); font-size: 15px;">2.</span>
+                <p style="font-size: 15px; color: var(--text-secondary);"><strong style="color: var(--text-primary);">Own the coordination layer</strong> that agencies charge 15-20% for</p>
+              </div>
+              <div style="display: flex; align-items: baseline; gap: 10px;">
+                <span style="color: var(--accent); font-size: 15px;">3.</span>
+                <p style="font-size: 15px; color: var(--text-secondary);"><strong style="color: var(--text-primary);">Target the mid-market</strong> where 30K+ companies have budget but no tools</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================== -->
+<!-- TAB 2: PRODUCT / BOOKING       -->
+<!-- ============================== -->
+<div class="tab-panel" id="tab-product">
+
+  <!-- VARIANT A: Current horizontal flow -->
+  <div class="variant-block">
+    <div class="variant-label">Variant A</div>
+    <div class="variant-title">Current: Horizontal flow with icon circles + two cards below</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">Product</div>
+        <h2 class="headline">From brief to booked in <span class="accent">three steps</span></h2>
+        <p class="subheadline">The office manager posts a brief, suppliers submit offers, everyone gets a better experience.</p>
+      </div>
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-icon">📋</div>
+          <h3>Post your brief</h3>
+          <p>Describe the event: date, guests, style, food preferences, budget, location.</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-icon">📩</div>
+          <h3>Receive offers</h3>
+          <p>Verified suppliers see your brief and submit tailored proposals with menus and pricing.</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-icon">✅</div>
+          <h3>Choose & book</h3>
+          <p>Compare offers side-by-side. Pick your favorites. Confirm and pay, all in one place.</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-icon">🎉</div>
+          <h3>Enjoy your event</h3>
+          <p>Your chef, venue, and equipment are coordinated. You focus on your guests.</p>
+        </div>
+      </div>
+      <div class="card-grid cols-2" style="margin-top: 20px;">
+        <div class="card">
+          <h3>Supplier Portal</h3>
+          <p>Chefs, venues, and rental companies manage their own profiles, pricing, availability, and notification preferences.</p>
+        </div>
+        <div class="card">
+          <h3>Quality Assurance</h3>
+          <p>Every supplier is vetted before joining. Reviews, ratings, and repeat booking data ensure quality stays high.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT B: Numbered vertical steps -->
+  <div class="variant-block">
+    <div class="variant-label">Variant B</div>
+    <div class="variant-title">Numbered vertical steps with time estimates</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">Product</div>
+        <h2 class="headline">Event booked in <span class="accent">under 10 minutes</span></h2>
+        <p class="subheadline">No emails. No phone calls. No guesswork. Post once, get offers, pick your favorite.</p>
+      </div>
+      <div class="two-col">
+        <div style="display: flex; flex-direction: column; gap: 0;">
+          <div style="display: flex; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--border);">
+            <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--accent); min-width: 36px; line-height: 1;">01</div>
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-bottom: 2px;">Describe your event</h3>
+              <p style="font-size: 15px; color: var(--text-secondary);">Date, guest count, style, dietary needs, budget. Takes about 2 minutes.</p>
+              <div style="font-size: 13px; color: var(--text-muted); margin-top: 6px;">~2 min</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--border);">
+            <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--accent); min-width: 36px; line-height: 1;">02</div>
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-bottom: 2px;">Get matched offers</h3>
+              <p style="font-size: 15px; color: var(--text-secondary);">Verified suppliers receive your brief and respond with tailored proposals, menus, and pricing.</p>
+              <div style="font-size: 13px; color: var(--text-muted); margin-top: 6px;">Within 24h</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--border);">
+            <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--accent); min-width: 36px; line-height: 1;">03</div>
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-bottom: 2px;">Compare and book</h3>
+              <p style="font-size: 15px; color: var(--text-secondary);">See all offers side by side. Pick what fits. Confirm and pay in one click.</p>
+              <div style="font-size: 13px; color: var(--text-muted); margin-top: 6px;">~5 min</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 18px; padding: 16px 0;">
+            <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--accent); min-width: 36px; line-height: 1;">04</div>
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-bottom: 2px;">Show up and enjoy</h3>
+              <p style="font-size: 15px; color: var(--text-secondary);">Suppliers are coordinated through the platform. You focus on your guests.</p>
+              <div style="font-size: 13px; color: var(--text-muted); margin-top: 6px;">Event day</div>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div class="card" style="border-color: rgba(59,130,246,0.3);">
+            <div style="font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 8px;">For suppliers</div>
+            <h3>Your own portal</h3>
+            <p>Manage profiles, pricing, availability, and preferences. Amici brings the demand. You control the rest.</p>
+          </div>
+          <div class="card">
+            <div style="font-size: 13px; color: var(--success); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 8px;">Quality first</div>
+            <h3>Vetted network</h3>
+            <p>Every supplier is reviewed before joining. Ratings, reviews, and repeat booking data keep standards high.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT C: Card-based steps -->
+  <div class="variant-block">
+    <div class="variant-label">Variant C</div>
+    <div class="variant-title">Card grid with step numbers and two-sided value</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">Product</div>
+        <h2 class="headline">One platform, <span class="accent">two sides</span></h2>
+        <p class="subheadline">Organizers post event briefs. Suppliers compete with offers. Everyone saves time.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px;">
+        <div class="card" style="text-align: center; padding: 20px;">
+          <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: var(--accent); margin-bottom: 8px;">1</div>
+          <h3 style="font-size: 16px;">Describe</h3>
+          <p style="font-size: 14px;">Date, guests, style, budget. Two minutes.</p>
+        </div>
+        <div class="card" style="text-align: center; padding: 20px;">
+          <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: var(--accent); margin-bottom: 8px;">2</div>
+          <h3 style="font-size: 16px;">Match</h3>
+          <p style="font-size: 14px;">Relevant suppliers get your brief automatically.</p>
+        </div>
+        <div class="card" style="text-align: center; padding: 20px;">
+          <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: var(--accent); margin-bottom: 8px;">3</div>
+          <h3 style="font-size: 16px;">Compare</h3>
+          <p style="font-size: 14px;">See proposals, menus, and pricing side by side.</p>
+        </div>
+        <div class="card" style="text-align: center; padding: 20px;">
+          <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: var(--accent); margin-bottom: 8px;">4</div>
+          <h3 style="font-size: 16px;">Book</h3>
+          <p style="font-size: 14px;">Confirm, pay, done. Suppliers handle the rest.</p>
+        </div>
+      </div>
+      <div class="card-grid cols-2">
+        <div class="card" style="display: flex; align-items: center; gap: 16px;">
+          <div style="font-size: 32px;">👤</div>
+          <div>
+            <h3>Organizer gets</h3>
+            <p>One place to manage the entire event. No scattered emails, no surprise costs, no vendor juggling.</p>
+          </div>
+        </div>
+        <div class="card" style="display: flex; align-items: center; gap: 16px;">
+          <div style="font-size: 32px;">🧑‍🍳</div>
+          <div>
+            <h3>Supplier gets</h3>
+            <p>A steady stream of qualified leads. Own portal for profiles, pricing, and availability. No cold outreach.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT D: Minimal steps + big value prop -->
+  <div class="variant-block">
+    <div class="variant-label">Variant D</div>
+    <div class="variant-title">Minimal three-step with bold time comparison</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">Product</div>
+        <h2 class="headline">What takes hours today takes <span class="accent">minutes with Amici</span></h2>
+      </div>
+      <div class="two-col" style="align-items: center;">
+        <div>
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--accent-soft); border: 1px solid rgba(59,130,246,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-numbers); font-size: 18px; font-weight: 600; color: var(--accent);">1</div>
+              <div>
+                <h3 style="font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-bottom: 2px;">Post your event brief</h3>
+                <p style="font-size: 15px; color: var(--text-secondary);">Tell us what you need. The platform identifies the right supplier categories.</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--accent-soft); border: 1px solid rgba(59,130,246,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-numbers); font-size: 18px; font-weight: 600; color: var(--accent);">2</div>
+              <div>
+                <h3 style="font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-bottom: 2px;">Receive tailored offers</h3>
+                <p style="font-size: 15px; color: var(--text-secondary);">Verified suppliers respond with custom proposals, menus, and transparent pricing.</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--accent-soft); border: 1px solid rgba(59,130,246,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-numbers); font-size: 18px; font-weight: 600; color: var(--accent);">3</div>
+              <div>
+                <h3 style="font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-bottom: 2px;">Compare, book, done</h3>
+                <p style="font-size: 15px; color: var(--text-secondary);">Pick your favorites, confirm, and pay. The platform coordinates everything from there.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <div class="card" style="border-color: rgba(59,130,246,0.3); padding: 32px;">
+            <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">Time to book an event</div>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 24px; margin: 16px 0;">
+              <div>
+                <div style="font-family: var(--font-numbers); font-size: 36px; font-weight: 600; color: var(--text-muted); text-decoration: line-through; opacity: 0.5;">5-8 hrs</div>
+                <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Today (DIY)</div>
+              </div>
+              <div style="font-size: 24px; color: var(--accent);">→</div>
+              <div>
+                <div style="font-family: var(--font-numbers); font-size: 36px; font-weight: 600; color: var(--accent);">~10 min</div>
+                <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">With Amici</div>
+              </div>
+            </div>
+            <div style="height: 1px; background: var(--border); margin: 16px 0;"></div>
+            <p style="font-size: 15px; color: var(--text-secondary);">No emails. No phone tag. No vendor juggling. One brief, multiple offers, total control.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT E: Connected line steps -->
+  <div class="variant-block">
+    <div class="variant-label">Variant E</div>
+    <div class="variant-title">Connected horizontal pipeline with supplier/organizer rows</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">Product</div>
+        <h2 class="headline">Brief to booked. <span class="accent">Both sides win.</span></h2>
+      </div>
+      <!-- Pipeline steps -->
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 24px;">
+        <div style="background: var(--bg-card); border-radius: var(--radius) 0 0 var(--radius); padding: 20px; border: 1px solid var(--border); border-right: none;">
+          <div style="font-family: var(--font-numbers); font-size: 14px; color: var(--accent); font-weight: 600; margin-bottom: 6px;">STEP 1</div>
+          <h3 style="font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 4px;">Post brief</h3>
+          <p style="font-size: 14px; color: var(--text-secondary);">Date, guests, style, budget</p>
+        </div>
+        <div style="background: var(--bg-card); padding: 20px; border: 1px solid var(--border); border-right: none;">
+          <div style="font-family: var(--font-numbers); font-size: 14px; color: var(--accent); font-weight: 600; margin-bottom: 6px;">STEP 2</div>
+          <h3 style="font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 4px;">Get offers</h3>
+          <p style="font-size: 14px; color: var(--text-secondary);">Suppliers respond in 24h</p>
+        </div>
+        <div style="background: var(--bg-card); padding: 20px; border: 1px solid var(--border); border-right: none;">
+          <div style="font-family: var(--font-numbers); font-size: 14px; color: var(--accent); font-weight: 600; margin-bottom: 6px;">STEP 3</div>
+          <h3 style="font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 4px;">Compare & book</h3>
+          <p style="font-size: 14px; color: var(--text-secondary);">Side-by-side, one click</p>
+        </div>
+        <div style="background: var(--bg-card); border-radius: 0 var(--radius) var(--radius) 0; padding: 20px; border: 1px solid var(--border);">
+          <div style="font-family: var(--font-numbers); font-size: 14px; color: var(--success); font-weight: 600; margin-bottom: 6px;">DONE</div>
+          <h3 style="font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 4px;">Event day</h3>
+          <p style="font-size: 14px; color: var(--text-secondary);">Everything coordinated</p>
+        </div>
+      </div>
+      <!-- Two sided value -->
+      <div class="card-grid cols-2">
+        <div class="card">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+            <div style="font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;">Organizer side</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; align-items: baseline; gap: 8px;"><span class="check">✓</span><p style="font-size: 15px; color: var(--text-secondary);">One brief reaches all relevant suppliers</p></div>
+            <div style="display: flex; align-items: baseline; gap: 8px;"><span class="check">✓</span><p style="font-size: 15px; color: var(--text-secondary);">Compare offers with transparent pricing</p></div>
+            <div style="display: flex; align-items: baseline; gap: 8px;"><span class="check">✓</span><p style="font-size: 15px; color: var(--text-secondary);">Book and pay in one place</p></div>
+          </div>
+        </div>
+        <div class="card">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+            <div style="font-size: 13px; color: var(--success); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;">Supplier side</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; align-items: baseline; gap: 8px;"><span class="check">✓</span><p style="font-size: 15px; color: var(--text-secondary);">Qualified leads delivered to your portal</p></div>
+            <div style="display: flex; align-items: baseline; gap: 8px;"><span class="check">✓</span><p style="font-size: 15px; color: var(--text-secondary);">Own your pricing, availability, and profile</p></div>
+            <div style="display: flex; align-items: baseline; gap: 8px;"><span class="check">✓</span><p style="font-size: 15px; color: var(--text-secondary);">Vetted network keeps quality high</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Remaining tabs will be added -->
+<div class="tab-panel" id="tab-market">
+
+  <!-- VARIANT A: Current TAM/SAM/SOM bars + stat cards -->
+  <div class="variant-block">
+    <div class="variant-label">Variant A</div>
+    <div class="variant-title">Current: TAM/SAM/SOM bars with stat cards (two-column)</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label" style="color: var(--success);">Market</div>
+        <h2 class="headline">A large market hiding in <span class="accent-green">plain sight</span></h2>
+        <p class="subheadline">~30,000 Swedish companies with 20-500 employees organize 3-5 events per year. Most of this spend never touches an event agency.</p>
+      </div>
+      <div class="two-col">
+        <div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div class="tam-bar">
+              <div class="tam-bar-label">TAM</div>
+              <div class="tam-bar-fill" style="width: 100%; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2);"><div class="tam-bar-value">7.2B SEK</div><div class="tam-bar-desc">Swedish mid-market corporate events</div></div>
+            </div>
+            <div class="tam-bar">
+              <div class="tam-bar-label">SAM</div>
+              <div class="tam-bar-fill" style="width: 55%; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3);"><div class="tam-bar-value">1.8B SEK</div><div class="tam-bar-desc">Multi-supplier events</div></div>
+            </div>
+            <div class="tam-bar">
+              <div class="tam-bar-label">SOM</div>
+              <div class="tam-bar-fill" style="width: 25%; background: rgba(34,197,94,0.2); border: 1px solid var(--success);"><div class="tam-bar-value">50M SEK</div><div class="tam-bar-desc">Year 1-2 (Stockholm)</div></div>
+            </div>
+          </div>
+          <div class="card" style="margin-top: 12px;">
+            <p><strong style="color: var(--text-primary);">How we calculated:</strong> ~30K companies x 4 events/year x avg. 60K SEK/event. Based on SCB data and industry benchmarks.</p>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div class="card"><div style="font-family: var(--font-numbers); font-size: 26px; font-weight: 600; color: var(--success);">9.1%</div><p style="margin-top: 8px;">Sweden's event market CAGR (2021-2030), among the fastest in Europe.</p></div>
+          <div class="card"><div style="font-family: var(--font-numbers); font-size: 26px; font-weight: 600; color: var(--success);">3.2B SEK</div><p style="margin-top: 8px;">Swedish event agency market revenue. But most company events never reach an agency.</p></div>
+          <div class="card"><div style="font-family: var(--font-numbers); font-size: 26px; font-weight: 600; color: var(--success);">30K+</div><p style="margin-top: 8px;">Companies in our target segment planning events without dedicated event staff.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT B: Funnel visual -->
+  <div class="variant-block">
+    <div class="variant-label">Variant B</div>
+    <div class="variant-title">Funnel: Big number at top, narrowing to SOM</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label" style="color: var(--success);">Market</div>
+        <h2 class="headline">A <span class="accent-green">7.2 billion SEK</span> market. We start with 50M.</h2>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0; max-width: 800px; margin: 0 auto;">
+        <div style="width: 100%; background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.15); border-radius: 16px 16px 0 0; padding: 24px 32px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">Total Addressable Market</div>
+            <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: var(--text-primary); margin-top: 4px;">7.2B SEK</div>
+          </div>
+          <p style="font-size: 15px; color: var(--text-secondary); max-width: 360px; text-align: right;">All mid-market corporate events in Sweden. ~30K companies, 3-5 events per year.</p>
+        </div>
+        <div style="width: 80%; background: rgba(34,197,94,0.10); border: 1px solid rgba(34,197,94,0.25); border-top: none; padding: 20px 32px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">Serviceable Market</div>
+            <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--text-primary); margin-top: 4px;">1.8B SEK</div>
+          </div>
+          <p style="font-size: 15px; color: var(--text-secondary); max-width: 300px; text-align: right;">Events needing multiple suppliers (chef + venue + more).</p>
+        </div>
+        <div style="width: 55%; background: rgba(34,197,94,0.18); border: 1px solid var(--success); border-top: none; border-radius: 0 0 16px 16px; padding: 20px 32px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 13px; color: var(--success); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">Year 1-2 Target</div>
+            <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--success); margin-top: 4px;">50M SEK</div>
+          </div>
+          <p style="font-size: 15px; color: var(--text-secondary); max-width: 240px; text-align: right;">Stockholm focus. Capture via organic + partnerships.</p>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: center; gap: 32px; margin-top: 24px;">
+        <div style="text-align: center;"><div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600; color: var(--success);">9.1%</div><div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">CAGR growth</div></div>
+        <div style="text-align: center;"><div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600; color: var(--success);">30K+</div><div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Target companies</div></div>
+        <div style="text-align: center;"><div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600; color: var(--success);">3.2B SEK</div><div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Agency market (untapped)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT C: Concentric circles concept -->
+  <div class="variant-block">
+    <div class="variant-label">Variant C</div>
+    <div class="variant-title">Three big stat cards with bottom-up calculation</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label" style="color: var(--success);">Market</div>
+        <h2 class="headline">Hiding in <span class="accent-green">plain sight</span></h2>
+        <p class="subheadline">This spending already happens. It's just scattered across emails, agencies, and Google searches. We're capturing it, not creating it.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+        <div class="card" style="text-align: center; padding: 28px 20px; border-color: rgba(34,197,94,0.2);">
+          <div style="font-family: var(--font-numbers); font-size: 42px; font-weight: 600; color: var(--success); line-height: 1;">7.2B</div>
+          <div style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">SEK total market</div>
+          <div style="height: 1px; background: var(--border); margin: 16px 0;"></div>
+          <p style="font-size: 15px; color: var(--text-secondary);">Swedish mid-market corporate events. ~30K companies, each running 3-5 events per year.</p>
+        </div>
+        <div class="card" style="text-align: center; padding: 28px 20px; border-color: rgba(34,197,94,0.3);">
+          <div style="font-family: var(--font-numbers); font-size: 42px; font-weight: 600; color: var(--success); line-height: 1;">1.8B</div>
+          <div style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">SEK serviceable</div>
+          <div style="height: 1px; background: var(--border); margin: 16px 0;"></div>
+          <p style="font-size: 15px; color: var(--text-secondary);">Events that need multiple suppliers. Chef + venue + equipment. Our sweet spot.</p>
+        </div>
+        <div class="card" style="text-align: center; padding: 28px 20px; border-color: var(--success);">
+          <div style="font-family: var(--font-numbers); font-size: 42px; font-weight: 600; color: var(--success); line-height: 1;">50M</div>
+          <div style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">SEK year 1-2</div>
+          <div style="height: 1px; background: var(--border); margin: 16px 0;"></div>
+          <p style="font-size: 15px; color: var(--text-secondary);">Stockholm focus. Land with chefs, expand to full event orchestration.</p>
+        </div>
+      </div>
+      <div class="card" style="border-color: rgba(34,197,94,0.2);">
+        <p><strong style="color: var(--text-primary);">Bottom-up math:</strong> 30K companies x 4 events/year x 60K SEK avg = 7.2B. Growing at 9.1% CAGR, the fastest event market growth in Europe. Source: SCB, industry reports.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT D: Story-first with data as proof -->
+  <div class="variant-block">
+    <div class="variant-label">Variant D</div>
+    <div class="variant-title">Narrative-first: The gap between agencies and DIY</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label" style="color: var(--success);">Market</div>
+        <h2 class="headline">3.2 billion in agency fees. <span class="accent-green">Most events never reach one.</span></h2>
+        <p class="subheadline">Sweden's event agency market is 3.2B SEK. But the majority of corporate events are planned internally by people with no event expertise. That gap is our market.</p>
+      </div>
+      <div class="two-col">
+        <div>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="display: flex; align-items: baseline; gap: 14px; padding-bottom: 16px; border-bottom: 1px solid var(--border);">
+              <div style="font-family: var(--font-numbers); font-size: 36px; font-weight: 600; color: var(--success); line-height: 1; min-width: 100px;">30K+</div>
+              <div>
+                <div style="font-size: 16px; font-weight: 700; font-family: var(--font-display); margin-bottom: 2px;">Target companies</div>
+                <p style="font-size: 15px; color: var(--text-secondary);">Swedish companies with 20-500 employees. Big enough to have budgets, too small for dedicated event staff.</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 14px; padding-bottom: 16px; border-bottom: 1px solid var(--border);">
+              <div style="font-family: var(--font-numbers); font-size: 36px; font-weight: 600; color: var(--success); line-height: 1; min-width: 100px;">3-5</div>
+              <div>
+                <div style="font-size: 16px; font-weight: 700; font-family: var(--font-display); margin-bottom: 2px;">Events per company per year</div>
+                <p style="font-size: 15px; color: var(--text-secondary);">Team dinners, client entertainment, offsites, holiday parties. Recurring, not one-off.</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 14px;">
+              <div style="font-family: var(--font-numbers); font-size: 36px; font-weight: 600; color: var(--success); line-height: 1; min-width: 100px;">60K</div>
+              <div>
+                <div style="font-size: 16px; font-weight: 700; font-family: var(--font-display); margin-bottom: 2px;">SEK average event spend</div>
+                <p style="font-size: 15px; color: var(--text-secondary);">Meaningful transaction values. High enough to build a commission-based business on.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="card" style="border-color: rgba(34,197,94,0.3); margin-bottom: 12px; padding: 28px;">
+            <div style="font-size: 13px; color: var(--success); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 8px;">Our beachhead</div>
+            <div style="font-family: var(--font-numbers); font-size: 36px; font-weight: 600; color: var(--success); line-height: 1; margin-bottom: 8px;">50M SEK</div>
+            <p>Stockholm-first. Start with chef bookings (proven demand), expand to full multi-supplier events. Year 1-2 capture target.</p>
+          </div>
+          <div class="card">
+            <div style="font-family: var(--font-numbers); font-size: 22px; font-weight: 600; color: var(--success); line-height: 1; margin-bottom: 8px;">9.1% CAGR</div>
+            <p>Sweden's event market is the fastest-growing in Europe (2021-2030). The tailwind is real.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT E: Single column clean -->
+  <div class="variant-block">
+    <div class="variant-label">Variant E</div>
+    <div class="variant-title">Clean single-column with layered market sizes</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label" style="color: var(--success);">Market</div>
+        <h2 class="headline">Big market. <span class="accent-green">Focused start.</span></h2>
+      </div>
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; margin-bottom: 24px;">
+          <div style="background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.15); border-radius: var(--radius) 0 0 var(--radius); padding: 24px; text-align: center;">
+            <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 8px;">TAM</div>
+            <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: var(--text-primary);">7.2B SEK</div>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">All mid-market corporate events in Sweden</p>
+          </div>
+          <div style="background: rgba(34,197,94,0.10); border: 1px solid rgba(34,197,94,0.25); border-left: none; border-right: none; padding: 24px; text-align: center;">
+            <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 8px;">SAM</div>
+            <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: var(--text-primary);">1.8B SEK</div>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">Multi-supplier events we can serve</p>
+          </div>
+          <div style="background: rgba(34,197,94,0.18); border: 1px solid var(--success); border-radius: 0 var(--radius) var(--radius) 0; padding: 24px; text-align: center;">
+            <div style="font-size: 13px; color: var(--success); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 8px;">SOM</div>
+            <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: var(--success);">50M SEK</div>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">Year 1-2 Stockholm capture</p>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="card">
+            <div style="display: flex; align-items: baseline; gap: 12px;">
+              <div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600; color: var(--success);">9.1%</div>
+              <div>
+                <div style="font-size: 15px; font-weight: 700; font-family: var(--font-display);">Annual growth</div>
+                <p style="font-size: 14px; color: var(--text-secondary);">Fastest event market CAGR in Europe (2021-2030).</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div style="display: flex; align-items: baseline; gap: 12px;">
+              <div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600; color: var(--success);">30K+</div>
+              <div>
+                <div style="font-size: 15px; font-weight: 700; font-family: var(--font-display);">Target segment</div>
+                <p style="font-size: 14px; color: var(--text-secondary);">Companies with 20-500 employees, no event staff.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="margin-top: 16px; text-align: center; border-color: rgba(34,197,94,0.2);">
+          <p><strong style="color: var(--text-primary);">The math:</strong> 30K companies x 4 events x 60K SEK avg. spend. Source: SCB company registry, industry reports.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="tab-panel" id="tab-business">
+
+  <!-- VARIANT A: Current numbered list + why it scales -->
+  <div class="variant-block">
+    <div class="variant-label">Variant A</div>
+    <div class="variant-title">Current: Numbered revenue streams + why it scales</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label" style="color: var(--success);">Business Model</div>
+        <h2 class="headline">How we <span class="accent-green">make money</span></h2>
+        <p class="subheadline">Commission-based today. Platform-as-a-service tomorrow.</p>
+      </div>
+      <div class="two-col">
+        <div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; align-items: baseline; gap: 12px;"><div style="font-family: var(--font-numbers); font-size: 15px; color: var(--success); font-weight: 600; min-width: 18px;">01</div><div><div style="font-size: 15px; font-weight: 700; font-family: var(--font-display); margin-bottom: 2px;">Chef booking commission</div><p style="font-size: 15px; color: var(--text-secondary);">10-15% commission on every chef booking. Primary revenue today.</p></div></div>
+            <div style="height: 1px; background: var(--border); opacity: 0.5;"></div>
+            <div style="display: flex; align-items: baseline; gap: 12px;"><div style="font-family: var(--font-numbers); font-size: 15px; color: var(--success); font-weight: 600; min-width: 18px;">02</div><div><div style="font-size: 15px; font-weight: 700; font-family: var(--font-display); margin-bottom: 2px;">Venue affiliate revenue</div><p style="font-size: 15px; color: var(--text-secondary);">Affiliate commission from venue bookings through our partnership with Venuu.</p></div></div>
+            <div style="height: 1px; background: var(--border); opacity: 0.5;"></div>
+            <div style="display: flex; align-items: baseline; gap: 12px;"><div style="font-family: var(--font-numbers); font-size: 15px; color: var(--success); font-weight: 600; min-width: 18px;">03</div><div><div style="font-size: 15px; font-weight: 700; font-family: var(--font-display); margin-bottom: 2px;">Equipment rental commission</div><p style="font-size: 15px; color: var(--text-secondary);">Commission from rental equipment through Westmans and future partners.</p></div></div>
+            <div style="height: 1px; background: var(--border); opacity: 0.5;"></div>
+            <div style="display: flex; align-items: baseline; gap: 12px;"><div style="font-family: var(--font-numbers); font-size: 15px; color: var(--success); font-weight: 600; min-width: 18px;">04</div><div><div style="font-size: 15px; font-weight: 700; font-family: var(--font-display); margin-bottom: 2px;">Premium supplier features</div><p style="font-size: 15px; color: var(--text-secondary);">Future: featured listings, priority matching, analytics tools for suppliers.</p></div></div>
+          </div>
+        </div>
+        <div>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.14em;">Why it scales</div>
+            <div><div style="font-family: var(--font-numbers); font-size: 26px; font-weight: 600; line-height: 1;">&#8595; CAC</div><p style="font-size: 15px; color: var(--text-secondary); margin-top: 6px;">Network effects: more suppliers attract more organizers.</p></div>
+            <div><div style="font-family: var(--font-numbers); font-size: 26px; font-weight: 600; line-height: 1;">&#8593; Rev/event</div><p style="font-size: 15px; color: var(--text-secondary); margin-top: 6px;">More services per booking means higher commission per transaction.</p></div>
+            <div><div style="font-family: var(--font-numbers); font-size: 26px; font-weight: 600; line-height: 1;">3-5x Repeat</div><p style="font-size: 15px; color: var(--text-secondary); margin-top: 6px;">Corporate clients book 3-5 events per year. One acquisition, recurring revenue.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT B: Now + Next with revenue stack -->
+  <div class="variant-block">
+    <div class="variant-label">Variant B</div>
+    <div class="variant-title">Now / Next / Later revenue phases</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label" style="color: var(--success);">Business Model</div>
+        <h2 class="headline">Commission today. <span class="accent-green">Platform tomorrow.</span></h2>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+        <div class="card" style="border-color: var(--success);">
+          <div style="font-size: 13px; color: var(--success); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">Now</div>
+          <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">10-15%</div>
+          <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">commission per booking</div>
+          <p>Chef bookings drive primary revenue. Venue affiliate through Venuu. Equipment commission through Westmans.</p>
+        </div>
+        <div class="card" style="border-color: rgba(34,197,94,0.3);">
+          <div style="font-size: 13px; color: var(--success); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">Next</div>
+          <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">Multi-service</div>
+          <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">bundled commissions</div>
+          <p>As we add supplier categories, revenue per event grows. One booking can include chef + venue + transport + equipment.</p>
+        </div>
+        <div class="card" style="border-color: rgba(34,197,94,0.15);">
+          <div style="font-size: 13px; color: var(--success); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">Later</div>
+          <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">SaaS layer</div>
+          <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">premium supplier tools</div>
+          <p>Featured listings, priority matching, analytics, and an event-booking API that agencies subscribe to.</p>
+        </div>
+      </div>
+      <div class="card" style="border-color: rgba(34,197,94,0.2);">
+        <div style="display: flex; justify-content: space-around; text-align: center;">
+          <div><div style="font-family: var(--font-numbers); font-size: 22px; font-weight: 600; color: var(--success);">&#8595; CAC</div><p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">Network effects compound</p></div>
+          <div><div style="font-family: var(--font-numbers); font-size: 22px; font-weight: 600; color: var(--success);">&#8593; Rev/event</div><p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">More services per booking</p></div>
+          <div><div style="font-family: var(--font-numbers); font-size: 22px; font-weight: 600; color: var(--success);">3-5x</div><p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">Annual repeat per client</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT C: Unit economics focus -->
+  <div class="variant-block">
+    <div class="variant-label">Variant C</div>
+    <div class="variant-title">Unit economics: Single event breakdown</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label" style="color: var(--success);">Business Model</div>
+        <h2 class="headline">Every event is <span class="accent-green">profitable from day one</span></h2>
+        <p class="subheadline">Commission on every supplier booking. No subsidies, no loss leaders.</p>
+      </div>
+      <div class="two-col">
+        <div>
+          <div class="card" style="border-color: rgba(34,197,94,0.3); margin-bottom: 16px;">
+            <div style="font-size: 13px; color: var(--success); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 16px;">Example: 40-person corporate dinner</div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid var(--border);"><span style="color: var(--text-secondary);">Chef (3-course dinner)</span><span style="font-family: var(--font-numbers); font-weight: 600;">32,000 SEK</span></div>
+              <div style="display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid var(--border);"><span style="color: var(--text-secondary);">Venue rental</span><span style="font-family: var(--font-numbers); font-weight: 600;">12,000 SEK</span></div>
+              <div style="display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid var(--border);"><span style="color: var(--text-secondary);">Equipment rental</span><span style="font-family: var(--font-numbers); font-weight: 600;">5,000 SEK</span></div>
+              <div style="display: flex; justify-content: space-between; padding-top: 4px;"><strong style="color: var(--text-primary);">Amici commission (10-15%)</strong><strong style="font-family: var(--font-numbers); color: var(--success);">~6,000 SEK</strong></div>
+            </div>
+          </div>
+          <div class="card">
+            <p><strong style="color: var(--text-primary);">And they come back.</strong> Corporate clients book 3-5 events per year. One acquisition, 3-5x the revenue.</p>
+          </div>
+        </div>
+        <div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 16px;">Revenue streams</div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div class="card"><h3 style="font-size: 16px;">Chef commissions</h3><p>10-15% on bookings. Live and generating revenue today.</p></div>
+            <div class="card"><h3 style="font-size: 16px;">Venue affiliate</h3><p>Partner commission through Venuu integration.</p></div>
+            <div class="card"><h3 style="font-size: 16px;">Equipment rentals</h3><p>Commission via Westmans and future rental partners.</p></div>
+            <div class="card"><h3 style="font-size: 16px;">Premium tools (future)</h3><p>Featured listings, analytics, priority matching for suppliers.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT D: Visual revenue stack -->
+  <div class="variant-block">
+    <div class="variant-label">Variant D</div>
+    <div class="variant-title">Revenue bars with scaling metrics</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label" style="color: var(--success);">Business Model</div>
+        <h2 class="headline">Take rate grows with <span class="accent-green">every service added</span></h2>
+      </div>
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="min-width: 140px; font-size: 15px; color: var(--text-secondary);">Chef booking</div>
+            <div style="flex: 1; background: var(--bg-card); border-radius: 6px; height: 36px; position: relative;"><div style="width: 40%; height: 100%; background: rgba(34,197,94,0.25); border: 1px solid var(--success); border-radius: 6px; display: flex; align-items: center; padding: 0 12px;"><span style="font-family: var(--font-numbers); font-size: 14px; font-weight: 600; color: var(--success);">10-15%</span></div></div>
+            <div style="font-size: 13px; color: var(--text-muted); min-width: 60px;">Live now</div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="min-width: 140px; font-size: 15px; color: var(--text-secondary);">Venue affiliate</div>
+            <div style="flex: 1; background: var(--bg-card); border-radius: 6px; height: 36px; position: relative;"><div style="width: 25%; height: 100%; background: rgba(34,197,94,0.18); border: 1px solid rgba(34,197,94,0.4); border-radius: 6px; display: flex; align-items: center; padding: 0 12px;"><span style="font-family: var(--font-numbers); font-size: 14px; font-weight: 600; color: var(--success);">5-8%</span></div></div>
+            <div style="font-size: 13px; color: var(--text-muted); min-width: 60px;">Live now</div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="min-width: 140px; font-size: 15px; color: var(--text-secondary);">Equipment rental</div>
+            <div style="flex: 1; background: var(--bg-card); border-radius: 6px; height: 36px; position: relative;"><div style="width: 30%; height: 100%; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); border-radius: 6px; display: flex; align-items: center; padding: 0 12px;"><span style="font-family: var(--font-numbers); font-size: 14px; font-weight: 600; color: var(--success);">8-12%</span></div></div>
+            <div style="font-size: 13px; color: var(--text-muted); min-width: 60px;">Live now</div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="min-width: 140px; font-size: 15px; color: var(--text-secondary);">Premium tools</div>
+            <div style="flex: 1; background: var(--bg-card); border-radius: 6px; height: 36px; position: relative;"><div style="width: 50%; height: 100%; background: rgba(34,197,94,0.08); border: 1px dashed rgba(34,197,94,0.3); border-radius: 6px; display: flex; align-items: center; padding: 0 12px;"><span style="font-family: var(--font-numbers); font-size: 14px; font-weight: 600; color: var(--text-muted);">SaaS</span></div></div>
+            <div style="font-size: 13px; color: var(--text-muted); min-width: 60px;">Planned</div>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+          <div class="card" style="text-align: center;"><div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600; color: var(--success);">&#8595; CAC</div><p style="font-size: 14px; margin-top: 4px;">Network effects compound over time</p></div>
+          <div class="card" style="text-align: center;"><div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600; color: var(--success);">&#8593; Rev</div><p style="font-size: 14px; margin-top: 4px;">More categories = higher take per event</p></div>
+          <div class="card" style="text-align: center;"><div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600; color: var(--success);">3-5x</div><p style="font-size: 14px; margin-top: 4px;">Corporate clients repeat annually</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT E: Marketplace flywheel -->
+  <div class="variant-block">
+    <div class="variant-label">Variant E</div>
+    <div class="variant-title">Flywheel: How revenue compounds</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label" style="color: var(--success);">Business Model</div>
+        <h2 class="headline">A flywheel that <span class="accent-green">compounds</span></h2>
+        <p class="subheadline">10-15% commission on every booking. More suppliers attract more organizers. More organizers attract more suppliers. Revenue grows on both sides.</p>
+      </div>
+      <div class="two-col">
+        <div>
+          <div class="card" style="border-color: rgba(34,197,94,0.3); padding: 28px; margin-bottom: 16px;">
+            <div style="font-size: 13px; color: var(--success); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 16px;">The flywheel</div>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(34,197,94,0.15); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--success); font-weight: 600; flex-shrink: 0;">1</div><p style="font-size: 15px; color: var(--text-secondary);">More suppliers join the platform</p></div>
+              <div style="text-align: center; color: var(--success); font-size: 16px;">&#8595;</div>
+              <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(34,197,94,0.15); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--success); font-weight: 600; flex-shrink: 0;">2</div><p style="font-size: 15px; color: var(--text-secondary);">Better offers and selection for organizers</p></div>
+              <div style="text-align: center; color: var(--success); font-size: 16px;">&#8595;</div>
+              <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(34,197,94,0.15); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--success); font-weight: 600; flex-shrink: 0;">3</div><p style="font-size: 15px; color: var(--text-secondary);">More organizers book through Amici</p></div>
+              <div style="text-align: center; color: var(--success); font-size: 16px;">&#8595;</div>
+              <div style="display: flex; align-items: center; gap: 10px;"><div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(34,197,94,0.15); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--success); font-weight: 600; flex-shrink: 0;">4</div><p style="font-size: 15px; color: var(--text-secondary);">More demand attracts more suppliers</p></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 16px;">Revenue streams</div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div class="card" style="display: flex; justify-content: space-between; align-items: center; padding: 16px;"><span style="font-size: 15px; font-weight: 700; font-family: var(--font-display);">Chef bookings</span><span style="font-family: var(--font-numbers); font-size: 15px; color: var(--success); font-weight: 600;">10-15%</span></div>
+            <div class="card" style="display: flex; justify-content: space-between; align-items: center; padding: 16px;"><span style="font-size: 15px; font-weight: 700; font-family: var(--font-display);">Venue affiliate</span><span style="font-family: var(--font-numbers); font-size: 15px; color: var(--success); font-weight: 600;">5-8%</span></div>
+            <div class="card" style="display: flex; justify-content: space-between; align-items: center; padding: 16px;"><span style="font-size: 15px; font-weight: 700; font-family: var(--font-display);">Equipment rental</span><span style="font-family: var(--font-numbers); font-size: 15px; color: var(--success); font-weight: 600;">8-12%</span></div>
+            <div class="card" style="display: flex; justify-content: space-between; align-items: center; padding: 16px; border-style: dashed;"><span style="font-size: 15px; font-weight: 700; font-family: var(--font-display); color: var(--text-muted);">Premium tools (future)</span><span style="font-family: var(--font-numbers); font-size: 15px; color: var(--text-muted); font-weight: 600;">SaaS</span></div>
+          </div>
+          <div class="card" style="margin-top: 12px; text-align: center; border-color: rgba(34,197,94,0.2);">
+            <p><strong style="color: var(--success);">3-5x repeat</strong> per corporate client per year. One acquisition pays back many times over.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="tab-panel" id="tab-competitive">
+
+  <!-- VARIANT A: Current card list + Amici position -->
+  <div class="variant-block">
+    <div class="variant-label">Variant A</div>
+    <div class="variant-title">Current: Competitor cards + Amici position box</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">Competitive Landscape</div>
+        <h2 class="headline">Where Amici <span class="accent">fits</span></h2>
+        <p class="subheadline">Single-service platforms and expensive agencies. Amici sits in the gap: multi-service orchestration at self-serve prices.</p>
+      </div>
+      <div class="two-col">
+        <div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 12px;">How they compare</div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div class="card" style="padding: 12px 16px;"><div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><strong>DIY / Google</strong><span style="font-size: 12px; color: var(--text-muted); background: var(--bg-card-hover); padding: 2px 8px; border-radius: 4px;">Free but painful</span></div><p style="font-size: 14px;">3-5 platforms, scattered emails, no coordination. Costs hours.</p></div>
+            <div class="card" style="padding: 12px 16px;"><div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><strong>Single-service platforms</strong><span style="font-size: 12px; color: var(--text-muted); background: var(--bg-card-hover); padding: 2px 8px; border-radius: 4px;">One piece each</span></div><p style="font-size: 14px;">Venuu, Take a Chef, MiumMium. Proven demand, but only solve one piece.</p></div>
+            <div class="card" style="padding: 12px 16px;"><div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><strong>EventLogic</strong><span style="font-size: 12px; color: var(--text-muted); background: var(--bg-card-hover); padding: 2px 8px; border-radius: 4px;">150M SEK / MICE</span></div><p style="font-size: 14px;">Multi-category, 11 supplier types. Built for large enterprise procurement teams.</p></div>
+            <div class="card" style="padding: 12px 16px;"><div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><strong>Event agencies</strong><span style="font-size: 12px; color: var(--text-muted); background: var(--bg-card-hover); padding: 2px 8px; border-radius: 4px;">15-20% markup</span></div><p style="font-size: 14px;">Full-service but expensive. Overkill for a 40-person team dinner.</p></div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 12px;">Amici's position</div>
+          <div class="card" style="border-color: rgba(59,130,246,0.3); padding: 20px;">
+            <h3 style="font-size: 18px; margin-bottom: 12px;">Multi-service orchestration at self-serve prices</h3>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; align-items: baseline; gap: 8px;"><span style="color: var(--accent);">&#10003;</span><p style="font-size: 15px; color: var(--text-secondary);"><strong style="color: var(--text-primary);">Chef + venue + transport + equipment</strong> in one platform</p></div>
+              <div style="display: flex; align-items: baseline; gap: 8px;"><span style="color: var(--accent);">&#10003;</span><p style="font-size: 15px; color: var(--text-secondary);"><strong style="color: var(--text-primary);">Built for mid-market:</strong> 30K+ companies too small for agencies</p></div>
+              <div style="display: flex; align-items: baseline; gap: 8px;"><span style="color: var(--accent);">&#10003;</span><p style="font-size: 15px; color: var(--text-secondary);"><strong style="color: var(--text-primary);">Curated chef network</strong> from years of hands-on operation</p></div>
+              <div style="display: flex; align-items: baseline; gap: 8px;"><span style="color: var(--accent);">&#10003;</span><p style="font-size: 15px; color: var(--text-secondary);"><strong style="color: var(--text-primary);">Smart matching:</strong> describe your event, get relevant suggestions</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT B: 2x2 positioning matrix -->
+  <div class="variant-block">
+    <div class="variant-label">Variant B</div>
+    <div class="variant-title">Positioning matrix: Service breadth vs. Accessibility</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">Competitive Landscape</div>
+        <h2 class="headline">Nobody serves the <span class="accent">mid-market</span> with multi-service</h2>
+      </div>
+      <div style="max-width: 700px; margin: 0 auto; position: relative;">
+        <!-- Axis labels -->
+        <div style="text-align: center; font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">More service categories &#8593;</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px; aspect-ratio: 1.6;">
+          <!-- Top-left: Multi-service, enterprise -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px 0 0 0; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Event agencies</div>
+            <div style="font-size: 13px; color: var(--text-muted);">15-20% markup, full-service</div>
+            <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">EventLogic (MICE, enterprise)</div>
+          </div>
+          <!-- Top-right: Multi-service, accessible = AMICI -->
+          <div style="background: rgba(59,130,246,0.08); border: 2px solid var(--accent); border-radius: 0 16px 0 0; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+            <div style="font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 4px;">Amici</div>
+            <div style="font-size: 14px; color: var(--text-secondary);">Multi-service orchestration, self-serve pricing, mid-market focus</div>
+          </div>
+          <!-- Bottom-left: Single-service, enterprise -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 0 0 0 16px; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+            <div style="font-size: 13px; color: var(--text-muted); font-style: italic;">Empty quadrant</div>
+          </div>
+          <!-- Bottom-right: Single-service, accessible -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 0 0 16px 0; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Venuu, Take a Chef, MiumMium</div>
+            <div style="font-size: 13px; color: var(--text-muted);">Good at one thing, but only one thing</div>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 8px;"><span>&#8592; Premium / Enterprise</span><span>Self-serve / SMB &#8594;</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT C: Comparison table -->
+  <div class="variant-block">
+    <div class="variant-label">Variant C</div>
+    <div class="variant-title">Clean comparison table with checkmarks</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">Competitive Landscape</div>
+        <h2 class="headline">The only platform that <span class="accent">does it all</span></h2>
+      </div>
+      <div style="max-width: 900px; margin: 0 auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 15px;">
+          <thead><tr style="border-bottom: 2px solid var(--border);">
+            <th style="text-align: left; padding: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700;"></th>
+            <th style="text-align: center; padding: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700;">DIY</th>
+            <th style="text-align: center; padding: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700;">Single platforms</th>
+            <th style="text-align: center; padding: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700;">Agencies</th>
+            <th style="text-align: center; padding: 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 700;">Amici</th>
+          </tr></thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 12px; color: var(--text-secondary);">Multi-supplier booking</td><td style="text-align: center; padding: 12px;"><span class="cross">&#10005;</span></td><td style="text-align: center; padding: 12px;"><span class="cross">&#10005;</span></td><td style="text-align: center; padding: 12px;"><span class="check">&#10003;</span></td><td style="text-align: center; padding: 12px;"><span class="check">&#10003;</span></td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 12px; color: var(--text-secondary);">Self-serve pricing</td><td style="text-align: center; padding: 12px;"><span class="check">&#10003;</span></td><td style="text-align: center; padding: 12px;"><span class="check">&#10003;</span></td><td style="text-align: center; padding: 12px;"><span class="cross">&#10005;</span></td><td style="text-align: center; padding: 12px;"><span class="check">&#10003;</span></td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 12px; color: var(--text-secondary);">Mid-market focus</td><td style="text-align: center; padding: 12px;"><span class="cross">&#10005;</span></td><td style="text-align: center; padding: 12px;"><span style="color: var(--warning);">~</span></td><td style="text-align: center; padding: 12px;"><span class="cross">&#10005;</span></td><td style="text-align: center; padding: 12px;"><span class="check">&#10003;</span></td></tr>
+            <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 12px; color: var(--text-secondary);">Vetted supplier network</td><td style="text-align: center; padding: 12px;"><span class="cross">&#10005;</span></td><td style="text-align: center; padding: 12px;"><span class="check">&#10003;</span></td><td style="text-align: center; padding: 12px;"><span class="check">&#10003;</span></td><td style="text-align: center; padding: 12px;"><span class="check">&#10003;</span></td></tr>
+            <tr><td style="padding: 12px; color: var(--text-secondary);">Event coordination</td><td style="text-align: center; padding: 12px;"><span class="cross">&#10005;</span></td><td style="text-align: center; padding: 12px;"><span class="cross">&#10005;</span></td><td style="text-align: center; padding: 12px;"><span class="check">&#10003;</span></td><td style="text-align: center; padding: 12px;"><span class="check">&#10003;</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT D: Spectrum / scale visual -->
+  <div class="variant-block">
+    <div class="variant-label">Variant D</div>
+    <div class="variant-title">Spectrum: DIY to agency, Amici in the sweet spot</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">Competitive Landscape</div>
+        <h2 class="headline">The sweet spot <span class="accent">nobody owns</span></h2>
+        <p class="subheadline">Between free-but-painful DIY and expensive-but-easy agencies, there's a massive gap. That's where Amici lives.</p>
+      </div>
+      <div style="max-width: 900px; margin: 0 auto;">
+        <!-- Spectrum bar -->
+        <div style="display: flex; align-items: stretch; gap: 4px; margin-bottom: 24px; height: 120px;">
+          <div style="flex: 1; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius) 0 0 var(--radius); padding: 16px; display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">DIY</div>
+            <div style="font-size: 14px; color: var(--text-secondary);">Free. Hours of work. No coordination.</div>
+          </div>
+          <div style="flex: 1; background: var(--bg-card); border: 1px solid var(--border); padding: 16px; display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Single platforms</div>
+            <div style="font-size: 14px; color: var(--text-secondary);">Venuu, Take a Chef. One piece solved, still juggling the rest.</div>
+          </div>
+          <div style="flex: 1.3; background: rgba(59,130,246,0.08); border: 2px solid var(--accent); padding: 16px; display: flex; flex-direction: column; justify-content: center; text-align: center;">
+            <div style="font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 4px;">Amici</div>
+            <div style="font-size: 14px; color: var(--text-secondary);">Multi-service orchestration. Self-serve pricing. Mid-market sweet spot.</div>
+          </div>
+          <div style="flex: 1; background: var(--bg-card); border: 1px solid var(--border); padding: 16px; display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">EventLogic</div>
+            <div style="font-size: 14px; color: var(--text-secondary);">150M SEK. Built for enterprise MICE procurement.</div>
+          </div>
+          <div style="flex: 1; background: var(--bg-card); border: 1px solid var(--border); border-radius: 0 var(--radius) var(--radius) 0; padding: 16px; display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Agencies</div>
+            <div style="font-size: 14px; color: var(--text-secondary);">Full-service. 15-20% markup. Overkill for mid-market.</div>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em;"><span>&#8592; Cheaper, more work</span><span>Easier, more expensive &#8594;</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT E: Why we win list -->
+  <div class="variant-block">
+    <div class="variant-label">Variant E</div>
+    <div class="variant-title">Competitor overview + Why we win</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">Competitive Landscape</div>
+        <h2 class="headline">Others solve pieces. <span class="accent">We solve the puzzle.</span></h2>
+      </div>
+      <div class="two-col">
+        <div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px; padding: 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm);">
+              <div style="min-width: 36px; text-align: center; font-size: 20px;">🔍</div>
+              <div><div style="font-weight: 700; font-size: 15px;">DIY (Google + email)</div><p style="font-size: 14px; color: var(--text-muted);">Free but 5+ hours per event. No coordination.</p></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px; padding: 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm);">
+              <div style="min-width: 36px; text-align: center; font-size: 20px;">🍽</div>
+              <div><div style="font-weight: 700; font-size: 15px;">Venuu / Take a Chef / MiumMium</div><p style="font-size: 14px; color: var(--text-muted);">One category each. Good demand signal, limited scope.</p></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px; padding: 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm);">
+              <div style="min-width: 36px; text-align: center; font-size: 20px;">🏢</div>
+              <div><div style="font-weight: 700; font-size: 15px;">EventLogic (150M SEK)</div><p style="font-size: 14px; color: var(--text-muted);">Multi-category but built for enterprise MICE teams.</p></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px; padding: 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm);">
+              <div style="min-width: 36px; text-align: center; font-size: 20px;">💼</div>
+              <div><div style="font-weight: 700; font-size: 15px;">Event agencies (LIWLIG etc.)</div><p style="font-size: 14px; color: var(--text-muted);">15-20% markup. Full-service but overkill for most events.</p></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 16px;">Why Amici wins</div>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div><h3 style="font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-bottom: 2px;">Multi-service from day one</h3><p style="font-size: 15px; color: var(--text-secondary);">Chef + venue + transport + equipment in a single booking flow. Not four separate platforms.</p></div>
+            <div style="height: 1px; background: var(--border);"></div>
+            <div><h3 style="font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-bottom: 2px;">Built for the 30K companies agencies ignore</h3><p style="font-size: 15px; color: var(--text-secondary);">20-500 employees. Real budgets, no dedicated event staff. Self-serve pricing, not agency quotes.</p></div>
+            <div style="height: 1px; background: var(--border);"></div>
+            <div><h3 style="font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-bottom: 2px;">Operator DNA</h3><p style="font-size: 15px; color: var(--text-secondary);">We built our chef network by running events ourselves. That hands-on experience is our unfair advantage.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="tab-panel" id="tab-ask">
+
+  <!-- VARIANT A: Current use of funds + vision card -->
+  <div class="variant-block">
+    <div class="variant-label">Variant A</div>
+    <div class="variant-title">Current: Amount + fund bars + expansion timeline</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">The Ask</div>
+        <h2 class="headline">Fund the <span class="accent">marketplace</span></h2>
+      </div>
+      <div class="two-col">
+        <div>
+          <div style="font-family: var(--font-numbers); font-size: 48px; font-weight: 600; background: linear-gradient(135deg, var(--accent), #60A5FA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 16px;">3-5M SEK</div>
+          <p style="font-size: 15px; color: var(--text-secondary); margin-bottom: 16px;">Core team to full-time, marketplace platform build, go-to-market across Sweden.</p>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 12px;"><span style="min-width: 140px; font-size: 14px; color: var(--text-secondary);">Team (full-time)</span><div style="flex: 1; background: var(--bg-card); border-radius: 4px; height: 8px;"><div style="width: 50%; height: 100%; background: var(--accent); border-radius: 4px;"></div></div><span style="font-family: var(--font-numbers); font-size: 14px; color: var(--text-muted); min-width: 35px; text-align: right;">50%</span></div>
+            <div style="display: flex; align-items: center; gap: 12px;"><span style="min-width: 140px; font-size: 14px; color: var(--text-secondary);">Sales & marketing</span><div style="flex: 1; background: var(--bg-card); border-radius: 4px; height: 8px;"><div style="width: 25%; height: 100%; background: var(--accent); border-radius: 4px;"></div></div><span style="font-family: var(--font-numbers); font-size: 14px; color: var(--text-muted); min-width: 35px; text-align: right;">25%</span></div>
+            <div style="display: flex; align-items: center; gap: 12px;"><span style="min-width: 140px; font-size: 14px; color: var(--text-secondary);">Platform & infra</span><div style="flex: 1; background: var(--bg-card); border-radius: 4px; height: 8px;"><div style="width: 15%; height: 100%; background: var(--accent); border-radius: 4px;"></div></div><span style="font-family: var(--font-numbers); font-size: 14px; color: var(--text-muted); min-width: 35px; text-align: right;">15%</span></div>
+            <div style="display: flex; align-items: center; gap: 12px;"><span style="min-width: 140px; font-size: 14px; color: var(--text-secondary);">Operations</span><div style="flex: 1; background: var(--bg-card); border-radius: 4px; height: 8px;"><div style="width: 10%; height: 100%; background: var(--accent); border-radius: 4px;"></div></div><span style="font-family: var(--font-numbers); font-size: 14px; color: var(--text-muted); min-width: 35px; text-align: right;">10%</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="card" style="border-color: rgba(59,130,246,0.3); text-align: center; padding: 24px;">
+            <div style="font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">The Vision</div>
+            <h3 style="font-size: 22px; margin-bottom: 16px;">Europe's event orchestration platform</h3>
+            <div style="display: flex; flex-direction: column; gap: 12px; text-align: center;">
+              <div><div style="font-size: 13px; color: var(--text-muted);">2026-2027</div><div style="font-size: 17px; font-weight: 700;">Sweden</div><div style="font-size: 14px; color: var(--text-secondary);">Marketplace launch & PMF</div></div>
+              <div style="color: var(--accent); opacity: 0.5;">&#8595;</div>
+              <div><div style="font-size: 13px; color: var(--text-muted);">2028</div><div style="font-size: 17px; font-weight: 700;">Nordics</div><div style="font-size: 14px; color: var(--text-secondary);">Norway, Denmark, Finland</div></div>
+              <div style="color: var(--accent); opacity: 0.5;">&#8595;</div>
+              <div><div style="font-size: 13px; color: var(--text-muted);">2029-2030</div><div style="font-size: 17px; font-weight: 700;">Europe</div><div style="font-size: 14px; color: var(--text-secondary);">Major European markets</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT B: Milestones-focused -->
+  <div class="variant-block">
+    <div class="variant-label">Variant B</div>
+    <div class="variant-title">What this raise unlocks (milestone-led)</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">The Ask</div>
+        <h2 class="headline">3-5M SEK to reach <span class="accent">product-market fit</span></h2>
+        <p class="subheadline">This raise funds 18 months of full-time execution. Here's exactly what it buys.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+        <div class="card" style="border-top: 2px solid var(--accent);">
+          <div style="font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">6 months</div>
+          <h3>Full team, marketplace live</h3>
+          <p>Core team goes full-time. Supplier platform launches. First multi-category bookings in Stockholm.</p>
+        </div>
+        <div class="card" style="border-top: 2px solid var(--accent);">
+          <div style="font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">12 months</div>
+          <h3>Revenue growing, network effects</h3>
+          <p>50+ active suppliers. Repeat corporate clients. Revenue per event increasing as categories expand.</p>
+        </div>
+        <div class="card" style="border-top: 2px solid var(--accent);">
+          <div style="font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">18 months</div>
+          <h3>PMF proven, ready to scale</h3>
+          <p>Clear product-market fit signal. Unit economics validated. Ready for Nordic expansion and Series A conversation.</p>
+        </div>
+      </div>
+      <div class="card" style="text-align: center; border-color: rgba(59,130,246,0.2);">
+        <div style="display: flex; justify-content: center; gap: 48px;">
+          <div><div style="font-size: 14px; color: var(--text-muted); margin-bottom: 4px;">Team</div><div style="font-family: var(--font-numbers); font-size: 22px; font-weight: 600;">50%</div></div>
+          <div><div style="font-size: 14px; color: var(--text-muted); margin-bottom: 4px;">Sales & marketing</div><div style="font-family: var(--font-numbers); font-size: 22px; font-weight: 600;">25%</div></div>
+          <div><div style="font-size: 14px; color: var(--text-muted); margin-bottom: 4px;">Platform</div><div style="font-family: var(--font-numbers); font-size: 22px; font-weight: 600;">15%</div></div>
+          <div><div style="font-size: 14px; color: var(--text-muted); margin-bottom: 4px;">Operations</div><div style="font-family: var(--font-numbers); font-size: 22px; font-weight: 600;">10%</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT C: Big number + what changes -->
+  <div class="variant-block">
+    <div class="variant-label">Variant C</div>
+    <div class="variant-title">Big ask number with before/after</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">The Ask</div>
+        <h2 class="headline">From side project to <span class="accent">full-time company</span></h2>
+      </div>
+      <div class="two-col" style="align-items: center;">
+        <div style="text-align: center;">
+          <div style="font-family: var(--font-numbers); font-size: 64px; font-weight: 600; background: linear-gradient(135deg, var(--accent), #60A5FA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1;">3-5M</div>
+          <div style="font-size: 16px; color: var(--text-muted); margin-top: 4px;">SEK pre-seed raise</div>
+          <div style="height: 1px; background: var(--border); margin: 24px 0;"></div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; text-align: center;">
+            <div><div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600;">50%</div><div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Team</div></div>
+            <div><div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600;">25%</div><div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Go-to-market</div></div>
+            <div><div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600;">15%</div><div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Platform</div></div>
+            <div><div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600;">10%</div><div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Operations</div></div>
+          </div>
+        </div>
+        <div>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div class="card" style="border-left: 2px solid var(--text-muted); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+              <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 6px;">Today</div>
+              <p>Part-time team. Chef-only bookings. Stockholm. Manual coordination. Revenue growing but constrained by capacity.</p>
+            </div>
+            <div style="text-align: center; color: var(--accent); font-size: 20px;">&#8595;</div>
+            <div class="card" style="border-left: 2px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+              <div style="font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 6px;">After this raise</div>
+              <p>Full-time team. Multi-service marketplace. Supplier portal live. Automated matching. Ready for Nordic expansion.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT D: Vision-first with ask as enabler -->
+  <div class="variant-block">
+    <div class="variant-label">Variant D</div>
+    <div class="variant-title">Vision-led: Europe's platform, here's what it takes</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">The Ask</div>
+        <h2 class="headline">Europe's event <span class="accent">orchestration platform</span></h2>
+        <p class="subheadline">30,000 companies need this. We're building it. This raise makes it happen.</p>
+      </div>
+      <div style="max-width: 800px; margin: 0 auto;">
+        <!-- Expansion timeline horizontal -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; margin-bottom: 24px;">
+          <div style="background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.3); border-radius: var(--radius) 0 0 var(--radius); padding: 20px; text-align: center;">
+            <div style="font-size: 13px; color: var(--text-muted);">2026-2027</div>
+            <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; margin: 4px 0;">Sweden</div>
+            <div style="font-size: 14px; color: var(--text-secondary);">Marketplace launch & PMF</div>
+          </div>
+          <div style="background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); border-left: none; border-right: none; padding: 20px; text-align: center;">
+            <div style="font-size: 13px; color: var(--text-muted);">2028</div>
+            <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; margin: 4px 0;">Nordics</div>
+            <div style="font-size: 14px; color: var(--text-secondary);">Norway, Denmark, Finland</div>
+          </div>
+          <div style="background: rgba(59,130,246,0.04); border: 1px solid rgba(59,130,246,0.15); border-radius: 0 var(--radius) var(--radius) 0; padding: 20px; text-align: center;">
+            <div style="font-size: 13px; color: var(--text-muted);">2029-2030</div>
+            <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; margin: 4px 0;">Europe</div>
+            <div style="font-size: 14px; color: var(--text-secondary);">Major markets</div>
+          </div>
+        </div>
+        <!-- The ask -->
+        <div class="card" style="border-color: rgba(59,130,246,0.3); text-align: center; padding: 28px;">
+          <div style="font-family: var(--font-numbers); font-size: 42px; font-weight: 600; background: linear-gradient(135deg, var(--accent), #60A5FA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px;">3-5M SEK</div>
+          <p style="font-size: 16px; color: var(--text-secondary); margin-bottom: 16px;">Pre-seed to fund team, platform, and go-to-market</p>
+          <div style="display: flex; justify-content: center; gap: 32px;">
+            <div><div style="font-family: var(--font-numbers); font-size: 20px; font-weight: 600;">50%</div><div style="font-size: 13px; color: var(--text-muted);">Team</div></div>
+            <div><div style="font-family: var(--font-numbers); font-size: 20px; font-weight: 600;">25%</div><div style="font-size: 13px; color: var(--text-muted);">Sales</div></div>
+            <div><div style="font-family: var(--font-numbers); font-size: 20px; font-weight: 600;">15%</div><div style="font-size: 13px; color: var(--text-muted);">Platform</div></div>
+            <div><div style="font-family: var(--font-numbers); font-size: 20px; font-weight: 600;">10%</div><div style="font-size: 13px; color: var(--text-muted);">Ops</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT E: Clean minimal -->
+  <div class="variant-block">
+    <div class="variant-label">Variant E</div>
+    <div class="variant-title">Minimal: Just the numbers and the plan</div>
+    <div class="slide-preview">
+      <div class="slide-header">
+        <div class="section-label">The Ask</div>
+        <h2 class="headline">We're raising <span class="accent">3-5M SEK</span></h2>
+        <p class="subheadline">18 months of runway to prove the marketplace model and reach product-market fit in Sweden.</p>
+      </div>
+      <div style="max-width: 700px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+          <div class="card" style="padding: 24px;">
+            <div style="font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">Use of funds</div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; justify-content: space-between;"><span style="color: var(--text-secondary);">Team (full-time)</span><span style="font-family: var(--font-numbers); font-weight: 600;">50%</span></div>
+              <div style="height: 1px; background: var(--border);"></div>
+              <div style="display: flex; justify-content: space-between;"><span style="color: var(--text-secondary);">Sales & marketing</span><span style="font-family: var(--font-numbers); font-weight: 600;">25%</span></div>
+              <div style="height: 1px; background: var(--border);"></div>
+              <div style="display: flex; justify-content: space-between;"><span style="color: var(--text-secondary);">Platform & infra</span><span style="font-family: var(--font-numbers); font-weight: 600;">15%</span></div>
+              <div style="height: 1px; background: var(--border);"></div>
+              <div style="display: flex; justify-content: space-between;"><span style="color: var(--text-secondary);">Operations</span><span style="font-family: var(--font-numbers); font-weight: 600;">10%</span></div>
+            </div>
+          </div>
+          <div class="card" style="padding: 24px;">
+            <div style="font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">Key milestones</div>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; align-items: baseline; gap: 8px;"><span style="color: var(--accent);">&#10003;</span><span style="color: var(--text-secondary); font-size: 15px;">Core team full-time</span></div>
+              <div style="height: 1px; background: var(--border);"></div>
+              <div style="display: flex; align-items: baseline; gap: 8px;"><span style="color: var(--accent);">&#10003;</span><span style="color: var(--text-secondary); font-size: 15px;">Multi-supplier marketplace live</span></div>
+              <div style="height: 1px; background: var(--border);"></div>
+              <div style="display: flex; align-items: baseline; gap: 8px;"><span style="color: var(--accent);">&#10003;</span><span style="color: var(--text-secondary); font-size: 15px;">50+ active suppliers</span></div>
+              <div style="height: 1px; background: var(--border);"></div>
+              <div style="display: flex; align-items: baseline; gap: 8px;"><span style="color: var(--accent);">&#10003;</span><span style="color: var(--text-secondary); font-size: 15px;">PMF validated, ready for Nordics</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <p style="font-family: var(--font-display); font-size: 18px; color: var(--text-secondary); font-style: italic;">30,000 companies need this. We're building it.</p>
+          <p style="margin-top: 8px; font-size: 15px; color: var(--text-muted);">carol@amicievent.com / amicievent.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>

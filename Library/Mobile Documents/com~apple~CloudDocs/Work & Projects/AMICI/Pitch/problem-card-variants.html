@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Problem Card Variants</title>
+<link href="https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0A0A0B;
+    --bg-secondary: #111114;
+    --bg-card: #161619;
+    --bg-card-hover: #1C1C20;
+    --border: #2A2A2F;
+    --accent: #3B82F6;
+    --accent-soft: rgba(59, 130, 246, 0.15);
+    --text-primary: #F5F5F7;
+    --text-secondary: #A1A1AA;
+    --text-muted: #71717A;
+    --warning: #F59E0B;
+    --font-display: 'Quattrocento', Georgia, serif;
+    --font-body: 'Quattrocento Sans', -apple-system, sans-serif;
+    --font-numbers: 'Roboto', -apple-system, sans-serif;
+    --radius: 14px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    padding: 40px;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+  }
+
+  .variant-label {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .variant-label::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  .variant-desc {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    max-width: 700px;
+  }
+
+  .variant {
+    margin-bottom: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .problem-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+  }
+
+  /* ==================== VARIANT A ==================== */
+  .variant-a .problem-stat {
+    text-align: left;
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .variant-a .problem-stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #EF4444, #F59E0B);
+  }
+
+  .variant-a .stat-value {
+    font-family: var(--font-numbers);
+    font-size: 36px;
+    font-weight: 600;
+    color: #EF4444;
+    margin-bottom: 4px;
+    line-height: 1;
+  }
+
+  .variant-a .stat-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  .variant-a .stat-label {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* ==================== VARIANT B ==================== */
+  .variant-b .problem-stat {
+    text-align: left;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    position: relative;
+    padding-left: 24px;
+    border-left: 2px solid var(--border);
+  }
+
+  .variant-b .stat-value {
+    font-family: var(--font-numbers);
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+    line-height: 1;
+  }
+
+  .variant-b .stat-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: #EF4444;
+    margin-bottom: 10px;
+  }
+
+  .variant-b .stat-label {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* ==================== VARIANT C ==================== */
+  .variant-c .problem-stats {
+    gap: 20px;
+  }
+
+  .variant-c .problem-stat {
+    text-align: left;
+    padding: 24px 24px 24px 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .variant-c .stat-number-block {
+    flex-shrink: 0;
+    min-width: 80px;
+    padding-top: 2px;
+  }
+
+  .variant-c .stat-value {
+    font-family: var(--font-numbers);
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .variant-c .stat-unit {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+
+  .variant-c .stat-text-block {
+    flex: 1;
+  }
+
+  .variant-c .stat-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+
+  .variant-c .stat-label {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<h1>Problem Card Variants</h1>
+<p style="color: var(--text-secondary); margin-bottom: 48px; font-size: 15px;">Three design options for the Problem slide. Pick one and I'll apply it to v1.2.</p>
+
+<!-- VARIANT A -->
+<div class="variant variant-a">
+  <div class="variant-label">Variant A — Gradient top bar</div>
+  <p class="variant-desc">Uses the existing card style (dark bg, subtle border) with a red-to-amber gradient accent at the top. The stat number is red, everything else stays white. Feels native to the deck's card system while signaling "warning."</p>
+  <div class="problem-stats">
+    <div class="problem-stat">
+      <div class="stat-value">3–5</div>
+      <div class="stat-title">Platforms per event</div>
+      <div class="stat-label">One dinner requires a chef, venue, transport, and equipment. Each from a different platform, with zero coordination.</div>
+    </div>
+    <div class="problem-stat">
+      <div class="stat-value">8+ hrs</div>
+      <div class="stat-title">Hours wasted coordinating</div>
+      <div class="stat-label">Emails, phone calls, spreadsheets. The office manager becomes a part-time event planner nobody asked for.</div>
+    </div>
+    <div class="problem-stat">
+      <div class="stat-value">15–20%</div>
+      <div class="stat-title">Agency markup to avoid it</div>
+      <div class="stat-label">Companies pay agencies thousands just to skip the hassle. But most events don't need a full agency.</div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT B -->
+<div class="variant variant-b">
+  <div class="variant-label">Variant B — Minimal with left rule</div>
+  <p class="variant-desc">No card background at all. Clean, editorial layout with a thin left border for structure. Big white numbers, red subtitles for tension. Lets the stats breathe and puts the focus on the numbers.</p>
+  <div class="problem-stats">
+    <div class="problem-stat">
+      <div class="stat-value">3–5</div>
+      <div class="stat-title">Platforms per event</div>
+      <div class="stat-label">One dinner requires a chef, venue, transport, and equipment. Each from a different platform, with zero coordination.</div>
+    </div>
+    <div class="problem-stat">
+      <div class="stat-value">8+ hrs</div>
+      <div class="stat-title">Hours wasted coordinating</div>
+      <div class="stat-label">Emails, phone calls, spreadsheets. The office manager becomes a part-time event planner nobody asked for.</div>
+    </div>
+    <div class="problem-stat">
+      <div class="stat-value">15–20%</div>
+      <div class="stat-title">Agency markup to avoid it</div>
+      <div class="stat-label">Companies pay agencies thousands just to skip the hassle. But most events don't need a full agency.</div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT C -->
+<div class="variant variant-c">
+  <div class="variant-label">Variant C — Number + text split</div>
+  <p class="variant-desc">Uses the standard card style but with a two-column internal layout: the stat number sits in its own block on the left, title and description on the right. Keeps the stat prominent while giving the text more room. Uses blue accent on numbers to match the deck's color system.</p>
+  <div class="problem-stats">
+    <div class="problem-stat">
+      <div class="stat-number-block">
+        <div class="stat-value">3–5</div>
+        <div class="stat-unit">platforms</div>
+      </div>
+      <div class="stat-text-block">
+        <div class="stat-title">Scattered across vendors</div>
+        <div class="stat-label">One dinner requires a chef, venue, transport, and equipment. Each from a different platform, with zero coordination.</div>
+      </div>
+    </div>
+    <div class="problem-stat">
+      <div class="stat-number-block">
+        <div class="stat-value">8+ hrs</div>
+        <div class="stat-unit">per event</div>
+      </div>
+      <div class="stat-text-block">
+        <div class="stat-title">Wasted on coordination</div>
+        <div class="stat-label">Emails, phone calls, spreadsheets. The office manager becomes a part-time event planner nobody asked for.</div>
+      </div>
+    </div>
+    <div class="problem-stat">
+      <div class="stat-number-block">
+        <div class="stat-value">15–20%</div>
+        <div class="stat-unit">markup</div>
+      </div>
+      <div class="stat-text-block">
+        <div class="stat-title">Agency tax to avoid it</div>
+        <div class="stat-label">Companies pay agencies thousands just to skip the hassle. But most events don't need a full agency.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card Design Variants — Why Now</title>
+<link href="https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0A0A0B;
+    --bg-secondary: #131415;
+    --bg-card: #131415;
+    --border: rgba(255, 255, 255, 0.1);
+    --accent: #3B82F6;
+    --accent-soft: rgba(59, 130, 246, 0.15);
+    --text-primary: #F5F5F7;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-muted: #71717A;
+    --font-display: 'Quattrocento', Georgia, serif;
+    --font-body: 'Quattrocento Sans', -apple-system, sans-serif;
+    --font-numbers: 'Roboto', -apple-system, sans-serif;
+    --radius: 24px;
+    --radius-sm: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    padding: 40px 48px;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .page-desc {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+  }
+
+  .variant {
+    margin-bottom: 64px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .variant:last-child { border-bottom: none; }
+
+  .variant-label {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .variant-label::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  .variant-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .variant-desc {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    max-width: 700px;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+  }
+
+  /* ==================== VARIANT A: Icon accent ==================== */
+  .va .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    position: relative;
+  }
+
+  .va .card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--accent-soft);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .va .card h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+  }
+
+  .va .card p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  /* ==================== VARIANT B: Large number, no card bg ==================== */
+  .vb .card-grid { gap: 32px; }
+
+  .vb .card {
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    padding-left: 24px;
+    border-left: 1px solid var(--border);
+  }
+
+  .vb .insight-number {
+    font-family: var(--font-numbers);
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--accent);
+    opacity: 0.15;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .vb .card h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+  }
+
+  .vb .card p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* ==================== VARIANT C: Stat pull-quote ==================== */
+  .vc .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .vc .card-stat {
+    font-family: var(--font-numbers);
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .vc .card-stat-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .vc .card h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+  }
+
+  .vc .card p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  /* ==================== VARIANT D: Horizontal layout ==================== */
+  .vd .card-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .vd .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .vd .card-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2px;
+  }
+
+  .vd .insight-number {
+    font-family: var(--font-numbers);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vd .card h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+  }
+
+  .vd .card p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  /* ==================== VARIANT E: Gradient border glow ==================== */
+  .ve .card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    position: relative;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .ve .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), rgba(59, 130, 246, 0.1));
+  }
+
+  .ve .card-eyebrow {
+    font-family: var(--font-numbers);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  .ve .card h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+
+  .ve .card p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+</style>
+</head>
+<body>
+
+<h1>Card Design Variants</h1>
+<p class="page-desc">Five design options for the "Why Now" cards. Pick one and I'll apply it to v1.2.</p>
+
+<!-- VARIANT A -->
+<div class="variant va">
+  <div class="variant-label">Variant A — Icon accent</div>
+  <p class="variant-desc">Replaces the faded number with a themed icon in a soft-accent box. Adds a visual anchor to each card without relying on numbering.</p>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">📈</div>
+      <h3>Corporate events are booming</h3>
+      <p>Post-pandemic, companies are investing heavily in in-person team building, client entertainment, and culture events. Sweden's event market is growing at 9.1% CAGR, the fastest in Europe.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✂️</div>
+      <h3>Companies are cutting agency spend</h3>
+      <p>Budgets are tighter. Companies want the quality of a professionally organized event without the 15–20% agency markup. They need a self-serve tool, not a middleman.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h3>AI lets small teams move fast</h3>
+      <p>AI development tools let a four-person team build what used to take twenty. We ship features in days, not months.</p>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT B -->
+<div class="variant vb">
+  <div class="variant-label">Variant B — Editorial columns</div>
+  <p class="variant-desc">No card background at all. Clean editorial layout with a thin left border and oversized ghost numbers. Lets the content breathe with a magazine feel.</p>
+  <div class="card-grid">
+    <div class="card">
+      <div class="insight-number">01</div>
+      <h3>Corporate events are booming</h3>
+      <p>Post-pandemic, companies are investing heavily in in-person team building, client entertainment, and culture events. Sweden's event market is growing at 9.1% CAGR, the fastest in Europe.</p>
+    </div>
+    <div class="card">
+      <div class="insight-number">02</div>
+      <h3>Companies are cutting agency spend</h3>
+      <p>Budgets are tighter. Companies want the quality of a professionally organized event without the 15–20% agency markup. They need a self-serve tool, not a middleman.</p>
+    </div>
+    <div class="card">
+      <div class="insight-number">03</div>
+      <h3>AI lets small teams move fast</h3>
+      <p>AI development tools let a four-person team build what used to take twenty. We ship features in days, not months.</p>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT C -->
+<div class="variant vc">
+  <div class="variant-label">Variant C — Stat-led cards</div>
+  <p class="variant-desc">Each card leads with a bold stat that anchors the argument. A divider separates the proof point from the explanation. Puts data front and center.</p>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-stat">9.1%</div>
+      <div class="card-stat-label">CAGR growth</div>
+      <h3>Corporate events are booming</h3>
+      <p>Post-pandemic, companies are investing heavily in in-person events. Sweden's event market is the fastest growing in Europe.</p>
+    </div>
+    <div class="card">
+      <div class="card-stat">15–20%</div>
+      <div class="card-stat-label">Agency markup</div>
+      <h3>Companies are cutting agency spend</h3>
+      <p>Budgets are tighter. Companies want professionally organized events without the markup. They need a self-serve tool, not a middleman.</p>
+    </div>
+    <div class="card">
+      <div class="card-stat">4→20</div>
+      <div class="card-stat-label">Build leverage</div>
+      <h3>AI lets small teams move fast</h3>
+      <p>AI development tools let a four-person team build what used to take twenty. We ship features in days, not months.</p>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT D -->
+<div class="variant vd">
+  <div class="variant-label">Variant D — Horizontal rows</div>
+  <p class="variant-desc">Stacked horizontal cards with numbered badges on the left. Compact, scannable layout that reads like a list of arguments. Good when vertical space is tight.</p>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-left">
+        <div class="insight-number">01</div>
+      </div>
+      <div>
+        <h3>Corporate events are booming</h3>
+        <p>Post-pandemic, companies are investing heavily in in-person team building, client entertainment, and culture events. Sweden's event market is growing at 9.1% CAGR, the fastest in Europe.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-left">
+        <div class="insight-number">02</div>
+      </div>
+      <div>
+        <h3>Companies are cutting agency spend</h3>
+        <p>Budgets are tighter. Companies want the quality of a professionally organized event without the 15–20% agency markup. They need a self-serve tool, not a middleman.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-left">
+        <div class="insight-number">03</div>
+      </div>
+      <div>
+        <h3>AI lets small teams move fast</h3>
+        <p>AI development tools let a four-person team build what used to take twenty. We ship features in days, not months.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VARIANT E -->
+<div class="variant ve">
+  <div class="variant-label">Variant E — Gradient top bar with eyebrow</div>
+  <p class="variant-desc">Cards with a subtle gradient accent line at the top. The number becomes a small eyebrow label. Title is bumped up in size. Clean and modern.</p>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-eyebrow">Trend 01</div>
+      <h3>Corporate events are booming</h3>
+      <p>Post-pandemic, companies are investing heavily in in-person team building, client entertainment, and culture events. Sweden's event market is growing at 9.1% CAGR, the fastest in Europe.</p>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">Trend 02</div>
+      <h3>Companies are cutting agency spend</h3>
+      <p>Budgets are tighter. Companies want the quality of a professionally organized event without the 15–20% agency markup. They need a self-serve tool, not a middleman.</p>
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">Trend 03</div>
+      <h3>AI lets small teams move fast</h3>
+      <p>AI development tools let a four-person team build what used to take twenty. We ship features in days, not months.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

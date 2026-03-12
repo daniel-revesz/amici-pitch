@@ -1,0 +1,1830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amici Pre-Seed Pitch Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&family=Quattrocento+Sans:wght@400;700&family=Roboto+Mono:wght@400;500;600;700&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0A0A0B;
+    --bg-secondary: #131415;
+    --bg-card: #131415;
+    --bg-card-hover: #1a1b1d;
+    --border: rgba(255, 255, 255, 0.1);
+    --accent: #3B82F6;
+    --accent-soft: rgba(59, 130, 246, 0.15);
+    --accent-glow: rgba(59, 130, 246, 0.3);
+    --text-primary: #F5F5F7;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-muted: #71717A;
+    --success: #22C55E;
+    --warning: #F59E0B;
+    --font-display: 'Quattrocento', Georgia, serif;
+    --font-body: 'Quattrocento Sans', -apple-system, sans-serif;
+    --font-mono: 'Roboto Mono', 'SF Mono', monospace;
+    --font-numbers: 'Roboto', -apple-system, sans-serif;
+    --radius: 24px;
+    --radius-sm: 12px;
+    --radius-lg: 24px;
+    --scale: 1.25;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 100vw; height: 100vh;
+    overflow: hidden;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* SLIDE SYSTEM */
+  .deck { width: 100vw; height: 100vh; position: relative; }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 72px 40px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    overflow-y: auto;
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  .slide-inner {
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  /* Content slides: header at top, content centered in remaining space */
+  .slide.has-header {
+    justify-content: flex-start;
+  }
+
+  .slide.has-header .slide-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .slide-header {
+    width: 100%;
+    max-width: 1200px;
+    padding-top: 24px;
+    flex-shrink: 0;
+  }
+
+  .slide-header .section-label {
+    margin-bottom: 6px;
+  }
+
+  .slide-header .headline {
+    margin-bottom: 8px;
+    max-width: 780px;
+  }
+
+  .slide-header .subheadline {
+    margin-bottom: 0;
+    max-width: 780px;
+  }
+
+  /* SLIDE COLOR THEMES — placed here, overrides applied at end of stylesheet for specificity */
+
+  /* NAVIGATION */
+  .nav {
+    position: fixed;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 100;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .nav-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .nav-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+    opacity: 0.5;
+  }
+
+  .nav-dot:hover {
+    opacity: 1;
+  }
+
+  .nav-dot.active {
+    background: var(--accent);
+    width: 20px;
+    border-radius: 4px;
+    opacity: 1;
+  }
+
+  .slide-counter {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+    min-width: 40px;
+    text-align: center;
+    opacity: 0.5;
+  }
+
+  /* TYPOGRAPHY */
+  .headline {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+  }
+
+  .headline .accent { color: var(--accent); }
+
+  .subheadline {
+    font-size: clamp(16px, 1.6vw, 20px);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    max-width: 780px;
+    font-weight: 400;
+  }
+
+  .section-label {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-body);
+  }
+
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: var(--bg-card-hover);
+  }
+
+  .card-grid {
+    display: grid;
+    gap: 14px;
+    margin-top: 20px;
+  }
+
+  .card-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .card-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .card-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+  /* STAT */
+  .stat-value {
+    font-family: var(--font-numbers);
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-value.accent { color: var(--accent); }
+
+  .stat-label {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  /* PILL / TAG */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    font-family: var(--font-numbers);
+  }
+
+  /* COVER SLIDE */
+  .cover-slide {
+    text-align: center;
+    position: relative;
+  }
+
+  .cover-slide .logo {
+    font-family: var(--font-body);
+    font-size: 34px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    color: var(--text-primary);
+    margin-bottom: 56px;
+    text-transform: lowercase;
+  }
+
+  .cover-slide .headline {
+    font-size: clamp(40px, 5.5vw, 64px);
+    max-width: 1000px;
+    margin: 0 auto 20px;
+  }
+
+  .cover-slide .subheadline {
+    margin: 0 auto 24px;
+    max-width: 680px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 28px;
+  }
+
+  .cover-meta-item {
+    font-size: 15px;
+    color: var(--text-muted);
+  }
+
+  .cover-meta-item span {
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-family: var(--font-numbers);
+  }
+
+  /* GLOW EFFECTS */
+  .glow-orb {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    filter: blur(80px);
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 24px 0;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .timeline-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+    font-weight: 600;
+    z-index: 1;
+  }
+
+  .timeline-dot.filled {
+    background: var(--accent);
+    color: white;
+  }
+
+  .timeline-content h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+
+  .timeline-content p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* FLOW DIAGRAM */
+  .flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-top: 24px;
+    justify-content: center;
+  }
+
+  .flow-step {
+    text-align: center;
+    flex: 1;
+    max-width: 220px;
+  }
+
+  .flow-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-size: 20px;
+  }
+
+  .flow-step h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .flow-step p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .flow-arrow {
+    font-size: 20px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    margin: 0 6px;
+    margin-bottom: 20px;
+  }
+
+  /* TAM SAM SOM */
+  .tam-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .tam-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .tam-bar-label {
+    min-width: 50px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-align: right;
+    font-weight: 600;
+  }
+
+  .tam-bar-fill {
+    height: 40px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    gap: 10px;
+    transition: width 1s ease;
+  }
+
+  .tam-bar-value {
+    font-family: var(--font-numbers);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+  }
+
+  .tam-bar-desc {
+    font-size: 15px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  /* GAP ANALYSIS */
+  .gap-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+
+  .gap-table th, .gap-table td {
+    padding: 16px 18px;
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .gap-table th {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-weight: 700;
+    background: var(--bg-secondary);
+    font-family: var(--font-body);
+  }
+
+  .gap-table th:first-child, .gap-table td:first-child {
+    text-align: left;
+    font-weight: 500;
+  }
+
+  .gap-table tr:last-child {
+    background: rgba(59, 130, 246, 0.06);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+  }
+
+  .gap-table tr:last-child td {
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .check { color: var(--success); font-size: 20px; }
+  .cross { color: var(--text-muted); font-size: 20px; opacity: 0.4; }
+  .partial { color: var(--warning); font-size: 20px; }
+
+  /* TEAM */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .team-member {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 14px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .team-member:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .team-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-soft), rgba(59, 130, 246, 0.3));
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+  }
+
+  .team-member h3 {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .team-role {
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .team-desc {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  /* ASK SLIDE */
+  .ask-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 20px;
+  }
+
+  .ask-amount {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .ask-amount .stat-value {
+    font-family: var(--font-numbers);
+    font-size: 48px;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--accent), #60A5FA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .use-of-funds {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .fund-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .fund-bar-fill {
+    height: 8px;
+    border-radius: 4px;
+    background: var(--accent);
+    transition: width 1s ease;
+  }
+
+  .fund-bar-label {
+    font-size: 15px;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+    min-width: 160px;
+  }
+
+  .fund-bar-pct {
+    font-family: var(--font-numbers);
+    font-size: 15px;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+    min-width: 40px;
+    text-align: right;
+  }
+
+  /* VISION SLIDE */
+  .vision-slide {
+    text-align: center;
+    position: relative;
+  }
+
+  .vision-slide .headline {
+    font-size: clamp(30px, 4vw, 48px);
+    max-width: 800px;
+    margin: 0 auto 24px;
+  }
+
+  .expansion-path {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 28px;
+  }
+
+  .expansion-step {
+    text-align: center;
+  }
+
+  .expansion-step .year {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .expansion-step .market {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .expansion-step .detail {
+    font-size: 15px;
+    color: var(--text-secondary);
+  }
+
+  .expansion-arrow {
+    color: var(--accent);
+    font-size: 24px;
+    opacity: 0.5;
+  }
+
+  /* TWO COLUMN LAYOUT */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .two-col.wide-left { grid-template-columns: 1.2fr 0.8fr; }
+  .two-col.wide-right { grid-template-columns: 0.8fr 1.2fr; }
+
+  /* INSIGHT CARDS — Stat-led */
+  .card-stat {
+    font-family: var(--font-numbers);
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .card-stat-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .card h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.4;
+  }
+
+  /* BUSINESS MODEL */
+  .revenue-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .revenue-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    transition: all 0.3s ease;
+  }
+
+  .revenue-item:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .revenue-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .revenue-info h4 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+
+  .revenue-info p {
+    font-size: 15px;
+    color: var(--text-secondary);
+  }
+
+  /* STAGGER ANIMATIONS */
+  .slide.active .stagger { animation: fadeUp 0.5s ease forwards; opacity: 0; }
+  .slide.active .stagger:nth-child(1) { animation-delay: 0.1s; }
+  .slide.active .stagger:nth-child(2) { animation-delay: 0.2s; }
+  .slide.active .stagger:nth-child(3) { animation-delay: 0.3s; }
+  .slide.active .stagger:nth-child(4) { animation-delay: 0.4s; }
+  .slide.active .stagger:nth-child(5) { animation-delay: 0.5s; }
+  .slide.active .stagger:nth-child(6) { animation-delay: 0.6s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE - SMALL DESKTOP */
+  @media (max-width: 1280px) {
+    .slide { padding: 28px 40px 36px; }
+    .slide-inner { max-width: 1000px; }
+    .slide-header { max-width: 1000px; }
+    .headline { font-size: clamp(28px, 3.5vw, 42px); }
+    .cover-slide .headline { font-size: clamp(34px, 4.5vw, 52px); }
+    .subheadline { font-size: clamp(15px, 1.5vw, 18px); }
+    .stat-value { font-size: 30px; }
+    .problem-stat .stat-value { font-size: 28px; }
+    .ask-amount .stat-value { font-size: 40px; }
+    .card { padding: 18px; }
+    .card h3 { font-size: 16px; }
+    .card p { font-size: 15px; }
+    .tam-bar-value { font-size: 18px; }
+    .tam-bar-fill { height: 36px; }
+    .gap-table th, .gap-table td { padding: 10px 10px; font-size: 14px; }
+  }
+
+  /* RESPONSIVE - TABLET */
+  @media (max-width: 900px) {
+    .slide { padding: 24px 24px 36px; }
+    .card-grid.cols-3, .card-grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .two-col { grid-template-columns: 1fr; gap: 20px; }
+    .flow { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .ask-grid { grid-template-columns: 1fr; }
+    .expansion-path { flex-direction: column; gap: 16px; }
+    .expansion-arrow { transform: rotate(90deg); }
+    .problem-stats { grid-template-columns: repeat(2, 1fr); }
+    .gap-table { font-size: 13px; }
+    .gap-table th, .gap-table td { padding: 8px 6px; font-size: 13px; }
+  }
+
+  /* RESPONSIVE - MOBILE */
+  @media (max-width: 600px) {
+    .slide { padding: 20px 16px 32px; }
+    .headline { font-size: clamp(22px, 6vw, 30px); }
+    .cover-slide .headline { font-size: clamp(26px, 7vw, 36px); }
+    .subheadline { font-size: 14px; }
+    .card-grid.cols-3, .card-grid.cols-2, .card-grid.cols-4 { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr; }
+    .problem-stats { grid-template-columns: 1fr; }
+    .cover-meta { flex-direction: column; gap: 8px; }
+    .stat-value { font-size: 26px; }
+    .ask-amount .stat-value { font-size: 32px; }
+    .tam-bar-fill { height: 36px; padding: 0 10px; }
+    .tam-bar-value { font-size: 16px; }
+    .tam-bar-desc { font-size: 11px; }
+    .gap-table th, .gap-table td { padding: 6px 4px; font-size: 11px; }
+  }
+
+
+  /* QUOTE BLOCK */
+  .quote-block {
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    background: var(--accent-soft);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin: 24px 0;
+  }
+
+  .quote-block p {
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .quote-source {
+    font-size: 15px;
+    color: var(--text-muted);
+    font-style: normal;
+    margin-top: 10px;
+  }
+
+  /* BRAND LOGOS */
+  .brand-row {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+
+  .brand-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+
+  .brand-name:hover { opacity: 1; }
+
+  /* TRUSTED BY SECTION */
+  .trusted-section {
+    background: var(--card-bg);
+    border: none;
+    border-radius: 16px;
+    padding: 24px 24px 20px;
+    text-align: center;
+  }
+
+  .trusted-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 16px;
+    opacity: 0.6;
+  }
+
+  .trusted-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .trusted-grid .brand-name {
+    padding: 12px 8px;
+    border-bottom: 1px solid var(--border);
+    font-size: 16px;
+  }
+
+  .trusted-grid .brand-name:nth-child(odd) {
+    border-right: 1px solid var(--border);
+  }
+
+  .trusted-grid .brand-name:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+
+  .trusted-footer {
+    margin-top: 20px;
+    font-size: 15px;
+    color: var(--text-muted);
+    opacity: 0.5;
+    font-style: italic;
+  }
+
+  /* DEVICE FRAME */
+  .device-frame {
+    background: #1A1A1E;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.03);
+  }
+
+  .device-bezel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #1E1E22;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .device-dots {
+    display: flex;
+    gap: 5px;
+  }
+
+  .device-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #333;
+  }
+
+  .device-dots span:first-child { background: #FF5F57; }
+  .device-dots span:nth-child(2) { background: #FEBC2E; }
+  .device-dots span:nth-child(3) { background: #28C840; }
+
+  .device-url {
+    flex: 1;
+    text-align: center;
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    background: var(--bg-primary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    letter-spacing: 0.02em;
+  }
+
+  .device-screen {
+    background: var(--bg-primary);
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  /* Mobile phone frame */
+  .phone-frame {
+    width: 220px;
+    background: #1A1A1E;
+    border-radius: 28px;
+    border: 3px solid #2a2a2e;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.05);
+    margin: 0 auto;
+  }
+
+  .phone-notch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 0 4px;
+    background: var(--bg-primary);
+    position: relative;
+  }
+
+  .phone-notch-pill {
+    width: 60px;
+    height: 16px;
+    background: #1A1A1E;
+    border-radius: 10px;
+    position: relative;
+  }
+
+  .phone-notch-pill::after {
+    content: '';
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #2a2a2e;
+  }
+
+  .phone-status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 14px 4px;
+    background: var(--bg-primary);
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  .phone-screen {
+    background: var(--bg-primary);
+    overflow: hidden;
+  }
+
+  .phone-home-bar {
+    display: flex;
+    justify-content: center;
+    padding: 6px 0 4px;
+    background: var(--bg-primary);
+  }
+
+  .phone-home-bar span {
+    width: 80px;
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* Desktop frame (wider variant) */
+  .desktop-frame {
+    background: #1A1A1E;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.03);
+  }
+
+  .desktop-bezel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    background: #1E1E22;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .desktop-dots {
+    display: flex;
+    gap: 5px;
+  }
+
+  .desktop-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .desktop-dots span:first-child { background: #FF5F57; }
+  .desktop-dots span:nth-child(2) { background: #FEBC2E; }
+  .desktop-dots span:nth-child(3) { background: #28C840; }
+
+  .desktop-url {
+    flex: 1;
+    text-align: center;
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    background: var(--bg-primary);
+    padding: 3px 12px;
+    border-radius: 6px;
+    letter-spacing: 0.02em;
+  }
+
+  .desktop-screen {
+    background: var(--bg-primary);
+    overflow: hidden;
+  }
+
+  .mockup-grid {
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .mockup-grid { grid-template-columns: 1fr !important; }
+  }
+
+  /* PROBLEM STAT ROW */
+  .problem-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .problem-stat {
+    text-align: left;
+    padding: 0;
+    padding-left: 24px;
+    background: none;
+    border: none;
+    border-radius: 0;
+    border-left: 2px solid #EF4444;
+  }
+
+  .problem-stat .stat-value {
+    font-family: var(--font-numbers);
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: var(--text-primary);
+    line-height: 1;
+  }
+
+  .problem-stat .stat-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+
+  .problem-stat .stat-label {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* SLIDE COLOR THEMES — at end for specificity */
+  .slide-red .section-label { color: #EF4444; }
+  .slide-red .section-label::before { background: #EF4444; }
+  .slide-red .headline .accent { color: #EF4444; }
+  .slide-red .stat-value.accent { color: #EF4444; }
+
+  .slide-green .section-label { color: #22C55E; }
+  .slide-green .section-label::before { background: #22C55E; }
+  .slide-green .headline .accent { color: #22C55E; }
+  .slide-green .stat-value.accent { color: #22C55E; }
+</style>
+</head>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide active" data-slide="0">
+    <div class="glow-orb" style="top: -200px; left: 50%; transform: translateX(-50%);"></div>
+    <!-- Logo pinned to top-center -->
+    <div style="position: absolute; top: 36px; left: 50%; transform: translateX(-50%); opacity: 1;">
+      <svg width="64" height="31" viewBox="0 0 76 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.1789 12.166C12.885 12.166 14.25 12.7266 15.2737 13.8478C16.2974 14.9447 16.8093 16.4193 16.8093 18.2717V30.5929C16.8093 30.8366 16.6874 30.9585 16.4437 30.9585H14.5791C14.3353 30.9585 14.2134 30.8366 14.2134 30.5929V29.4961C14.2134 29.4473 14.1891 29.4229 14.1403 29.4229C14.1159 29.3986 14.0794 29.4107 14.0306 29.4595C13.1288 30.6538 11.776 31.251 9.97233 31.251C8.63175 31.251 7.46179 30.8732 6.46245 30.1176C5.48748 29.3376 5 27.9727 5 26.0227C5 23.9509 5.59717 22.4397 6.7915 21.4891C7.98584 20.5142 9.55797 20.0267 11.5079 20.0267H14.0672C14.1647 20.0267 14.2134 19.9779 14.2134 19.8804V18.4546C14.2134 17.2358 13.9331 16.2609 13.3725 15.5296C12.8119 14.7984 12.0563 14.4328 11.1057 14.4328C10.3745 14.4328 9.74078 14.6766 9.20455 15.164C8.69269 15.6515 8.38801 16.2731 8.29052 17.0287C8.29052 17.2724 8.16864 17.3943 7.9249 17.3943L5.87747 17.3577C5.7556 17.3577 5.6581 17.3212 5.58498 17.248C5.53623 17.1749 5.52405 17.0896 5.54842 16.9921C5.67029 15.554 6.25527 14.3962 7.30336 13.5188C8.35145 12.6169 9.64328 12.166 11.1789 12.166ZM10.5208 28.9842C11.5201 28.9842 12.3854 28.6673 13.1166 28.0336C13.8478 27.3755 14.2134 26.4737 14.2134 25.3281V22.2569C14.2134 22.1594 14.1647 22.1107 14.0672 22.1107H11.4713C10.3014 22.1107 9.37517 22.4275 8.69269 23.0613C8.01021 23.6706 7.66897 24.5847 7.66897 25.8034C7.66897 26.8758 7.9249 27.6802 8.43676 28.2164C8.97299 28.7283 9.66766 28.9842 10.5208 28.9842Z" fill="white"/>
+          <path d="M35.6781 12.2026C37.1405 12.2026 38.2739 12.7388 39.0783 13.8113C39.8826 14.8837 40.2848 16.3706 40.2848 18.2717V30.5929C40.2848 30.8366 40.1629 30.9585 39.9192 30.9585H38.0911C37.8474 30.9585 37.7255 30.8366 37.7255 30.5929V18.4911C37.7255 17.248 37.4574 16.2731 36.9211 15.5662C36.4093 14.835 35.7268 14.4694 34.8737 14.4694C33.9475 14.4694 33.2163 14.8228 32.68 15.5296C32.1438 16.2365 31.8757 17.1993 31.8757 18.418V30.5929C31.8757 30.8366 31.7538 30.9585 31.5101 30.9585H29.6454C29.4017 30.9585 29.2798 30.8366 29.2798 30.5929V18.4911C29.2798 17.248 29.0117 16.2731 28.4755 15.5662C27.9636 14.835 27.2933 14.4694 26.4646 14.4694C25.5384 14.4694 24.795 14.8228 24.2344 15.5296C23.6981 16.2365 23.43 17.1993 23.43 18.418V30.5929C23.43 30.8366 23.3082 30.9585 23.0644 30.9585H21.2364C20.9926 30.9585 20.8707 30.8366 20.8707 30.5929V12.8241C20.8707 12.5804 20.9926 12.4585 21.2364 12.4585H23.0644C23.3082 12.4585 23.43 12.5804 23.43 12.8241V13.9575C23.43 14.0063 23.4422 14.0428 23.4666 14.0672C23.5153 14.0672 23.5641 14.0428 23.6128 13.9941C24.0759 13.3847 24.6244 12.9338 25.2581 12.6413C25.8918 12.3488 26.5621 12.2026 27.269 12.2026C28.1952 12.2026 28.9995 12.4341 29.682 12.8972C30.3645 13.336 30.8885 13.9697 31.2541 14.7984C31.2785 14.8472 31.3151 14.8715 31.3638 14.8715C31.4126 14.8715 31.4491 14.835 31.4735 14.7619C31.9122 13.8844 32.5094 13.2385 33.265 12.8241C34.0206 12.4098 34.825 12.2026 35.6781 12.2026Z" fill="white"/>
+          <path d="M46.1506 9.09486C45.5412 9.09486 45.0416 8.89987 44.6516 8.50988C44.286 8.1199 44.1031 7.63241 44.1031 7.04743C44.1031 6.43808 44.286 5.95059 44.6516 5.58498C45.0416 5.19499 45.5412 5 46.1506 5C46.7356 5 47.2109 5.19499 47.5765 5.58498C47.9665 5.95059 48.1614 6.43808 48.1614 7.04743C48.1614 7.63241 47.9665 8.1199 47.5765 8.50988C47.2109 8.89987 46.7356 9.09486 46.1506 9.09486ZM45.2365 30.9585C44.9928 30.9585 44.8709 30.8366 44.8709 30.5929V12.8241C44.8709 12.5804 44.9928 12.4585 45.2365 12.4585H47.1012C47.3449 12.4585 47.4668 12.5804 47.4668 12.8241V30.5929C47.4668 30.8366 47.3449 30.9585 47.1012 30.9585H45.2365Z" fill="white"/>
+          <path d="M57.4849 31.251C55.7543 31.251 54.365 30.7391 53.3169 29.7154C52.2932 28.6917 51.7813 27.3389 51.7813 25.6571V17.7599C51.7813 16.1024 52.3053 14.7619 53.3534 13.7381C54.4015 12.6901 55.7787 12.166 57.4849 12.166C58.6304 12.166 59.642 12.3976 60.5194 12.8607C61.3969 13.3238 62.0672 13.9453 62.5303 14.7253C63.0178 15.4809 63.2615 16.3218 63.2615 17.248V17.6136C63.2615 17.8574 63.1397 17.9793 62.8959 17.9793L61.0313 18.0524C60.7876 18.0524 60.6657 17.9305 60.6657 17.6868V17.4308C60.6657 16.6265 60.361 15.9318 59.7517 15.3468C59.1667 14.7375 58.4111 14.4328 57.4849 14.4328C56.5586 14.4328 55.803 14.7619 55.2181 15.42C54.6575 16.0537 54.3772 16.8946 54.3772 17.9427V25.4743C54.3772 26.5224 54.6575 27.3755 55.2181 28.0336C55.803 28.6673 56.5586 28.9842 57.4849 28.9842C58.4111 28.9842 59.1667 28.6917 59.7517 28.1067C60.361 27.4974 60.6657 26.7905 60.6657 25.9862V25.7302C60.6657 25.4865 60.7876 25.3646 61.0313 25.3646L62.8959 25.4012C63.1397 25.4012 63.2615 25.5231 63.2615 25.7668V26.169C63.2615 27.6314 62.7253 28.8501 61.6528 29.8251C60.6048 30.7757 59.2154 31.251 57.4849 31.251Z" fill="white"/>
+          <path d="M68.4658 9.09486C67.8565 9.09486 67.3568 8.89987 66.9668 8.50988C66.6012 8.1199 66.4184 7.63241 66.4184 7.04743C66.4184 6.43808 66.6012 5.95059 66.9668 5.58498C67.3568 5.19499 67.8565 5 68.4658 5C69.0508 5 69.5261 5.19499 69.8917 5.58498C70.2817 5.95059 70.4767 6.43808 70.4767 7.04743C70.4767 7.63241 70.2817 8.1199 69.8917 8.50988C69.5261 8.89987 69.0508 9.09486 68.4658 9.09486ZM67.5518 30.9585C67.308 30.9585 67.1862 30.8366 67.1862 30.5929V12.8241C67.1862 12.5804 67.308 12.4585 67.5518 12.4585H69.4164C69.6601 12.4585 69.782 12.5804 69.782 12.8241V30.5929C69.782 30.8366 69.6601 30.9585 69.4164 30.9585H67.5518Z" fill="white"/>
+        </svg>
+    </div>
+    <div class="slide-inner cover-slide">
+      <h1 class="headline stagger">Premium food,<br>for <span class="accent">every occasion</span></h1>
+      <p class="subheadline stagger">The food platform connecting you with Sweden's best chefs. Catering, private dining, office lunches, and on-the-spot cooking for anyone who values great food.</p>
+      <div class="cover-meta stagger">
+        <div class="cover-meta-item">Round: <span>Pre-Seed</span></div>
+        <div class="cover-meta-item">Raising: <span>3–5M SEK</span></div>
+        <div class="cover-meta-item">Market: <span>Sweden → Nordics</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: PROBLEM -->
+  <div class="slide has-header slide-red" data-slide="1">
+    <div class="slide-header">
+      <div class="section-label stagger">The Problem</div>
+      <h2 class="headline stagger">Great food shouldn't be<br>this hard to <span class="accent">find and book</span></h2>
+      <p class="subheadline stagger">Whether you're planning a dinner party at home, ordering lunch for your team, or organizing catering for a product launch, the experience is the same: fragmented, stressful, and unreliable. There's no single platform for high-quality food services in Sweden.</p>
+    </div>
+    <div class="slide-inner">
+      <div class="problem-stats stagger">
+        <div class="problem-stat">
+          <div class="stat-value">0</div>
+          <div class="stat-title">Unified food platforms</div>
+          <div class="stat-label">No platform in Sweden lets you book catering, private chefs, and office food in one place. Each need sends you to a different provider with zero overlap.</div>
+        </div>
+        <div class="problem-stat">
+          <div class="stat-value">5-10</div>
+          <div class="stat-title">Calls to find the right chef</div>
+          <div class="stat-label">There's no curated, transparent marketplace for premium food services. People rely on word-of-mouth, outdated websites, and endless phone calls.</div>
+        </div>
+        <div class="problem-stat">
+          <div class="stat-value">70%</div>
+          <div class="stat-title">Settle for "good enough"</div>
+          <div class="stat-label">Most people give up searching and book whatever they find first. Quality suffers because discovery is broken, not because great chefs don't exist.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: WHY NOW -->
+  <div class="slide has-header" data-slide="2">
+    <div class="slide-header">
+      <div class="section-label stagger">Why Now</div>
+      <h2 class="headline stagger">The way people buy food experiences is <span class="accent">changing fast</span></h2>
+    </div>
+    <div class="slide-inner">
+      <div class="card-grid cols-3 stagger">
+        <div class="card">
+          <div class="card-stat">$16.6B</div>
+          <div class="card-stat-label">Global private chef market</div>
+          <h3>Home dining is booming</h3>
+          <p>The global private chef market is growing at 6.7% annually. Consumers increasingly bring restaurant-quality experiences home instead of dining out. Once a luxury, now increasingly mainstream.</p>
+        </div>
+        <div class="card">
+          <div class="card-stat">163B</div>
+          <div class="card-stat-label">SEK foodservice market</div>
+          <h3>Sweden's food market is massive</h3>
+          <p>Sweden's foodservice sector generated 163 billion SEK in 2023, growing at 4.9% CAGR. Corporate catering, private dining, and premium food services are the fastest-growing segments.</p>
+        </div>
+        <div class="card">
+          <div class="card-stat">4→20</div>
+          <div class="card-stat-label">Team leverage</div>
+          <h3>AI lets small teams move fast</h3>
+          <p>AI development tools let a four-person team build what used to take twenty. We ship features in days, not months. First-mover advantage in a market with no dominant platform.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: JOURNEY SO FAR -->
+  <div class="slide has-header" data-slide="3">
+    <div class="slide-header">
+      <div class="section-label stagger">Traction</div>
+      <h2 class="headline stagger">Started with chefs. Growing into <span class="accent">all of food.</span></h2>
+      <p class="subheadline stagger">We've proven the model with chef bookings for premium brands. Now we're expanding to become the go-to food platform for Sweden.</p>
+    </div>
+    <div class="slide-inner">
+      <div class="timeline stagger" style="max-width: 700px;">
+        <div class="timeline-item">
+          <div class="timeline-dot filled">✓</div>
+          <div class="timeline-content">
+            <h3>V1: Private chef booking platform</h3>
+            <p>Started by connecting customers with top chefs for private dining, corporate events, and home cooking experiences. Real revenue from day one.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot filled">✓</div>
+          <div class="timeline-content">
+            <h3>Trusted by leading brands</h3>
+            <p>Delivered food experiences for Hermès, Prada, Sail Racing, and Chimi. Quality that earned repeat bookings and word-of-mouth referrals across segments.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot filled">✓</div>
+          <div class="timeline-content">
+            <h3>V2: Full food services platform, live now</h3>
+            <p>User accounts, chef profiles, booking management, transaction messaging and a full admin system. Built to handle food requests at scale from day one.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">→</div>
+          <div class="timeline-content">
+            <h3>Next: Becoming Sweden's food platform</h3>
+            <p>Expanding from chef bookings into catering, office food, and on-the-spot cooking. Opening the platform to private customers, businesses, and event firms.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: WHAT WE'VE LEARNED -->
+  <div class="slide has-header" data-slide="4">
+    <div class="slide-header">
+      <div class="section-label stagger">Insights</div>
+      <h2 class="headline stagger">What booking food <span class="accent">taught us</span></h2>
+      <p class="subheadline stagger">We've organized hundreds of food experiences across segments. These patterns kept emerging.</p>
+    </div>
+    <div class="slide-inner">
+      <div class="card-grid cols-3 stagger">
+        <div class="card">
+          <div class="card-stat">3</div>
+          <div class="card-stat-label">Customer segments</div>
+          <h3>The demand is wider than events</h3>
+          <p>Private customers want chef-at-home dinners. Companies want recurring office food and team lunches. Event firms need reliable catering partners. Same supply, three different buyers.</p>
+        </div>
+        <div class="card">
+          <div class="card-stat">80%</div>
+          <div class="card-stat-label">Repeat rate</div>
+          <h3>Food is a recurring need</h3>
+          <p>Unlike one-off events, food is something people buy weekly. Office lunches, dinner parties, seasonal celebrations. Once you find a great chef, you come back. Repeatedly.</p>
+        </div>
+        <div class="card">
+          <div class="card-stat">0</div>
+          <div class="card-stat-label">Quality platforms</div>
+          <h3>The market is wide open</h3>
+          <p>No platform in Sweden curates and connects premium food services across categories. Existing players do one thing: delivery, or catering, or restaurant bookings. Nobody does it all.</p>
+        </div>
+      </div>
+
+      <div class="card stagger" style="margin-top: 16px; text-align: center; border-color: rgba(59, 130, 246, 0.2);">
+        <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.5;"><strong style="color: var(--text-primary);">The key insight:</strong> Food is the core. Not venues, not transport, not equipment. When we go deep on food and chefs, we serve everyone: families celebrating at home, offices that need great lunch, and event companies looking for reliable food partners.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: THE VISION -->
+  <div class="slide has-header" data-slide="5">
+    <div class="glow-orb" style="top: -100px; right: -200px;"></div>
+    <div class="slide-header">
+      <div class="section-label stagger">The Vision</div>
+      <h2 class="headline stagger">One platform for <span class="accent">all your food needs</span></h2>
+      <p class="subheadline stagger">Tell us what you need. Private dinner at home, catering for 200, weekly office lunches, or a chef cooking live at your party. We match you with the right food professional, instantly.</p>
+    </div>
+    <div class="slide-inner">
+      <!-- Mobile phone (customers) + Desktop (chefs) side by side -->
+      <div style="display: flex; align-items: center; justify-content: center; gap: 40px; margin-top: 8px;" class="stagger">
+
+        <!-- LEFT: Customer - Mobile Phone -->
+        <div style="flex-shrink: 0;">
+          <div style="font-size: 12px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; text-align: center;">For Customers</div>
+          <div class="phone-frame">
+            <div class="phone-notch">
+              <div class="phone-notch-pill"></div>
+            </div>
+            <div class="phone-status-bar">
+              <span>9:41</span>
+              <span style="display: flex; gap: 4px; align-items: center;">
+                <svg width="12" height="9" viewBox="0 0 16 12" fill="currentColor"><rect x="0" y="7" width="3" height="5" rx="0.5"/><rect x="4.5" y="4" width="3" height="8" rx="0.5"/><rect x="9" y="1" width="3" height="11" rx="0.5"/><rect x="13" y="0" width="3" height="12" rx="0.5" opacity="0.3"/></svg>
+                <svg width="16" height="9" viewBox="0 0 25 12" fill="currentColor"><rect x="0" y="1" width="21" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="3" width="14" height="6" rx="1"/><rect x="22" y="4" width="3" height="4" rx="1" opacity="0.4"/></svg>
+              </span>
+            </div>
+            <div class="phone-screen">
+              <div style="padding: 10px 12px;">
+                <!-- Header -->
+                <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">What are you looking for?</div>
+
+                <!-- Service type selector -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 6px;">
+                  <div style="background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); border-radius: 6px; padding: 6px 7px; text-align: center;">
+                    <div style="font-size: 14px;">🧑‍🍳</div>
+                    <div style="font-size: 9px; font-weight: 600; color: var(--accent); margin-top: 2px;">Private Chef</div>
+                  </div>
+                  <div style="background: var(--bg-card-hover); border: 1px solid var(--border); border-radius: 6px; padding: 6px 7px; text-align: center;">
+                    <div style="font-size: 14px;">🍽️</div>
+                    <div style="font-size: 9px; font-weight: 600; color: var(--text-secondary); margin-top: 2px;">Catering</div>
+                  </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 6px;">
+                  <div style="background: var(--bg-card-hover); border: 1px solid var(--border); border-radius: 6px; padding: 6px 7px; text-align: center;">
+                    <div style="font-size: 14px;">🏢</div>
+                    <div style="font-size: 9px; font-weight: 600; color: var(--text-secondary); margin-top: 2px;">Office Food</div>
+                  </div>
+                  <div style="background: var(--bg-card-hover); border: 1px solid var(--border); border-radius: 6px; padding: 6px 7px; text-align: center;">
+                    <div style="font-size: 14px;">🔥</div>
+                    <div style="font-size: 9px; font-weight: 600; color: var(--text-secondary); margin-top: 2px;">Live Cooking</div>
+                  </div>
+                </div>
+
+                <!-- Divider -->
+                <div style="height: 1px; background: var(--border); margin: 6px 0;"></div>
+
+                <!-- Selected: Private Chef -->
+                <div style="font-family: var(--font-display); font-size: 12px; font-weight: 700; margin-bottom: 6px;">Private Chef at Home</div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 5px;">
+                  <div style="background: var(--bg-card-hover); border-radius: 6px; padding: 4px 7px;">
+                    <div style="font-size: 8px; color: var(--text-muted); text-transform: uppercase;">Date</div>
+                    <div style="font-size: 11px; font-weight: 600; margin-top: 1px;">Dec 14, 2026</div>
+                  </div>
+                  <div style="background: var(--bg-card-hover); border-radius: 6px; padding: 4px 7px;">
+                    <div style="font-size: 8px; color: var(--text-muted); text-transform: uppercase;">Guests</div>
+                    <div style="font-size: 11px; font-weight: 600; margin-top: 1px;">8 people</div>
+                  </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 5px;">
+                  <div style="background: var(--bg-card-hover); border-radius: 6px; padding: 4px 7px;">
+                    <div style="font-size: 8px; color: var(--text-muted); text-transform: uppercase;">Location</div>
+                    <div style="font-size: 11px; font-weight: 600; margin-top: 1px;">My home, Sthlm</div>
+                  </div>
+                  <div style="background: var(--bg-card-hover); border-radius: 6px; padding: 4px 7px;">
+                    <div style="font-size: 8px; color: var(--text-muted); text-transform: uppercase;">Cuisine</div>
+                    <div style="font-size: 11px; font-weight: 600; margin-top: 1px;">Nordic</div>
+                  </div>
+                </div>
+
+                <!-- Submit button -->
+                <div style="background: var(--accent); color: white; padding: 7px; border-radius: 8px; text-align: center; font-size: 11px; font-weight: 600; margin-top: 6px;">Find my chef</div>
+              </div>
+            </div>
+            <div class="phone-home-bar"><span></span></div>
+          </div>
+          <p style="text-align: center; font-size: 12px; color: var(--text-secondary); margin-top: 8px; line-height: 1.4; max-width: 220px;">Pick a service. Tell us what you want.<br>Get matched with top chefs.</p>
+        </div>
+
+        <!-- RIGHT: Chef Portal - Desktop Browser -->
+        <div style="flex: 1; max-width: 520px;">
+          <div style="font-size: 12px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; text-align: center;">For Chefs & Food Professionals</div>
+          <div class="desktop-frame">
+            <div class="desktop-bezel">
+              <div class="desktop-dots"><span></span><span></span><span></span></div>
+              <div class="desktop-url">amicievent.com/chef/dashboard</div>
+            </div>
+            <div class="desktop-screen">
+              <div style="display: flex;">
+                <!-- Sidebar -->
+                <div style="width: 130px; background: #131415; border-right: 1px solid var(--border); padding: 10px 8px; flex-shrink: 0;">
+                  <div style="font-family: var(--font-display); font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 12px; padding: 0 4px;">Amici</div>
+                  <div style="display: flex; flex-direction: column; gap: 2px;">
+                    <div style="padding: 5px 8px; border-radius: 6px; font-size: 10px; color: var(--text-muted);">Dashboard</div>
+                    <div style="padding: 5px 8px; border-radius: 6px; font-size: 10px; background: rgba(59,130,246,0.1); color: var(--accent); font-weight: 600;">Open Requests</div>
+                    <div style="padding: 5px 8px; border-radius: 6px; font-size: 10px; color: var(--text-muted);">My Offers</div>
+                    <div style="padding: 5px 8px; border-radius: 6px; font-size: 10px; color: var(--text-muted);">Bookings</div>
+                    <div style="padding: 5px 8px; border-radius: 6px; font-size: 10px; color: var(--text-muted);">My Profile</div>
+                  </div>
+                </div>
+                <!-- Main content -->
+                <div style="flex: 1; padding: 10px 14px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <div>
+                      <div style="font-family: var(--font-display); font-size: 14px; font-weight: 700;">Open Requests</div>
+                      <div style="font-size: 10px; color: var(--text-muted);">6 new requests match your profile</div>
+                    </div>
+                    <div style="display: flex; gap: 6px;">
+                      <div style="padding: 4px 10px; border-radius: 6px; font-size: 9px; background: var(--bg-card-hover); color: var(--text-secondary); border: 1px solid var(--border);">Filter</div>
+                      <div style="padding: 4px 10px; border-radius: 6px; font-size: 9px; background: var(--bg-card-hover); color: var(--text-secondary); border: 1px solid var(--border);">Sort</div>
+                    </div>
+                  </div>
+
+                  <!-- Job 1: Private dinner -->
+                  <div style="background: var(--bg-card-hover); border: 1px solid rgba(59,130,246,0.3); border-radius: 8px; padding: 10px; margin-bottom: 5px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+                      <div style="display: flex; align-items: center; gap: 8px;">
+                        <div>
+                          <div style="font-size: 12px; font-weight: 700;">Private Dinner at Home</div>
+                          <div style="font-size: 10px; color: var(--text-secondary); margin-top: 1px;">Dec 14 · Stockholm · 8 guests</div>
+                        </div>
+                      </div>
+                      <span style="background: rgba(59,130,246,0.15); color: var(--accent); font-size: 8px; font-weight: 700; padding: 2px 7px; border-radius: 4px; text-transform: uppercase;">New</span>
+                    </div>
+                    <div style="font-size: 10px; color: var(--text-secondary); line-height: 1.4; margin-bottom: 8px;">4-course Nordic tasting menu. Home kitchen in Östermalm. Ingredients included.</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <div style="font-family: var(--font-numbers); font-size: 13px; font-weight: 600; color: var(--text-primary);">~12,000 SEK</div>
+                      <div style="background: var(--accent); color: white; padding: 5px 12px; border-radius: 6px; font-size: 10px; font-weight: 600;">Submit Offer</div>
+                    </div>
+                  </div>
+
+                  <!-- Job 2: Office lunch -->
+                  <div style="background: var(--bg-card-hover); border: 1px solid var(--border); border-radius: 8px; padding: 7px 10px; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                      <div style="font-size: 11px; font-weight: 600;">Weekly Office Lunch</div>
+                      <div style="font-size: 10px; color: var(--text-muted);">Recurring · Södermalm · 25 people</div>
+                    </div>
+                    <div style="font-family: var(--font-numbers); font-size: 11px; font-weight: 600; color: var(--text-secondary);">~5,000 SEK/wk</div>
+                  </div>
+
+                  <!-- Job 3: Catering -->
+                  <div style="background: var(--bg-card-hover); border: 1px solid var(--border); border-radius: 8px; padding: 7px 10px; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                      <div style="font-size: 11px; font-weight: 600;">Product Launch Catering</div>
+                      <div style="font-size: 10px; color: var(--text-muted);">Feb 8 · Stockholm · 120 guests</div>
+                    </div>
+                    <div style="font-family: var(--font-numbers); font-size: 11px; font-weight: 600; color: var(--text-secondary);">~54,000 SEK</div>
+                  </div>
+
+                  <!-- Job 4: Live cooking -->
+                  <div style="background: var(--bg-card-hover); border: 1px solid var(--border); border-radius: 8px; padding: 7px 10px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                      <div style="font-size: 11px; font-weight: 600;">Live Cooking · Birthday</div>
+                      <div style="font-size: 10px; color: var(--text-muted);">Mar 1 · Malmö · 20 guests</div>
+                    </div>
+                    <div style="font-family: var(--font-numbers); font-size: 11px; font-weight: 600; color: var(--text-secondary);">~18,000 SEK</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p style="text-align: center; font-size: 12px; color: var(--text-secondary); margin-top: 8px; line-height: 1.4;">Browse requests across all food categories. Submit your best offer.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: HOW IT WORKS -->
+  <div class="slide has-header" data-slide="6">
+    <div class="slide-header">
+      <div class="section-label stagger">Product</div>
+      <h2 class="headline stagger">From craving to chef in <span class="accent">minutes, not days</span></h2>
+    </div>
+    <div class="slide-inner">
+      <div class="two-col stagger" style="align-items: center;">
+        <div>
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--accent-soft); border: 1px solid rgba(59,130,246,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-numbers); font-size: 18px; font-weight: 600; color: var(--accent);">1</div>
+              <div>
+                <h3 style="font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-bottom: 2px;">Tell us what you need</h3>
+                <p style="font-size: 15px; color: var(--text-secondary);">Private dinner, catering, office lunch, or live cooking. Pick the format, date, and cuisine.</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--accent-soft); border: 1px solid rgba(59,130,246,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-numbers); font-size: 18px; font-weight: 600; color: var(--accent);">2</div>
+              <div>
+                <h3 style="font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-bottom: 2px;">Get matched with top chefs</h3>
+                <p style="font-size: 15px; color: var(--text-secondary);">Verified chefs respond with custom menus, pricing, and availability. Compare and choose.</p>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--accent-soft); border: 1px solid rgba(59,130,246,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: var(--font-numbers); font-size: 18px; font-weight: 600; color: var(--accent);">3</div>
+              <div>
+                <h3 style="font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-bottom: 2px;">Book and enjoy</h3>
+                <p style="font-size: 15px; color: var(--text-secondary);">Confirm, pay, and we handle the rest. Your chef arrives, cooks, serves, and cleans up.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <div class="card" style="border-color: rgba(59,130,246,0.3); padding: 32px;">
+            <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">Time to book a food experience</div>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 24px; margin: 16px 0;">
+              <div>
+                <div style="font-family: var(--font-numbers); font-size: 36px; font-weight: 600; color: var(--text-muted); text-decoration: line-through; opacity: 0.5;">Days</div>
+                <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Today (Google + calls)</div>
+              </div>
+              <div style="font-size: 24px; color: var(--accent);">→</div>
+              <div>
+                <div style="font-family: var(--font-numbers); font-size: 36px; font-weight: 600; color: var(--accent);">~10 min</div>
+                <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">With Amici</div>
+              </div>
+            </div>
+            <div style="height: 1px; background: var(--border); margin: 16px 0;"></div>
+            <p style="font-size: 15px; color: var(--text-secondary);">Works for a dinner party of 6 or a corporate catering for 200. Same platform, same speed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: MARKET OPPORTUNITY -->
+  <div class="slide has-header slide-green" data-slide="7">
+    <div class="slide-header">
+      <div class="section-label stagger">Market</div>
+      <h2 class="headline stagger">Huge market. <span class="accent">Food-first approach.</span></h2>
+    </div>
+    <div class="slide-inner">
+      <div style="max-width: 800px; margin: 0 auto;" class="stagger">
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; margin-bottom: 24px;">
+          <div style="background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.15); border-radius: var(--radius) 0 0 var(--radius); padding: 24px; text-align: center;">
+            <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 8px;">TAM</div>
+            <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: var(--text-primary);">163B SEK</div>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">Sweden's total foodservice market (2023)</p>
+          </div>
+          <div style="background: rgba(34,197,94,0.10); border: 1px solid rgba(34,197,94,0.25); border-left: none; border-right: none; padding: 24px; text-align: center;">
+            <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 8px;">SAM</div>
+            <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: var(--text-primary);">12B SEK</div>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">Premium food services: catering, private chefs, office food</p>
+          </div>
+          <div style="background: rgba(34,197,94,0.18); border: 1px solid #22C55E; border-radius: 0 var(--radius) var(--radius) 0; padding: 24px; text-align: center;">
+            <div style="font-size: 13px; color: #22C55E; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 8px;">SOM</div>
+            <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: #22C55E;">80M SEK</div>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">Year 1-2 Stockholm across all segments</p>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="card">
+            <div style="display: flex; align-items: baseline; gap: 12px;">
+              <div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600; color: #22C55E;">6.7%</div>
+              <div>
+                <div style="font-size: 15px; font-weight: 700; font-family: var(--font-display);">Private chef growth</div>
+                <p style="font-size: 14px; color: var(--text-secondary);">Global private chef market at $16.6B, growing faster than restaurants.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div style="display: flex; align-items: baseline; gap: 12px;">
+              <div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600; color: #22C55E;">4.9%</div>
+              <div>
+                <div style="font-size: 15px; font-weight: 700; font-family: var(--font-display);">Sweden foodservice CAGR</div>
+                <p style="font-size: 14px; color: var(--text-secondary);">Projected through 2028. Recovery-driven growth with rising consumer spending.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="margin-top: 16px; text-align: center; border-color: rgba(34,197,94,0.2);">
+          <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;"><strong style="color: var(--text-primary);">Why food-first wins:</strong> Food is the highest-frequency, highest-margin category. It's what people search for first, book most often, and remember longest. Own food, and everything else follows.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: BUSINESS MODEL -->
+  <div class="slide has-header slide-green" data-slide="8">
+    <div class="slide-header">
+      <div class="section-label stagger">Business Model</div>
+      <h2 class="headline stagger">Commission on every meal. <span class="accent">Recurring revenue.</span></h2>
+    </div>
+    <div class="slide-inner">
+      <div class="stagger">
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+          <div class="card" style="border-color: #22C55E;">
+            <div style="font-size: 13px; color: #22C55E; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">Now</div>
+            <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">10-15%</div>
+            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">commission per booking</div>
+            <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;">Private chef bookings for events, home dining, and corporate experiences. Proven revenue model with strong margins.</p>
+          </div>
+          <div class="card" style="border-color: rgba(34,197,94,0.3);">
+            <div style="font-size: 13px; color: #22C55E; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">Next</div>
+            <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">Multi-format</div>
+            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">catering + office + private</div>
+            <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;">Expand from one-off chef bookings to recurring office food, large-scale catering, and private dining subscriptions. Revenue per chef grows.</p>
+          </div>
+          <div class="card" style="border-color: rgba(34,197,94,0.15);">
+            <div style="font-size: 13px; color: #22C55E; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">Later</div>
+            <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">SaaS + B2B</div>
+            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">premium chef tools</div>
+            <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;">Chef management tools, featured profiles, analytics, and a food-booking API for event firms and corporate clients.</p>
+          </div>
+        </div>
+        <div class="card" style="border-color: rgba(34,197,94,0.2);">
+          <div style="display: flex; justify-content: space-around; text-align: center;">
+            <div><div style="font-family: var(--font-numbers); font-size: 22px; font-weight: 600; color: #22C55E;">Weekly</div><p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">Office food = recurring revenue</p></div>
+            <div><div style="font-family: var(--font-numbers); font-size: 22px; font-weight: 600; color: #22C55E;">↑ LTV</div><p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">Multi-format customers spend more</p></div>
+            <div><div style="font-family: var(--font-numbers); font-size: 22px; font-weight: 600; color: #22C55E;">3 segments</div><p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">Private + corporate + event firms</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: COMPETITIVE LANDSCAPE -->
+  <div class="slide has-header" data-slide="9">
+    <div class="slide-header">
+      <div class="section-label stagger">Competitive Landscape</div>
+      <h2 class="headline stagger">Plenty of food delivery. Zero <span class="accent">food experience</span> platforms.</h2>
+      <p class="subheadline stagger">Delivery apps move fast food fast. We connect you with real chefs for real meals. Different market, different customer, different product entirely.</p>
+    </div>
+    <div class="slide-inner">
+      <div class="stagger" style="max-width: 1000px; margin: 0 auto;">
+        <!-- Spectrum bar -->
+        <div style="display: flex; align-items: stretch; gap: 4px; margin-bottom: 16px; min-height: 120px;">
+          <div style="flex: 1; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius) 0 0 var(--radius); padding: 16px; display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Delivery apps</div>
+            <div style="font-size: 14px; color: var(--text-secondary);">Foodora, Uber Eats. Restaurant takeout. Low quality ceiling.</div>
+          </div>
+          <div style="flex: 1; background: var(--bg-card); border: 1px solid var(--border); padding: 16px; display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Single-category</div>
+            <div style="font-size: 14px; color: var(--text-secondary);">Take a Chef, ChefMaison. Chef-only. No catering, no office food.</div>
+          </div>
+          <div style="flex: 1.3; background: rgba(59,130,246,0.08); border: 2px solid var(--accent); padding: 16px; display: flex; flex-direction: column; justify-content: center; text-align: center;">
+            <div style="font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 4px;">Amici</div>
+            <div style="font-size: 14px; color: var(--text-secondary);">All premium food services. One platform. Private, corporate, and event firms.</div>
+          </div>
+          <div style="flex: 1; background: var(--bg-card); border: 1px solid var(--border); padding: 16px; display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Catering firms</div>
+            <div style="font-size: 14px; color: var(--text-secondary);">Traditional caterers. No platform, no transparency, minimum orders.</div>
+          </div>
+          <div style="flex: 1; background: var(--bg-card); border: 1px solid var(--border); border-radius: 0 var(--radius) var(--radius) 0; padding: 16px; display: flex; flex-direction: column; justify-content: center;">
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Agencies</div>
+            <div style="font-size: 14px; color: var(--text-secondary);">Full-service event firms. 15-20% markup. Not built for food.</div>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em;"><span>← Mass market, low quality</span><span>Premium, high cost →</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 11: TEAM -->
+  <div class="slide has-header" data-slide="10">
+    <div class="slide-header">
+      <div class="section-label stagger">The Team</div>
+      <h2 class="headline stagger">Built by people who live and breathe <span class="accent">food</span></h2>
+      <p class="subheadline stagger">A lean team with deep roots in Sweden's food industry and the technical chops to build a platform around it.</p>
+    </div>
+    <div class="slide-inner">
+      <div class="team-grid stagger">
+        <div class="team-member">
+          <div class="team-avatar">CC</div>
+          <h3>Carol Chmaissani</h3>
+          <div class="team-role">CEO & Co-founder</div>
+          <div class="team-desc">Runs the business. Built relationships with Hermès, Prada, and Sweden's top brands. Drives customer acquisition across all segments.</div>
+        </div>
+        <div class="team-member">
+          <div class="team-avatar">AI</div>
+          <h3>Anders Isaksson</h3>
+          <div class="team-role">Chef & Co-founder</div>
+          <div class="team-desc">Professional chef who knows every top chef in Stockholm. Curates the supply side and ensures quality across all food services on the platform.</div>
+        </div>
+        <div class="team-member">
+          <div class="team-avatar">DR</div>
+          <h3>Daniel Revesz</h3>
+          <div class="team-role">Product & Design</div>
+          <div class="team-desc">Senior product designer and PM from industry-leading SaaS. Designs the platform and runs product strategy.</div>
+        </div>
+        <div class="team-member">
+          <div class="team-avatar">ES</div>
+          <h3>Edin Skeja</h3>
+          <div class="team-role">Engineering</div>
+          <div class="team-desc">Senior full-stack developer at a major Swedish brand. Builds production systems fast and keeps them running.</div>
+        </div>
+      </div>
+
+      <div class="card stagger" style="margin-top: 14px; text-align: center; border-color: rgba(59, 130, 246, 0.2);">
+        <p style="font-size: 15px; color: var(--text-secondary);"><strong style="color: var(--text-primary);">Why this team for food:</strong> Anders is a chef. He doesn't just know the industry, he's worked in it for years. Carol has the demand side covered with premium brand clients. Daniel and Edin build and ship the product. This is the team to build Sweden's food platform.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12: THE ASK -->
+  <div class="slide has-header" data-slide="11">
+    <div class="glow-orb" style="bottom: -200px; left: 50%; transform: translateX(-50%);"></div>
+    <div class="slide-header">
+      <div class="section-label stagger">The Ask</div>
+      <h2 class="headline stagger">From chef bookings to Sweden's <span class="accent">food platform</span></h2>
+    </div>
+    <div class="slide-inner">
+      <div class="two-col stagger" style="align-items: center;">
+        <div style="text-align: center;">
+          <div style="font-family: var(--font-numbers); font-size: 64px; font-weight: 600; background: linear-gradient(135deg, var(--accent), #60A5FA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1;">3-5M</div>
+          <div style="font-size: 16px; color: var(--text-muted); margin-top: 4px;">SEK pre-seed raise</div>
+          <div style="height: 1px; background: var(--border); margin: 24px 0;"></div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; text-align: center;">
+            <div><div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600;">50%</div><div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Team</div></div>
+            <div><div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600;">25%</div><div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Go-to-market</div></div>
+            <div><div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600;">15%</div><div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Platform</div></div>
+            <div><div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600;">10%</div><div style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Operations</div></div>
+          </div>
+        </div>
+        <div>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div class="card" style="border-left: 2px solid var(--text-muted); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+              <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 6px;">Today</div>
+              <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.5;">Part-time team. Chef-only bookings. Stockholm. Premium brand clients. Revenue growing but constrained by capacity and narrow focus.</p>
+            </div>
+            <div style="text-align: center; color: var(--accent); font-size: 20px;">↓</div>
+            <div class="card" style="border-left: 2px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
+              <div style="font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 6px;">After this raise</div>
+              <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.5;">Full-time team. Catering, office food, private dining, and live cooking. Three customer segments. Chef marketplace live. Ready for Nordic expansion.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 20px;" class="stagger">
+        <p style="font-family: var(--font-display); font-size: 18px; color: var(--text-secondary); font-style: italic;">Sweden has no premium food platform. We're building the one everyone will use.</p>
+        <p style="margin-top: 10px; color: var(--text-muted); font-size: 15px;">Let's talk · carol@amicievent.com · amicievent.com</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+  <div class="nav-dots" id="navDots"></div>
+  <span class="slide-counter" id="slideCounter">1 / 12</span>
+</nav>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+  let currentSlide = 0;
+
+  // Build nav dots
+  const dotsContainer = document.getElementById('navDots');
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goToSlide(i);
+    dotsContainer.appendChild(dot);
+  }
+
+  function goToSlide(index) {
+    if (index < 0 || index >= totalSlides) return;
+    slides[currentSlide].classList.remove('active');
+    document.querySelectorAll('.nav-dot')[currentSlide].classList.remove('active');
+    currentSlide = index;
+    slides[currentSlide].classList.add('active');
+    document.querySelectorAll('.nav-dot')[currentSlide].classList.add('active');
+    document.getElementById('slideCounter').textContent = `${currentSlide + 1} / ${totalSlides}`;
+  }
+
+  function navigate(direction) {
+    goToSlide(currentSlide + direction);
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); navigate(1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); navigate(-1); }
+    if (e.key === 'Home') { e.preventDefault(); goToSlide(0); }
+    if (e.key === 'End') { e.preventDefault(); goToSlide(totalSlides - 1); }
+  });
+
+  // Touch/swipe support
+  let touchStartX = 0;
+  document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+  document.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) navigate(diff > 0 ? 1 : -1);
+  });
+</script>
+
+</body>
+</html>

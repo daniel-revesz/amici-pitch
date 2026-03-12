@@ -1,0 +1,4 @@
+- This folder contains all things Amici - the foodtech startup looking to find market fit and expand.
+- Your responses should always use facts to support claims.
+- Think step by step for complex tasks.
+- *IMPORTANT* always ask for permission before making changes to the AMICI library

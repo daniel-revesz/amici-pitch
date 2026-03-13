@@ -2005,6 +2005,16 @@
     slides[currentSlide].classList.add('active');
     document.querySelectorAll('.nav-dot')[currentSlide].classList.add('active');
     document.getElementById('slideCounter').textContent = `${currentSlide + 1} / ${totalSlides}`;
+    const url = new URL(window.location);
+    url.searchParams.set('slide', currentSlide + 1);
+    history.replaceState(null, '', url);
+  }
+
+  // Deep-link: jump to ?slide=N on load
+  const slideParam = new URLSearchParams(window.location.search).get('slide');
+  if (slideParam) {
+    const n = parseInt(slideParam, 10);
+    if (n >= 1 && n <= totalSlides) goToSlide(n - 1);
   }
 
   function navigate(direction) {

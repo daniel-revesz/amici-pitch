@@ -23,15 +23,16 @@ The deck is a single self-contained HTML file. No build step, no dependencies, n
 1. Cover
 2. The Problem
 3. Why Now
-4. Traction
-5. Insights
-6. The Vision (with product mockups)
-7. Product (how it works)
-8. Market
-9. Business Model
-10. Competitive Landscape
-11. Team
-12. The Ask
+4. Journey So Far (traction)
+5. What We've Learned (insights)
+6. The Vision — product mockups
+7. The Vision — supplier engine
+8. How It Works
+9. Market Opportunity
+10. Business Model
+11. Competitive Landscape
+12. Team
+13. The Ask
 
 ## Design system
 

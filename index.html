@@ -1534,37 +1534,32 @@
 
 
   <!-- SLIDE 7: THE VISION -->
-  <div class="slide" data-slide="6" style="overflow: visible; flex-direction: row; align-items: stretch; justify-content: flex-start; gap: 48px;">
+  <div class="slide has-header" data-slide="6" style="overflow: visible;">
     <div class="glow-orb" style="top: -100px; right: -200px;"></div>
 
-    <!-- Left column: Header text -->
-    <div style="flex: 0 0 38%; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 54px; min-width: 0;">
+    <!-- Standard slide-header for alignment (text only) -->
+    <div class="slide-header" style="max-width: 1200px;">
       <div class="section-label stagger">Product Vision</div>
       <h2 class="headline stagger">Every supplier. <span class="accent">One place.</span></h2>
       <p class="subheadline stagger">Describe your event. We match you with verified suppliers, collect their offers, and present one clear proposal. You compare, book, and go.</p>
     </div>
 
-    <!-- Right column: Mockups + arrow + text as a single unit -->
-    <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0;" class="stagger">
+    <!-- Mockups positioned absolutely in the right half, vertically centered in the full slide -->
+    <div style="position: absolute; top: 0; bottom: 40px; right: 72px; left: 38%; display: flex; flex-direction: column; align-items: center; justify-content: center;" class="stagger">
 
       <!-- Mockup row -->
-      <div style="display: flex; align-items: flex-start; justify-content: center; gap: 24px;">
-
-        <!-- SCREEN 1: Create Event -->
-        <img src="assets/mockup-create.png" alt="Amici app — create event screen" style="max-height: min(55vh, 800px); width: auto; display: block; border-radius: 20px; box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);">
-
-        <!-- SCREEN 2: Your Event Package -->
-        <img src="assets/mockup-package.png" alt="Amici app — event package screen" style="max-height: min(55vh, 800px); width: auto; display: block; border-radius: 20px; box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);">
+      <div style="display: flex; align-items: flex-start; justify-content: center; gap: 20px;">
+        <img src="assets/mockup-create.png" alt="Amici app — create event screen" style="height: min(50vh, 500px); width: auto; display: block; border-radius: 20px; box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);">
+        <img src="assets/mockup-package.png" alt="Amici app — event package screen" style="height: min(50vh, 500px); width: auto; display: block; border-radius: 20px; box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);">
       </div>
 
-      <!-- U-shaped arrow below mockups: down from left, right, up to right mockup -->
+      <!-- U-shaped arrow below mockups -->
       <svg width="340" height="50" viewBox="0 0 340 50" style="margin-top: 12px; overflow: visible; flex-shrink: 0;">
         <defs>
           <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto" markerUnits="strokeWidth">
             <polyline points="0 0, 5 5, 0 10" fill="none" stroke="#71717A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
           </marker>
         </defs>
-        <!-- Down from center of left mockup, right along bottom, up to center of right mockup -->
         <path d="M 40 0 L 40 16 Q 40 38 62 38 L 278 38 Q 300 38 300 16 L 300 0" stroke="#71717A" stroke-width="1.5" fill="none" stroke-dasharray="6 4" stroke-linejoin="round" marker-end="url(#arrowhead)" />
       </svg>
 
@@ -1572,7 +1567,6 @@
       <div style="text-align: center; max-width: 270px; margin-top: -2px;">
         <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">AI creates vertical-specific briefs and distributes them across the supplier network. Suppliers have 24 hours to send their proposals.</div>
       </div>
-
     </div>
   </div>
 

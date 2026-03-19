@@ -1534,191 +1534,45 @@
 
 
   <!-- SLIDE 7: THE VISION -->
-  <div class="slide has-header" data-slide="6" style="overflow: visible !important;">
+  <div class="slide" data-slide="6" style="overflow: visible; flex-direction: row; align-items: stretch; justify-content: flex-start; gap: 48px;">
     <div class="glow-orb" style="top: -100px; right: -200px;"></div>
-    <div class="slide-header">
+
+    <!-- Left column: Header text -->
+    <div style="flex: 0 0 38%; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 54px; min-width: 0;">
       <div class="section-label stagger">Product Vision</div>
       <h2 class="headline stagger">Every supplier. <span class="accent">One place.</span></h2>
       <p class="subheadline stagger">Describe your event. We match you with verified suppliers, collect their offers, and present one clear proposal. You compare, book, and go.</p>
     </div>
-    <div class="slide-inner">
-      <!-- Two mobile mockups side by side -->
-      <div style="display: flex; align-items: flex-start; justify-content: center; gap: 48px; margin-top: 32px;" class="stagger">
 
-        <!-- SCREEN 1: Create Brief -->
-        <div style="flex-shrink: 0; display: flex; flex-direction: column;">
-          <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; text-align: center;">Create brief</div>
-          <div class="phone-frame" style="height: 480px;">
-            <div class="phone-notch"><div class="phone-notch-pill"></div></div>
-            <div class="phone-status-bar">
-              <span>9:41</span>
-              <span style="display: flex; gap: 4px; align-items: center;">
-                <svg width="12" height="9" viewBox="0 0 16 12" fill="currentColor"><rect x="0" y="7" width="3" height="5" rx="0.5"/><rect x="4.5" y="4" width="3" height="8" rx="0.5"/><rect x="9" y="1" width="3" height="11" rx="0.5"/><rect x="13" y="0" width="3" height="12" rx="0.5" opacity="0.3"/></svg>
-                <svg width="16" height="9" viewBox="0 0 25 12" fill="currentColor"><rect x="0" y="1" width="21" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="3" width="14" height="6" rx="1"/><rect x="22" y="4" width="3" height="4" rx="1" opacity="0.4"/></svg>
-              </span>
-            </div>
-            <div class="phone-screen">
-              <div style="padding: 14px 16px; display: flex; flex-direction: column; height: 100%;">
-                <!-- Header -->
-                <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">New Event</div>
-                <div style="font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 10px;">Corporate Dinner</div>
+    <!-- Right column: Mockups + arrow + text as a single unit -->
+    <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0;" class="stagger">
 
-                <!-- Event details grid -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 6px;">
-                  <div style="background: var(--bg-card-hover); border-radius: 8px; padding: 7px 10px;">
-                    <div style="font-size: 8px; color: var(--text-muted); text-transform: uppercase;">Date</div>
-                    <div style="font-size: 11px; font-weight: 600; margin-top: 1px;">Dec 14, 2026</div>
-                  </div>
-                  <div style="background: var(--bg-card-hover); border-radius: 8px; padding: 7px 10px;">
-                    <div style="font-size: 8px; color: var(--text-muted); text-transform: uppercase;">Guests</div>
-                    <div style="font-size: 11px; font-weight: 600; margin-top: 1px;">40 people</div>
-                  </div>
-                </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px;">
-                  <div style="background: var(--bg-card-hover); border-radius: 8px; padding: 7px 10px;">
-                    <div style="font-size: 8px; color: var(--text-muted); text-transform: uppercase;">Location</div>
-                    <div style="font-size: 11px; font-weight: 600; margin-top: 1px;">Stockholm</div>
-                  </div>
-                  <div style="background: var(--bg-card-hover); border-radius: 8px; padding: 7px 10px;">
-                    <div style="font-size: 8px; color: var(--text-muted); text-transform: uppercase;">Budget</div>
-                    <div style="font-size: 11px; font-weight: 600; margin-top: 1px;">800 SEK/pp</div>
-                  </div>
-                </div>
+      <!-- Mockup row -->
+      <div style="display: flex; align-items: flex-start; justify-content: center; gap: 24px;">
 
-                <div style="height: 1px; background: var(--border); margin-bottom: 10px;"></div>
-
-                <!-- Description -->
-                <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; font-weight: 600;">Describe your event</div>
-                <div style="background: var(--bg-card-hover); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; margin-bottom: 12px; flex: 1;">
-                  <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">3-course dinner, Nordic or Mediterranean. Drinks pairing. Relaxed but professional atmosphere. Some dietary restrictions.</div>
-                </div>
-
-                <!-- Generate Brief button -->
-                <div style="background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.3); border-radius: 10px; padding: 10px 14px; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer;">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)"><path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"/></svg>
-                  <span style="font-size: 12px; font-weight: 700; color: var(--accent);">Generate Brief</span>
-                </div>
-
-                <!-- Send Request CTA -->
-                <div style="background: var(--accent); border-radius: 10px; padding: 12px 14px; text-align: center; cursor: pointer;">
-                  <span style="font-size: 12px; font-weight: 700; color: white;">Send Request</span>
-                </div>
-                <div style="font-size: 9px; color: var(--text-muted); text-align: center; margin-top: 6px;">AI creates a tailored brief for each supplier</div>
-              </div>
-            </div>
-            <div class="phone-home-bar"><span></span></div>
-          </div>
-        </div>
-
-        <!-- Arrow between phones -->
-        <div style="align-self: center; text-align: center; margin-top: 20px; max-width: 100px;">
-          <div style="color: var(--text-muted); font-size: 24px;">→</div>
-          <div style="font-size: 9px; color: var(--text-muted); line-height: 1.4; margin-top: 4px;">Suppliers are matched and send offers, cleaned up by Amici's AI engine</div>
-        </div>
+        <!-- SCREEN 1: Create Event -->
+        <img src="assets/mockup-create.png" alt="Amici app — create event screen" style="max-height: min(55vh, 800px); width: auto; display: block; border-radius: 20px; box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);">
 
         <!-- SCREEN 2: Your Event Package -->
-        <div style="flex-shrink: 0; display: flex; flex-direction: column;">
-          <div style="font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; text-align: center;">Your package</div>
-          <div class="phone-frame" style="height: 480px;">
-            <div class="phone-notch"><div class="phone-notch-pill"></div></div>
-            <div class="phone-status-bar">
-              <span>9:41</span>
-              <span style="display: flex; gap: 4px; align-items: center;">
-                <svg width="12" height="9" viewBox="0 0 16 12" fill="currentColor"><rect x="0" y="7" width="3" height="5" rx="0.5"/><rect x="4.5" y="4" width="3" height="8" rx="0.5"/><rect x="9" y="1" width="3" height="11" rx="0.5"/><rect x="13" y="0" width="3" height="12" rx="0.5" opacity="0.3"/></svg>
-                <svg width="16" height="9" viewBox="0 0 25 12" fill="currentColor"><rect x="0" y="1" width="21" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="3" width="14" height="6" rx="1"/><rect x="22" y="4" width="3" height="4" rx="1" opacity="0.4"/></svg>
-              </span>
-            </div>
-            <div class="phone-screen">
-              <div style="padding: 14px 16px; display: flex; flex-direction: column; height: 100%;">
-                <!-- Header with badge -->
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                  <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em;">Your Event</div>
-                  <div style="background: rgba(34,197,94,0.15); color: #22C55E; padding: 3px 8px; border-radius: 5px; font-size: 9px; font-weight: 700;">Package Ready</div>
-                </div>
-                <div style="font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 4px;">Corporate Dinner</div>
-                <div style="font-size: 10px; color: var(--text-muted); margin-bottom: 10px;">Dec 14, 2026 · 40 guests · Stockholm</div>
-
-                <div style="height: 1px; background: var(--border); margin-bottom: 10px;"></div>
-
-                <!-- Matched suppliers section -->
-                <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; font-weight: 600;">Matched Suppliers</div>
-
-                <!-- Chef -->
-                <div style="background: var(--bg-card-hover); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; margin-bottom: 6px;">
-                  <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" style="flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1.001A3.75 3.75 0 0012 18z"/></svg>
-                      <div>
-                        <div style="font-size: 11px; font-weight: 600;">Nordic Kitchen Co.</div>
-                        <div style="font-size: 9px; color: var(--text-muted);">3-course Nordic dinner</div>
-                      </div>
-                    </div>
-                    <div style="font-family: var(--font-numbers); font-size: 11px; font-weight: 600; color: var(--text-secondary);">28,000</div>
-                  </div>
-                </div>
-
-                <!-- Venue -->
-                <div style="background: var(--bg-card-hover); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; margin-bottom: 6px;">
-                  <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" style="flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3H21m-3.75 3H21"/></svg>
-                      <div>
-                        <div style="font-size: 11px; font-weight: 600;">Strandvägen 7</div>
-                        <div style="font-size: 9px; color: var(--text-muted);">Private dining, 40 seated</div>
-                      </div>
-                    </div>
-                    <div style="font-family: var(--font-numbers); font-size: 11px; font-weight: 600; color: var(--text-secondary);">18,000</div>
-                  </div>
-                </div>
-
-                <!-- Transport -->
-                <div style="background: var(--bg-card-hover); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px;">
-                  <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" style="flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25m-7.5 9h7.5m-7.5 3H12M2.25 9.75h19.5"/></svg>
-                      <div>
-                        <div style="font-size: 11px; font-weight: 600;">City Transfers</div>
-                        <div style="font-size: 9px; color: var(--text-muted);">Group transfer, 40 pax</div>
-                      </div>
-                    </div>
-                    <div style="font-family: var(--font-numbers); font-size: 11px; font-weight: 600; color: var(--text-secondary);">4,800</div>
-                  </div>
-                </div>
-
-                <!-- Coordinator recommendation -->
-                <div style="background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.35); border-radius: 10px; padding: 10px 12px; margin-bottom: 10px;">
-                  <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.5" style="flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
-                      <div>
-                        <div style="font-size: 11px; font-weight: 700; color: #F59E0B;">Add a coordinator</div>
-                        <div style="font-size: 10px; color: var(--text-secondary);">Let a pro handle logistics</div>
-                      </div>
-                    </div>
-                    <div style="background: rgba(245,158,11,0.2); color: #F59E0B; padding: 5px 12px; border-radius: 6px; font-size: 10px; font-weight: 700; cursor: pointer;">Add</div>
-                  </div>
-                </div>
-
-                <!-- Spacer -->
-                <div style="flex: 1;"></div>
-
-                <!-- Total + Book -->
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                  <div>
-                    <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase;">Total</div>
-                    <div style="font-family: var(--font-numbers); font-size: 18px; font-weight: 700;">50,800 SEK</div>
-                  </div>
-                  <div style="font-size: 10px; color: var(--text-muted);">1,270 SEK/pp</div>
-                </div>
-                <div style="background: #22C55E; border-radius: 10px; padding: 12px 14px; text-align: center; cursor: pointer;">
-                  <span style="font-size: 12px; font-weight: 700; color: white;">Book All</span>
-                </div>
-              </div>
-            </div>
-            <div class="phone-home-bar"><span></span></div>
-          </div>
-        </div>
+        <img src="assets/mockup-package.png" alt="Amici app — event package screen" style="max-height: min(55vh, 800px); width: auto; display: block; border-radius: 20px; box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);">
       </div>
+
+      <!-- U-shaped arrow below mockups: down from left, right, up to right mockup -->
+      <svg width="340" height="50" viewBox="0 0 340 50" style="margin-top: 12px; overflow: visible; flex-shrink: 0;">
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto" markerUnits="strokeWidth">
+            <polyline points="0 0, 5 5, 0 10" fill="none" stroke="#71717A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+          </marker>
+        </defs>
+        <!-- Down from center of left mockup, right along bottom, up to center of right mockup -->
+        <path d="M 40 0 L 40 16 Q 40 38 62 38 L 278 38 Q 300 38 300 16 L 300 0" stroke="#71717A" stroke-width="1.5" fill="none" stroke-dasharray="6 4" stroke-linejoin="round" marker-end="url(#arrowhead)" />
+      </svg>
+
+      <!-- Arrow description text -->
+      <div style="text-align: center; max-width: 270px; margin-top: -2px;">
+        <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">AI creates vertical-specific briefs and distributes them across the supplier network. Suppliers have 24 hours to send their proposals.</div>
+      </div>
+
     </div>
   </div>
 

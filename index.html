@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1272,9 +1272,116 @@
   .slide-green .section-label::before { background: #22C55E; }
   .slide-green .headline .accent { color: #22C55E; }
   .slide-green .stat-value.accent { color: #22C55E; }
+
+  /* LANGUAGE SELECTOR */
+  .lang-selector {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    z-index: 200;
+    font-family: var(--font-body);
+  }
+
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .lang-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+  }
+
+  .lang-chevron {
+    font-size: 10px;
+    transition: transform 0.2s ease;
+  }
+
+  .lang-selector.open .lang-chevron {
+    transform: rotate(180deg);
+  }
+
+  .lang-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 4px;
+    min-width: 160px;
+    opacity: 0;
+    transform: translateY(-4px);
+    pointer-events: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .lang-selector.open .lang-dropdown {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  .lang-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-radius: 7px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .lang-option:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .lang-option.active {
+    color: var(--text-primary);
+  }
+
+  .lang-option.active::after {
+    content: '✓';
+    font-size: 12px;
+    color: var(--accent);
+  }
+
+  .lang-option-code {
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-left: 6px;
+  }
 </style>
 </head>
 <body>
+
+<!-- LANGUAGE SELECTOR -->
+<div class="lang-selector" id="langSelector">
+  <div class="lang-toggle" id="langToggle">
+    <span id="langIndicator">SV</span>
+    <span class="lang-chevron">▾</span>
+  </div>
+  <div class="lang-dropdown">
+    <div class="lang-option active" data-lang="sv">Svenska <span class="lang-option-code">(SV)</span></div>
+    <div class="lang-option" data-lang="en">English <span class="lang-option-code">(EN)</span></div>
+  </div>
+</div>
 
 <div class="deck" id="deck">
   <!-- SLIDE 1: COVER -->
@@ -1291,11 +1398,11 @@
         </svg>
     </div>
     <div class="slide-inner cover-slide">
-      <h1 class="headline stagger">Company events,<br>without the <span class="accent">chaos</span></h1>
-      <p class="subheadline stagger">The event platform for businesses without an event team. One tool to book chefs, venues, transport, and equipment.</p>
+      <h1 class="headline stagger" data-i18n="s0_headline">Företagsevent,<br>utan <span class="accent">kaoset</span></h1>
+      <p class="subheadline stagger" data-i18n="s0_sub">Eventplattformen för företag utan eget eventteam. Ett verktyg för att boka kockar, lokaler, transport och utrustning.</p>
       <div class="cover-meta stagger">
-        <div class="cover-meta-item">Raising: <span>10M SEK</span></div>
-        <div class="cover-meta-item">Market: <span>Sweden → Europe</span></div>
+        <div class="cover-meta-item" data-i18n="s0_meta_raising">Tar in: <span>10M SEK</span></div>
+        <div class="cover-meta-item" data-i18n="s0_meta_market">Marknad: <span>Sverige → Europa</span></div>
       </div>
     </div>
   </div>
@@ -1304,26 +1411,26 @@
   <!-- SLIDE 2: PROBLEM -->
   <div class="slide has-header slide-red" data-slide="1">
     <div class="slide-header">
-      <div class="section-label stagger">The Problem</div>
-      <h2 class="headline stagger">"Can you organize something<br>nice for <span class="accent">40 people?</span>"</h2>
-      <p class="subheadline stagger">The task falls on office managers and assistants with no event experience, no supplier network, and no idea what things should cost. What should take an afternoon turns into weeks of wasted time.</p>
+      <div class="section-label stagger" data-i18n="s1_label">Problemet</div>
+      <h2 class="headline stagger" data-i18n="s1_headline">"Kan du fixa något trevligt<br>för <span class="accent">40 personer?</span>"</h2>
+      <p class="subheadline stagger" data-i18n="s1_sub">Uppgiften hamnar hos kontorschefer och assistenter utan erfarenhet av event, utan leverantörsnätverk och utan koll på vad saker borde kosta. Det som borde ta en eftermiddag blir veckor av bortkastad tid.</p>
     </div>
     <div class="slide-inner">
       <div class="problem-stats stagger">
         <div class="problem-stat">
           <div class="stat-value">3–5</div>
-          <div class="stat-title">Platforms per event</div>
-          <div class="stat-label">One dinner requires a chef, venue, transport, and equipment. Each from a different platform, with zero coordination.</div>
+          <div class="stat-title" data-i18n="s1_stat1_title">Plattformar per event</div>
+          <div class="stat-label" data-i18n="s1_stat1_desc">En middag kräver kock, lokal, transport och utrustning. Allt från olika plattformar, utan samordning.</div>
         </div>
         <div class="problem-stat">
-          <div class="stat-value">7–14 days</div>
-          <div class="stat-title">Days lost coordinating</div>
-          <div class="stat-label">Searching for suppliers, emailing quotes, comparing options with no benchmark. Without a network, a simple booking spirals into weeks of back-and-forth.</div>
+          <div class="stat-value" data-i18n="s1_stat2_val">7–14 dagar</div>
+          <div class="stat-title" data-i18n="s1_stat2_title">Dagar förlorade på koordinering</div>
+          <div class="stat-label" data-i18n="s1_stat2_desc">Söka leverantörer, mejla offerter, jämföra alternativ utan referens. Utan nätverk blir en enkel bokning veckor av fram och tillbaka.</div>
         </div>
         <div class="problem-stat">
           <div class="stat-value">20–35%</div>
-          <div class="stat-title">Agency markup to avoid it</div>
-          <div class="stat-label">The only alternative is an agency that marks up the entire event by 20-35%. Companies pay thousands extra just because they lack the network to do it themselves.</div>
+          <div class="stat-title" data-i18n="s1_stat3_title">Byråpåslag för att slippa</div>
+          <div class="stat-label" data-i18n="s1_stat3_desc">Det enda alternativet är en byrå som lägger på 20–35% på hela eventet. Företag betalar tusentals kronor extra bara för att de saknar nätverket att göra det själva.</div>
         </div>
       </div>
     </div>
@@ -1333,30 +1440,30 @@
   <!-- SLIDE 3: WHY NOW -->
   <div class="slide has-header" data-slide="2">
     <div class="slide-header">
-      <div class="section-label stagger">Why Now</div>
-      <h2 class="headline stagger">Event spend is booming. The tools <span class="accent">haven't caught up.</span></h2>
+      <div class="section-label stagger" data-i18n="s2_label">Varför nu</div>
+      <h2 class="headline stagger" data-i18n="s2_headline">Eventbudgetarna växer. Verktygen <span class="accent">hänger inte med.</span></h2>
     </div>
     <div class="slide-inner">
       <div class="card-grid cols-3 stagger">
         <div class="card">
           <div class="card-stat">9.1%</div>
-          <div class="card-stat-label">CAGR growth</div>
-          <h3>Sweden's event market is surging</h3>
-          <p>Fastest-growing in Europe. Companies are spending more on team events, client dinners, and culture than ever before.</p>
+          <div class="card-stat-label" data-i18n="s2_c1_stat_label">CAGR-tillväxt</div>
+          <h3 data-i18n="s2_c1_title">Sveriges eventmarknad växer snabbast i Europa</h3>
+          <p data-i18n="s2_c1_desc">Snabbast växande i Europa. Företag lägger mer än någonsin på teamevent, kundmiddagar och kulturaktiviteter.</p>
           <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">Source: Allied Market Research, Europe Events Industry Forecast 2021-2030</p>
         </div>
         <div class="card">
           <div class="card-stat">#3</div>
-          <div class="card-stat-label">From bottom in digitization</div>
-          <h3>The industry is still analog</h3>
-          <p>Single-service platforms handle one category. Agencies handle everything, but through calls, emails, and markups. No platform connects all suppliers in one flow.</p>
+          <div class="card-stat-label" data-i18n="s2_c2_stat_label">Från botten i digitalisering</div>
+          <h3 data-i18n="s2_c2_title">Branschen är fortfarande analog</h3>
+          <p data-i18n="s2_c2_desc">Plattformar löser en kategori åt gången. Byråer hanterar allt, men via samtal, mejl och påslag. Ingen plattform kopplar ihop alla leverantörer i ett flöde.</p>
           <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">Source: McKinsey Global Institute, Industry Digitization Index</p>
         </div>
         <div class="card">
           <div class="card-stat">10x</div>
-          <div class="card-stat-label">Cheaper to build today</div>
-          <h3>AI lets small teams build big</h3>
-          <p>AI-native tooling lets a small team move five times faster than before. What used to take ten people and a year of runway, Amici can build with two.</p>
+          <div class="card-stat-label" data-i18n="s2_c3_stat_label">Billigare att bygga idag</div>
+          <h3 data-i18n="s2_c3_title">AI låter små team bygga stort</h3>
+          <p data-i18n="s2_c3_desc">AI-verktyg låter ett litet team röra sig fem gånger snabbare. Det som förut krävde tio personer och ett års runway kan Amici bygga med två.</p>
         </div>
       </div>
     </div>
@@ -1366,9 +1473,9 @@
   <!-- SLIDE 4: JOURNEY SO FAR -->
   <div class="slide has-header" data-slide="3">
     <div class="slide-header">
-      <div class="section-label stagger">Traction</div>
-      <h2 class="headline stagger">We ran every event by hand. <span class="accent">On&nbsp;purpose.</span></h2>
-      <p class="subheadline stagger">Before building the platform, we operated as a concierge service, which taught us how companies actually buy events.</p>
+      <div class="section-label stagger" data-i18n="s3_label">Traktion</div>
+      <h2 class="headline stagger" data-i18n="s3_headline">Vi körde varje event för hand. <span class="accent">Med&nbsp;flit.</span></h2>
+      <p class="subheadline stagger" data-i18n="s3_sub">Innan vi byggde plattformen drev vi en concierge-tjänst, vilket lärde oss hur företag faktiskt köper event.</p>
     </div>
     <div class="slide-inner">
       <div class="stagger" style="display: flex; gap: 80px; align-items: center;">
@@ -1377,36 +1484,36 @@
           <div class="timeline-item">
             <div class="timeline-dot filled">✓</div>
             <div class="timeline-content">
-              <h3>Started with chef bookings</h3>
-              <p>Started connecting private customers with chefs. Early traction, but we learned the real demand was coming from businesses.</p>
+              <h3 data-i18n="s3_t1_title">Började med kockbokningar</h3>
+              <p data-i18n="s3_t1_desc">Kopplade ihop privatkunder med kockar. Tidig traktion, men vi insåg att den riktiga efterfrågan kom från företag.</p>
             </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot filled">✓</div>
             <div class="timeline-content">
-              <h3>Pivoted to B2B</h3>
-              <p>Built V2 from scratch for business customers: authentication, transactional emails, and an admin platform to operate at scale.</p>
+              <h3 data-i18n="s3_t2_title">Pivoterade till B2B</h3>
+              <p data-i18n="s3_t2_desc">Byggde V2 från grunden för företagskunder: autentisering, transaktionella mejl och en adminplattform för att kunna skala.</p>
             </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot">→</div>
             <div class="timeline-content">
-              <h3>Level up sales and marketing</h3>
-              <p>Drive traffic to the new platform. Hire dedicated sales and marketing to reach companies outside our existing network.</p>
+              <h3 data-i18n="s3_t3_title">Skala upp sälj och marknadsföring</h3>
+              <p data-i18n="s3_t3_desc">Driva trafik till den nya plattformen. Anställa dedikerade sälj- och marknadsföringsresurser för att nå företag utanför vårt befintliga nätverk.</p>
             </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot">→</div>
             <div class="timeline-content">
-              <h3>Next: expand across verticals</h3>
-              <p>The platform supports multiple supplier categories today. This raise will fund equal coverage across verticals, with dedicated pricing and flows for each. AI-powered workflows will keep communication clear and consistent for both customers and suppliers.</p>
+              <h3 data-i18n="s3_t4_title">Nästa steg: expandera över vertikaler</h3>
+              <p data-i18n="s3_t4_desc">Plattformen stödjer redan flera leverantörskategorier. Den här rundan finansierar jämn täckning över vertikaler, med dedikerad prissättning och flöden för varje kategori. AI-drivna arbetsflöden håller kommunikationen tydlig för både kunder och leverantörer.</p>
             </div>
           </div>
         </div>
         <!-- Trusted by — brand grid (right, subtle) -->
         <div style="flex: 1; max-width: 620px; display: flex; align-items: center; justify-content: center; opacity: 0.5;">
           <div>
-            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; margin-bottom: 12px; text-align: center;">Trusted by</div>
+            <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; margin-bottom: 12px; text-align: center;" data-i18n="s3_trusted">Anlitade av</div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; width: 240px;">
               <div style="display: flex; align-items: center; justify-content: center; padding: 22px 12px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); font-size: 13px; font-weight: 600; color: white; letter-spacing: 0.1em; text-transform: uppercase;">Hermès</div>
               <div style="display: flex; align-items: center; justify-content: center; padding: 22px 12px; border-bottom: 1px solid var(--border); font-size: 13px; font-weight: 600; color: white; letter-spacing: 0.1em; text-transform: uppercase;">Prada</div>
@@ -1423,35 +1530,35 @@
   <!-- SLIDE 5: WHAT WE'VE LEARNED -->
   <div class="slide has-header" data-slide="4">
     <div class="slide-header">
-      <div class="section-label stagger">Insights</div>
-      <h2 class="headline stagger">What running events <span class="accent">taught us</span></h2>
-      <p class="subheadline stagger">We've organized events hands-on. These are the patterns we kept seeing on the buyer side.</p>
+      <div class="section-label stagger" data-i18n="s4_label">Insikter</div>
+      <h2 class="headline stagger" data-i18n="s4_headline">Vad vi lärde oss <span class="accent">av att köra event</span></h2>
+      <p class="subheadline stagger" data-i18n="s4_sub">Vi har organiserat event hands-on. Det här är mönstren vi såg om och om igen på köparsidan.</p>
     </div>
     <div class="slide-inner">
       <div class="card-grid cols-3 stagger">
         <div class="card">
-          <div class="card-stat">First step</div>
-          <div class="card-stat-label">Google it</div>
-          <h3>The buyer starts from zero every time</h3>
-          <p>It's the office manager, HR lead, or EA. No supplier network, no event training. They Google, ask around, and hope for the best. Every single time.</p>
+          <div class="card-stat" data-i18n="s4_c1_stat">Första steget</div>
+          <div class="card-stat-label" data-i18n="s4_c1_stat_label">Googla</div>
+          <h3 data-i18n="s4_c1_title">Köparen börjar från noll varje gång</h3>
+          <p data-i18n="s4_c1_desc">Det är kontorschefen, HR-ansvarige eller assistenten. Inget leverantörsnätverk, ingen eventutbildning. De googlar, frågar runt och hoppas på det bästa. Varje gång.</p>
         </div>
         <div class="card">
           <div class="card-stat">3–5</div>
-          <div class="card-stat-label">Vendors per event</div>
-          <h3>Many events need more than one supplier</h3>
-          <p>A company event often needs a chef, a venue, sometimes transport and equipment. That means managing multiple vendor relationships with no coordination.</p>
+          <div class="card-stat-label" data-i18n="s4_c2_stat_label">Leverantörer per event</div>
+          <h3 data-i18n="s4_c2_title">Många event kräver fler än en leverantör</h3>
+          <p data-i18n="s4_c2_desc">Ett företagsevent behöver ofta kock, lokal, ibland transport och utrustning. Det innebär att hantera flera leverantörsrelationer utan samordning.</p>
         </div>
         <div class="card">
           <div class="card-stat">7–14 days</div>
-          <div class="card-stat-label">Per event, start to finish</div>
-          <h3>The knowledge gap makes everything slower</h3>
-          <p>Finding suppliers from scratch, comparing quotes, aligning schedules, chasing confirmations. Without event experience or a network, the office manager spends weeks stitching it all together.</p>
+          <div class="card-stat-label" data-i18n="s4_c3_stat_label">Per event, från start till mål</div>
+          <h3 data-i18n="s4_c3_title">Kunskapsgapet gör allt långsammare</h3>
+          <p data-i18n="s4_c3_desc">Hitta leverantörer från noll, jämföra offerter, synka scheman, jaga bekräftelser. Utan erfarenhet eller nätverk lägger kontorschefen veckor på att sy ihop alltihop.</p>
         </div>
       </div>
 
       <div class="quote-block stagger" style="margin-top: 16px; border-color: var(--accent);">
-        <p style="font-size: 18px; color: var(--text-primary); font-style: normal; font-weight: 700; line-height: 1.5;">The real value isn't matching a single supplier. It's bringing the entire event together in one place.</p>
-        <p style="font-size: 15px; color: var(--text-secondary); margin-top: 8px; font-style: normal;">That's what nobody else is doing for the mid-market. This is why we built a multi-service platform, not another single-vendor marketplace.</p>
+        <p style="font-size: 18px; color: var(--text-primary); font-style: normal; font-weight: 700; line-height: 1.5;" data-i18n="s4_quote">Det verkliga värdet ligger inte i att matcha en enskild leverantör. Det är att samla hela eventet på ett ställe.</p>
+        <p style="font-size: 15px; color: var(--text-secondary); margin-top: 8px; font-style: normal;" data-i18n="s4_quote_sub">Det är det ingen annan gör för mellanmarknaden. Därför byggde vi en plattform för flera tjänster, inte ännu en marknadsplats för enstaka leverantörer.</p>
       </div>
     </div>
   </div>
@@ -1460,8 +1567,8 @@
   <!-- SLIDE 6: PRODUCT -->
   <div class="slide has-header" data-slide="5">
     <div class="slide-header">
-      <div class="section-label stagger">Product Vision</div>
-      <h2 class="headline stagger">What takes hours today takes <span class="accent">minutes with Amici</span></h2>
+      <div class="section-label stagger" data-i18n="s5_label">Produktvision</div>
+      <h2 class="headline stagger" data-i18n="s5_headline">Det som tar timmar idag tar <span class="accent">minuter med Amici</span></h2>
     </div>
     <div class="slide-inner">
       <div class="two-col stagger" style="align-items: center;">
@@ -1469,23 +1576,23 @@
           <div style="display: flex; flex-direction: column; align-items: center; gap: 0; max-width: 340px; margin: 0 auto;">
             <!-- Step boxes with connectors -->
             <div class="card" style="padding: 12px 24px; text-align: center; width: 220px;">
-              <h3 style="font-family: var(--font-display); font-size: 15px; font-weight: 700; margin: 0;">Describe your event</h3>
+              <h3 style="font-family: var(--font-display); font-size: 15px; font-weight: 700; margin: 0;" data-i18n="s5_step1">Beskriv ditt event</h3>
             </div>
             <div style="display: flex; flex-direction: column; align-items: center; gap: 0;">
               <div style="width: 1px; height: 8px; background: var(--border);"></div>
-              <div style="font-size: 11px; color: var(--text-muted); font-style: italic; padding: 2px 0;">AI briefs each supplier</div>
+              <div style="font-size: 11px; color: var(--text-muted); font-style: italic; padding: 2px 0;" data-i18n="s5_conn1">AI briefar varje leverantör</div>
               <div style="width: 1px; height: 8px; background: var(--border);"></div>
             </div>
             <div class="card" style="padding: 12px 24px; text-align: center; width: 220px;">
-              <h3 style="font-family: var(--font-display); font-size: 15px; font-weight: 700; margin: 0;">Suppliers respond</h3>
+              <h3 style="font-family: var(--font-display); font-size: 15px; font-weight: 700; margin: 0;" data-i18n="s5_step2">Leverantörer svarar</h3>
             </div>
             <div style="display: flex; flex-direction: column; align-items: center; gap: 0;">
               <div style="width: 1px; height: 8px; background: var(--border);"></div>
-              <div style="font-size: 11px; color: var(--text-muted); font-style: italic; padding: 2px 0;">AI curates into one view</div>
+              <div style="font-size: 11px; color: var(--text-muted); font-style: italic; padding: 2px 0;" data-i18n="s5_conn2">AI sammanställer i en vy</div>
               <div style="width: 1px; height: 8px; background: var(--border);"></div>
             </div>
             <div class="card" style="padding: 12px 24px; text-align: center; width: 220px;">
-              <h3 style="font-family: var(--font-display); font-size: 15px; font-weight: 700; margin: 0;">Review and book</h3>
+              <h3 style="font-family: var(--font-display); font-size: 15px; font-weight: 700; margin: 0;" data-i18n="s5_step3">Granska och boka</h3>
             </div>
             <!-- Branching connector -->
             <div style="width: 1px; height: 16px; background: var(--border);"></div>
@@ -1500,33 +1607,33 @@
             <!-- Two outcome boxes -->
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%;">
               <div class="card" style="padding: 14px 16px; text-align: center;">
-                <h3 style="font-family: var(--font-display); font-size: 14px; font-weight: 700; margin: 0 0 4px 0;">Add a coordinator</h3>
-                <p style="font-size: 12px; color: var(--text-secondary); margin: 0;">A pro handles supplier logistics for you</p>
+                <h3 style="font-family: var(--font-display); font-size: 14px; font-weight: 700; margin: 0 0 4px 0;" data-i18n="s5_branch1_title">Lägg till en koordinator</h3>
+                <p style="font-size: 12px; color: var(--text-secondary); margin: 0;" data-i18n="s5_branch1_desc">Ett proffs hanterar leverantörslogistiken åt dig</p>
               </div>
               <div class="card" style="padding: 14px 16px; text-align: center;">
-                <h3 style="font-family: var(--font-display); font-size: 14px; font-weight: 700; margin: 0 0 4px 0;">Coordinate yourself</h3>
-                <p style="font-size: 12px; color: var(--text-secondary); margin: 0;">Manage suppliers directly through Amici</p>
+                <h3 style="font-family: var(--font-display); font-size: 14px; font-weight: 700; margin: 0 0 4px 0;" data-i18n="s5_branch2_title">Koordinera själv</h3>
+                <p style="font-size: 12px; color: var(--text-secondary); margin: 0;" data-i18n="s5_branch2_desc">Hantera leverantörerna direkt via Amici</p>
               </div>
             </div>
           </div>
         </div>
         <div style="text-align: center; padding: 32px;">
-          <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">Time to book an event</div>
+          <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;" data-i18n="s5_time_label">Tid att boka ett event</div>
           <div style="display: flex; align-items: center; justify-content: center; gap: 24px; margin: 16px 0;">
             <div>
-              <div style="font-family: var(--font-numbers); font-size: 36px; font-weight: 600; color: var(--text-muted); opacity: 0.5;">7–14 days</div>
-              <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Today (DIY)</div>
-              <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px; opacity: 0.6; max-width: 160px;">Hours of active work scattered across weeks of waiting</div>
+              <div style="font-family: var(--font-numbers); font-size: 36px; font-weight: 600; color: var(--text-muted); opacity: 0.5;" data-i18n="s5_time_old_val">7–14 dagar</div>
+              <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;" data-i18n="s5_time_old_label">Idag (gör det själv)</div>
+              <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px; opacity: 0.6; max-width: 160px;" data-i18n="s5_time_old_desc">Timmar av aktivt arbete utspritt över veckor av väntan</div>
             </div>
             <div style="font-size: 24px; color: var(--accent);">→</div>
             <div>
               <div style="font-family: var(--font-numbers); font-size: 36px; font-weight: 600; color: var(--accent);">&lt; 24 hrs</div>
-              <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">With Amici</div>
-              <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px; opacity: 0.6; max-width: 160px;">Minutes of active work. The rest is suppliers responding.</div>
+              <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;" data-i18n="s5_time_new_label">Med Amici</div>
+              <div style="font-size: 12px; color: var(--text-muted); margin-top: 6px; opacity: 0.6; max-width: 160px;" data-i18n="s5_time_new_desc">Minuter av aktivt arbete. Resten är leverantörer som svarar.</div>
             </div>
           </div>
           <div style="height: 1px; background: var(--border); margin: 16px 0;"></div>
-          <p style="font-size: 15px; color: var(--text-secondary);">You spend a few minutes describing your event. We match you with the right suppliers and present their offers side by side. No chasing quotes, no juggling vendors, no spreadsheet tracking.</p>
+          <p style="font-size: 15px; color: var(--text-secondary);" data-i18n="s5_time_summary">Du lägger några minuter på att beskriva ditt event. Vi matchar dig med rätt leverantörer och presenterar deras offerter sida vid sida. Ingen jakt på offerter, inget jonglerade med leverantörer, inga kalkylark.</p>
         </div>
       </div>
     </div>
@@ -1539,9 +1646,9 @@
 
     <!-- Standard slide-header for alignment (text only, constrained to left column) -->
     <div class="slide-header" style="max-width: 38%; align-self: flex-start;">
-      <div class="section-label stagger">Product Vision</div>
-      <h2 class="headline stagger" style="max-width: none;">Every supplier. <span class="accent">One place.</span></h2>
-      <p class="subheadline stagger" style="max-width: none;">Describe your event. We match you with verified suppliers, collect their offers, and present one clear proposal. You compare, book, and go.</p>
+      <div class="section-label stagger" data-i18n="s6_label">Produktvision</div>
+      <h2 class="headline stagger" style="max-width: none;" data-i18n="s6_headline">Alla leverantörer. <span class="accent">Ett ställe.</span></h2>
+      <p class="subheadline stagger" style="max-width: none;" data-i18n="s6_sub">Beskriv ditt event. Vi matchar dig med verifierade leverantörer, samlar in deras offerter och presenterar ett tydligt förslag. Du jämför, bokar och kör.</p>
     </div>
 
     <!-- Mockups positioned absolutely in the right half, vertically centered in the full slide -->
@@ -1565,7 +1672,7 @@
 
       <!-- Arrow description text -->
       <div style="text-align: center; max-width: 270px; margin-top: -2px;">
-        <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">AI creates vertical-specific briefs and distributes them across the supplier network. Suppliers have 24 hours to send their proposals.</div>
+        <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;" data-i18n="s6_arrow_desc">AI skapar branschspecifika briefer och distribuerar dem i leverantörsnätverket. Leverantörerna har 24 timmar på sig att skicka sina förslag.</div>
       </div>
     </div>
   </div>
@@ -1575,9 +1682,9 @@
   <div class="slide has-header" data-slide="7">
     <div class="glow-orb" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
     <div class="slide-header">
-      <div class="section-label stagger">Product Vision</div>
-      <h2 class="headline stagger">A supplier engine anyone can <span class="accent">plug&nbsp;into</span></h2>
-      <p class="subheadline stagger">As our supplier network grows, other platforms, agencies, and corporate tools can tap into it via API or embed. The matching and quality we build becomes infrastructure anyone can use.</p>
+      <div class="section-label stagger" data-i18n="s7_label">Produktvision</div>
+      <h2 class="headline stagger" data-i18n="s7_headline">En leverantörsmotor som alla kan <span class="accent">plugga&nbsp;in&nbsp;i</span></h2>
+      <p class="subheadline stagger" data-i18n="s7_sub">I takt med att vårt leverantörsnätverk växer kan andra plattformar, byråer och företagsverktyg koppla in sig via API eller embed. Matchningen och kvaliteten vi bygger blir infrastruktur som alla kan använda.</p>
     </div>
     <div class="slide-inner">
       <div class="vision-flow stagger">
@@ -1610,11 +1717,11 @@
 
         <!-- Supplier boxes (right) -->
         <div class="vision-nodes-right">
-          <div class="vision-node">Chef</div>
-          <div class="vision-node">Venue</div>
-          <div class="vision-node">Transport</div>
-          <div class="vision-node">Equipment</div>
-          <div class="vision-node">Staff</div>
+          <div class="vision-node" data-i18n="s7_node_chef">Kock</div>
+          <div class="vision-node" data-i18n="s7_node_venue">Lokal</div>
+          <div class="vision-node" data-i18n="s7_node_transport">Transport</div>
+          <div class="vision-node" data-i18n="s7_node_equipment">Utrustning</div>
+          <div class="vision-node" data-i18n="s7_node_staff">Personal</div>
         </div>
       </div>
     </div>
@@ -1624,9 +1731,9 @@
   <!-- SLIDE 9: COMPETITIVE LANDSCAPE -->
   <div class="slide has-header" data-slide="8">
     <div class="slide-header">
-      <div class="section-label stagger">Competitive Landscape</div>
-      <h2 class="headline stagger">The sweet spot <span class="accent">nobody owns</span></h2>
-      <p class="subheadline stagger">Between free-but-painful DIY and expensive-but-easy agencies, there's a massive gap. That's where Amici lives.</p>
+      <div class="section-label stagger" data-i18n="s8_label">Konkurrenslandskapet</div>
+      <h2 class="headline stagger" data-i18n="s8_headline">Sweetspoten som <span class="accent">ingen äger</span></h2>
+      <p class="subheadline stagger" data-i18n="s8_sub">Mellan gratis-men-jobbigt gör-det-själv och dyra-men-smidiga byråer finns ett stort gap. Där lever Amici.</p>
     </div>
     <div class="slide-inner">
       <div class="stagger" style="max-width: 1000px; margin: 0 auto;">
@@ -1634,24 +1741,24 @@
         <div style="display: flex; align-items: stretch; gap: 4px; margin-bottom: 16px; min-height: 120px;">
           <div style="flex: 1; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius) 0 0 var(--radius); padding: 16px; display: flex; flex-direction: column; justify-content: center;">
             <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">DIY</div>
-            <div style="font-size: 14px; color: var(--text-secondary);">Free but painful. Hours of Googling, calling, coordinating.</div>
+            <div style="font-size: 14px; color: var(--text-secondary);" data-i18n="s8_diy_desc">Gratis men jobbigt. Timmar av googlande, ringande, koordinerande.</div>
           </div>
           <div style="flex: 1; background: var(--bg-card); border: 1px solid var(--border); padding: 16px; display: flex; flex-direction: column; justify-content: center;">
-            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Single platforms</div>
-            <div style="font-size: 14px; color: var(--text-secondary);">One service solved. Still juggling the rest yourself.</div>
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;" data-i18n="s8_single_title">Enskilda plattformar</div>
+            <div style="font-size: 14px; color: var(--text-secondary);" data-i18n="s8_single_desc">En tjänst löst. Resten får du fortfarande jonglera själv.</div>
           </div>
           <div style="flex: 1.3; background: rgba(59,130,246,0.08); border: 2px solid var(--accent); padding: 16px; display: flex; flex-direction: column; justify-content: center; text-align: center;">
             <div style="font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 4px;">Amici</div>
-            <div style="font-size: 14px; color: var(--text-secondary);">All your suppliers, one platform. Add a coordinator when you need one.</div>
+            <div style="font-size: 14px; color: var(--text-secondary);" data-i18n="s8_amici_desc">Alla dina leverantörer, en plattform. Lägg till en koordinator när du behöver.</div>
           </div>
           <div style="flex: 1; background: var(--bg-card); border: 1px solid var(--border); border-radius: 0 var(--radius) var(--radius) 0; padding: 16px; display: flex; flex-direction: column; justify-content: center;">
-            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Traditional agencies</div>
-            <div style="font-size: 14px; color: var(--text-secondary);">Full-service but manual. Built for large enterprise budgets.</div>
+            <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;" data-i18n="s8_agency_title">Traditionella byråer</div>
+            <div style="font-size: 14px; color: var(--text-secondary);" data-i18n="s8_agency_desc">Fullservice men manuellt. Byggt för stora företagsbudgetar.</div>
           </div>
         </div>
-        <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em;"><span>← Cheaper, more work</span><span>Easier, more expensive →</span></div>
+        <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em;"><span data-i18n="s8_scale_left">← Billigare, mer jobb</span><span data-i18n="s8_scale_right">Enklare, dyrare →</span></div>
         <div class="card" style="margin-top: 16px; text-align: center; border-color: rgba(59, 130, 246, 0.2);">
-          <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;"><strong style="color: var(--text-primary);">Why agencies can't compete:</strong> Agencies sell human hours. Every event they run costs more staff time. Amici sells software and network effects. Every event we facilitate runs on the same platform at near-zero marginal cost.</p>
+          <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;" data-i18n="s8_compete"><strong style="color: var(--text-primary);">Varför byråer inte kan konkurrera:</strong> Byråer säljer arbetstimmar. Varje event de kör kostar mer personaltid. Amici säljer mjukvara och nätverkseffekter. Varje event vi förmedlar körs på samma plattform till nästan noll marginalkostnad.</p>
         </div>
       </div>
     </div>
@@ -1661,8 +1768,8 @@
   <!-- SLIDE 10: MARKET OPPORTUNITY -->
   <div class="slide has-header slide-green" data-slide="9">
     <div class="slide-header">
-      <div class="section-label stagger">Market</div>
-      <h2 class="headline stagger">Big market. <span class="accent">Focused start.</span></h2>
+      <div class="section-label stagger" data-i18n="s9_label">Marknad</div>
+      <h2 class="headline stagger" data-i18n="s9_headline">Stor marknad. <span class="accent">Fokuserad start.</span></h2>
     </div>
     <div class="slide-inner">
       <div style="max-width: 800px; margin: 0 auto;" class="stagger">
@@ -1670,17 +1777,17 @@
           <div style="background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.15); border-radius: var(--radius) 0 0 var(--radius); padding: 24px; text-align: center;">
             <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 8px;">TAM</div>
             <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: var(--text-primary);">7.2B SEK</div>
-            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">All mid-market corporate events in Sweden</p>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;" data-i18n="s9_tam_desc">Alla företagsevent i mellanmarknaden i Sverige</p>
           </div>
           <div style="background: rgba(34,197,94,0.10); border: 1px solid rgba(34,197,94,0.25); border-left: none; border-right: none; padding: 24px; text-align: center;">
             <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 8px;">SAM</div>
             <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: var(--text-primary);">1.8B SEK</div>
-            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">Multi-supplier events we can serve</p>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;" data-i18n="s9_sam_desc">Event med flera leverantörer vi kan serva</p>
           </div>
           <div style="background: rgba(34,197,94,0.18); border: 1px solid #22C55E; border-radius: 0 var(--radius) var(--radius) 0; padding: 24px; text-align: center;">
             <div style="font-size: 13px; color: #22C55E; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 8px;">SOM</div>
             <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: #22C55E;">50M SEK</div>
-            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">Year 1-2 Stockholm capture</p>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;" data-i18n="s9_som_desc">År 1–2, Stockholm</p>
           </div>
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
@@ -1688,8 +1795,8 @@
             <div style="display: flex; align-items: baseline; gap: 12px;">
               <div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600; color: #22C55E;">9.1%</div>
               <div>
-                <div style="font-size: 15px; font-weight: 700; font-family: var(--font-display);">Sweden CAGR</div>
-                <p style="font-size: 14px; color: var(--text-secondary);">Fastest-growing event market in Europe (2021-2030).</p>
+                <div style="font-size: 15px; font-weight: 700; font-family: var(--font-display);" data-i18n="s9_cagr_title">CAGR Sverige</div>
+                <p style="font-size: 14px; color: var(--text-secondary);" data-i18n="s9_cagr_desc">Snabbast växande eventmarknad i Europa (2021–2030).</p>
                 <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Allied Market Research</p>
               </div>
             </div>
@@ -1698,15 +1805,15 @@
             <div style="display: flex; align-items: baseline; gap: 12px;">
               <div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600; color: #22C55E;">30K+</div>
               <div>
-                <div style="font-size: 15px; font-weight: 700; font-family: var(--font-display);">Target segment</div>
-                <p style="font-size: 14px; color: var(--text-secondary);">Companies with 20-500 employees, no event staff.</p>
-                <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">SCB company registry</p>
+                <div style="font-size: 15px; font-weight: 700; font-family: var(--font-display);" data-i18n="s9_target_title">Målsegment</div>
+                <p style="font-size: 14px; color: var(--text-secondary);" data-i18n="s9_target_desc">Företag med 20–500 anställda, utan eventpersonal.</p>
+                <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">SCB</p>
               </div>
             </div>
           </div>
         </div>
         <div class="card" style="margin-top: 16px; text-align: center; border-color: rgba(34,197,94,0.2);">
-          <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;"><strong style="color: var(--text-primary);">Bottom-up math:</strong> 30K companies × 4 events/year × 60K SEK avg. spend = 7.2B SEK addressable market. Sweden growing at 9.1% CAGR, European market at 8.7% overall.</p>
+          <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;" data-i18n="s9_bottomup"><strong style="color: var(--text-primary);">Beräkning nerifrån och upp:</strong> 30K företag × 4 event/år × 60K SEK snittutgift = 7,2 mdr SEK adresserbar marknad. Sverige växer med 9,1% CAGR, europeiska marknaden med 8,7%.</p>
           <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px;">Sources: SCB Structural Business Statistics, Allied Market Research Europe Events Industry Forecast 2021-2030</p>
         </div>
       </div>
@@ -1717,37 +1824,37 @@
   <!-- SLIDE 11: BUSINESS MODEL -->
   <div class="slide has-header slide-green" data-slide="10">
     <div class="slide-header">
-      <div class="section-label stagger">Business Model</div>
-      <h2 class="headline stagger">Commission today. <span class="accent">Scale tomorrow.</span></h2>
+      <div class="section-label stagger" data-i18n="s10_label">Affärsmodell</div>
+      <h2 class="headline stagger" data-i18n="s10_headline">Kommission idag. <span class="accent">Skalning imorgon.</span></h2>
     </div>
     <div class="slide-inner">
       <div class="stagger">
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px;">
           <div class="card" style="border-color: #22C55E;">
-            <div style="font-size: 13px; color: #22C55E; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">Now</div>
+            <div style="font-size: 13px; color: #22C55E; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;" data-i18n="s10_now_label">Nu</div>
             <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">20%</div>
-            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">supplier-side commission</div>
-            <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;">Suppliers pay a 20% commission on bookings. Customers see transparent, direct pricing with no markup.</p>
+            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;" data-i18n="s10_now_stat_label">kommission på leverantörssidan</div>
+            <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;" data-i18n="s10_now_desc">Leverantörer betalar 20% kommission på bokningar. Kunder ser transparenta, direkta priser utan påslag.</p>
           </div>
           <div class="card" style="border-color: rgba(34,197,94,0.3);">
-            <div style="font-size: 13px; color: #22C55E; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">Next</div>
-            <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">Multi-service</div>
-            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">bundled commissions</div>
-            <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;">As we deepen coverage across supplier categories, revenue per event grows. One booking can include chef + venue + transport + equipment.</p>
+            <div style="font-size: 13px; color: #22C55E; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;" data-i18n="s10_next_label">Nästa</div>
+            <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;" data-i18n="s10_next_stat">Multitjänst</div>
+            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;" data-i18n="s10_next_stat_label">paketerade kommissioner</div>
+            <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;" data-i18n="s10_next_desc">I takt med att vi breddar leverantörskategorierna växer intäkten per event. En bokning kan inkludera kock + lokal + transport + utrustning.</p>
           </div>
           <div class="card" style="border-color: rgba(34,197,94,0.15);">
-            <div style="font-size: 13px; color: #22C55E; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;">Later</div>
+            <div style="font-size: 13px; color: #22C55E; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 12px;" data-i18n="s10_later_label">Senare</div>
             <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">Premium + SaaS</div>
-            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">coordinator add-on & supplier tools</div>
-            <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;">Event coordinator add-on: customers book professional coordinators through Amici for complex events (additional commission). Supplier SaaS: featured listings, analytics, priority matching. Plus supplier kickbacks on volume.</p>
+            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;" data-i18n="s10_later_stat_label">koordinator-tillägg & leverantörsverktyg</div>
+            <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;" data-i18n="s10_later_desc">Koordinator-tillägg: kunder bokar professionella koordinatorer via Amici för komplexa event (extra kommission). Leverantörs-SaaS: lyfta listningar, analys, prioriterad matchning. Plus volymrabatter till leverantörer.</p>
           </div>
         </div>
         <div class="card" style="border-color: rgba(34,197,94,0.2);">
-          <p style="font-size: 16px; color: var(--text-primary); text-align: center; font-weight: 700; margin-bottom: 12px;">Agencies sell human hours. Amici sells software and network effects.</p>
+          <p style="font-size: 16px; color: var(--text-primary); text-align: center; font-weight: 700; margin-bottom: 12px;" data-i18n="s10_scalability">Byråer säljer arbetstimmar. Amici säljer mjukvara och nätverkseffekter.</p>
           <div style="display: flex; justify-content: space-around; text-align: center;">
-            <div><div style="font-family: var(--font-numbers); font-size: 22px; font-weight: 600; color: #22C55E;">↓ CAC</div><p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">Network effects compound</p></div>
-            <div><div style="font-family: var(--font-numbers); font-size: 22px; font-weight: 600; color: #22C55E;">↑ Rev/event</div><p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">More services per booking</p></div>
-            <div><div style="font-family: var(--font-numbers); font-size: 22px; font-weight: 600; color: #22C55E;">3-5x</div><p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;">Annual repeat per client</p></div>
+            <div><div style="font-family: var(--font-numbers); font-size: 22px; font-weight: 600; color: #22C55E;">↓ CAC</div><p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;" data-i18n="s10_cac_desc">Nätverkseffekter ackumuleras</p></div>
+            <div><div style="font-family: var(--font-numbers); font-size: 22px; font-weight: 600; color: #22C55E;" data-i18n="s10_rev">↑ Intäkt/event</div><p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;" data-i18n="s10_rev_desc">Fler tjänster per bokning</p></div>
+            <div><div style="font-family: var(--font-numbers); font-size: 22px; font-weight: 600; color: #22C55E;">3-5x</div><p style="font-size: 14px; color: var(--text-secondary); margin-top: 4px;" data-i18n="s10_repeat_desc">Årlig återköpsfrekvens per kund</p></div>
           </div>
         </div>
       </div>
@@ -1758,9 +1865,9 @@
   <!-- SLIDE 12: TEAM -->
   <div class="slide has-header" data-slide="11">
     <div class="slide-header">
-      <div class="section-label stagger">The Team</div>
-      <h2 class="headline stagger">Built lean. <span class="accent">Staying lean.</span></h2>
-      <p class="subheadline stagger">A lean founding team with deep domain expertise and the speed to match. Four people built a platform that's ready for market.</p>
+      <div class="section-label stagger" data-i18n="s11_label">Teamet</div>
+      <h2 class="headline stagger" data-i18n="s11_headline">Byggt lean. <span class="accent">Förblir lean.</span></h2>
+      <p class="subheadline stagger" data-i18n="s11_sub">Ett lean grundarteam med djup domänexpertis och fart att matcha. Fyra personer byggde en plattform redo för marknad.</p>
     </div>
     <div class="slide-inner">
       <div class="team-grid stagger">
@@ -1768,35 +1875,35 @@
           <div class="team-avatar">CC</div>
           <h3>Carol Chmaissani</h3>
           <div class="team-role">CEO & Co-founder</div>
-          <div class="team-desc">Runs the business. Drives partnerships, client relationships, and growth. Landed Hermès, Prada, Sail Racing, and Chimi.</div>
+          <div class="team-desc" data-i18n="s11_carol_desc">Driver verksamheten. Ansvarar för partnerskap, kundrelationer och tillväxt. Landade Hermès, Prada, Sail Racing och Chimi.</div>
         </div>
         <div class="team-member">
           <div class="team-avatar">AI</div>
           <h3>Anders Isaksson</h3>
-          <div class="team-role">Chef & Co-founder</div>
-          <div class="team-desc">Professional chef with deep industry network. Knows every top chef in Stockholm. Trust built over years on the supply side.</div>
+          <div class="team-role" data-i18n="s11_anders_role">Kock & medgrundare</div>
+          <div class="team-desc" data-i18n="s11_anders_desc">Professionell kock med djupt branschnätverk. Känner alla toppkockar i Stockholm. Förtroende byggt under år på leverantörssidan.</div>
         </div>
         <div class="team-member">
           <div class="team-avatar">DR</div>
           <h3>Daniel Revesz</h3>
-          <div class="team-role">Product & Design</div>
-          <div class="team-desc">Senior product designer and PM. Built the entire platform alongside a full-time role.</div>
+          <div class="team-role" data-i18n="s11_daniel_role">Produkt & Design</div>
+          <div class="team-desc" data-i18n="s11_daniel_desc">Senior produktdesigner och PM. Byggde hela plattformen vid sidan av en heltidsroll.</div>
         </div>
         <div class="team-member">
           <div class="team-avatar">ES</div>
           <h3>Edin Skeja</h3>
-          <div class="team-role">Engineering</div>
-          <div class="team-desc">Senior full-stack developer. Built production infrastructure from scratch alongside a full-time role.</div>
+          <div class="team-role" data-i18n="s11_edin_role">Utveckling</div>
+          <div class="team-desc" data-i18n="s11_edin_desc">Senior fullstack-utvecklare. Byggde produktionsinfrastrukturen från grunden vid sidan av en heltidsroll.</div>
         </div>
       </div>
 
       <div class="two-col stagger" style="margin-top: 14px; gap: 12px; align-items: stretch;">
         <div class="card" style="border-color: rgba(59, 130, 246, 0.2);">
-          <p style="font-size: 15px; color: var(--text-secondary);"><strong style="color: var(--text-primary);">Founder-market fit:</strong> Anders owns the supply side (Sweden's top chefs trust him). Carol owns the demand side. Daniel and Edin built and ship the product. Purpose-built for this problem.</p>
+          <p style="font-size: 15px; color: var(--text-secondary);" data-i18n="s11_fit"><strong style="color: var(--text-primary);">Founder-market fit:</strong> Anders äger utbudssidan (Sveriges toppkockar litar på honom). Carol äger efterfrågesidan. Daniel och Edin byggde och levererar produkten. Skräddarsytt för det här problemet.</p>
         </div>
         <div class="card" style="border-color: rgba(34, 197, 94, 0.3);">
-          <div style="font-size: 12px; color: var(--success); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 6px;">Hiring with this round</div>
-          <p style="font-size: 15px; color: var(--text-secondary);">Sales lead and marketing hire to drive customer acquisition in Stockholm. Founding team stays focused on product and supply.</p>
+          <div style="font-size: 12px; color: var(--success); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 6px;" data-i18n="s11_hiring_label">Rekryterar med den här rundan</div>
+          <p style="font-size: 15px; color: var(--text-secondary);" data-i18n="s11_hiring_desc">Säljansvarig och marknadsförare för kundförvärv i Stockholm. Grundarteamet fortsätter fokusera på produkt och utbud.</p>
         </div>
       </div>
     </div>
@@ -1806,34 +1913,34 @@
   <!-- SLIDE 13: THE PLATFORM -->
   <div class="slide has-header" data-slide="12">
     <div class="slide-header">
-      <div class="section-label stagger">The Platform</div>
-      <h2 class="headline stagger">Four people built this. <span class="accent">Imagine what funding unlocks.</span></h2>
-      <p class="subheadline stagger">Every feature is built once and ships across every product. One codebase, shared packages, zero duplication.</p>
+      <div class="section-label stagger" data-i18n="s12_label">Plattformen</div>
+      <h2 class="headline stagger" data-i18n="s12_headline">Fyra personer byggde detta. <span class="accent">Tänk vad finansiering kan frigöra.</span></h2>
+      <p class="subheadline stagger" data-i18n="s12_sub">Varje funktion byggs en gång och skeppas till alla produkter. En kodbas, delade paket, noll duplicering.</p>
     </div>
     <div class="slide-inner">
       <div class="card-grid cols-3 stagger">
         <div class="card">
           <div class="card-stat">84</div>
-          <div class="card-stat-label">Shared components</div>
-          <h3>One design system, every product</h3>
-          <p>A single component library powers all four applications. Change a button once, it updates everywhere. No design drift, no wasted cycles.</p>
+          <div class="card-stat-label" data-i18n="s12_c1_stat_label">Delade komponenter</div>
+          <h3 data-i18n="s12_c1_title">Ett designsystem, alla produkter</h3>
+          <p data-i18n="s12_c1_desc">Ett enda komponentbibliotek driver alla fyra applikationerna. Ändra en knapp en gång, den uppdateras överallt. Ingen designdrift, inga bortslösade cykler.</p>
         </div>
         <div class="card">
           <div class="card-stat">4</div>
-          <div class="card-stat-label">Apps, one codebase</div>
-          <h3>Ship features in days, not months</h3>
-          <p>Customer platform, supplier portal, admin dashboard, and marketing site all share code, config, and types. New supplier categories plug in without rebuilding.</p>
+          <div class="card-stat-label" data-i18n="s12_c2_stat_label">Appar, en kodbas</div>
+          <h3 data-i18n="s12_c2_title">Leverera funktioner på dagar, inte månader</h3>
+          <p data-i18n="s12_c2_desc">Kundplattform, leverantörsportal, admindashboard och marknadsföringssajt delar kod, konfiguration och typer. Nya leverantörskategorier pluggas in utan ombyggnad.</p>
         </div>
         <div class="card">
           <div class="card-stat">0</div>
-          <div class="card-stat-label">Legacy debt</div>
-          <h3>Built for the next five years</h3>
-          <p>39 versioned database migrations. Automated deployment pipeline. Type-safe from database to UI. This codebase scales with the business, not against it.</p>
+          <div class="card-stat-label" data-i18n="s12_c3_stat_label">Teknisk skuld</div>
+          <h3 data-i18n="s12_c3_title">Byggt för de kommande fem åren</h3>
+          <p data-i18n="s12_c3_desc">39 versionerade databasmigreringar. Automatiserad deployment-pipeline. Typsäkert från databas till UI. Den här kodbasen skalar med verksamheten, inte emot den.</p>
         </div>
       </div>
       <div class="stagger" style="margin-top: 14px;">
         <div class="card" style="border-left: 2px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
-          <p style="font-size: 15px; color: var(--text-secondary);">Most startups accumulate technical debt from day one. Amici was architected to avoid it. That means faster iteration, lower burn, and less risk for investors.</p>
+          <p style="font-size: 15px; color: var(--text-secondary);" data-i18n="s12_debt">De flesta startups samlar på sig teknisk skuld från dag ett. Amici arkitektuerades för att undvika det. Det innebär snabbare iteration, lägre burn och lägre risk för investerare.</p>
         </div>
       </div>
     </div>
@@ -1844,8 +1951,8 @@
   <div class="slide has-header" data-slide="13">
     <div class="glow-orb" style="bottom: -200px; left: 50%; transform: translateX(-50%);"></div>
     <div class="slide-header">
-      <div class="section-label stagger">The Ask</div>
-      <h2 class="headline stagger">Platform built. Time to <span class="accent">find customers.</span></h2>
+      <div class="section-label stagger" data-i18n="s13_label">Investeringen</div>
+      <h2 class="headline stagger" data-i18n="s13_headline">Plattformen är byggd. Dags att <span class="accent">hitta kunder.</span></h2>
     </div>
     <div class="slide-inner">
       <div class="stagger" style="max-width: 800px; margin: 0 auto;">
@@ -1853,21 +1960,21 @@
           <div style="font-family: var(--font-numbers); font-size: 64px; font-weight: 600; background: linear-gradient(135deg, var(--accent), #60A5FA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1;">10M</div>
           <div style="font-size: 16px; color: var(--text-muted); margin-top: 4px;">SEK</div>
         </div>
-        <div style="font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 12px;">Two-year roadmap</div>
+        <div style="font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 12px;" data-i18n="s13_roadmap_label">Tvåårig roadmap</div>
         <div style="display: flex; flex-direction: column; gap: 10px;">
           <div class="card" style="border-left: 2px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
-            <div style="font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 4px;">Year 1: Prove demand</div>
-            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.4;"><strong style="color: var(--text-primary);">Hire a sales lead and marketing hire</strong> to drive customer acquisition. Grow active customers in Stockholm. <strong style="color: var(--text-primary);">Onboard suppliers</strong> across categories. Prove the matching model works at scale.</p>
+            <div style="font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 4px;" data-i18n="s13_y1_label">År 1: Bevisa efterfrågan</div>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.4;" data-i18n="s13_y1_desc"><strong style="color: var(--text-primary);">Anställ en säljansvarig och marknadsförare</strong> för att driva kundförvärv. Väx aktiva kunder i Stockholm. <strong style="color: var(--text-primary);">Onboarda leverantörer</strong> i alla kategorier. Bevisa att matchningsmodellen fungerar i skala.</p>
           </div>
           <div class="card" style="border-left: 2px solid rgba(59, 130, 246, 0.5); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
-            <div style="font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 4px;">Year 2: Scale the platform</div>
-            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.4;"><strong style="color: var(--text-primary);">Add dedicated tech and design capacity.</strong> Continue sales and marketing. Expand to Gothenburg and Malmö. Automate supplier matching. Prepare for Nordic expansion.</p>
+            <div style="font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 4px;" data-i18n="s13_y2_label">År 2: Skala plattformen</div>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.4;" data-i18n="s13_y2_desc"><strong style="color: var(--text-primary);">Öka tech- och designkapaciteten.</strong> Fortsätt sälj och marknadsföring. Expandera till Göteborg och Malmö. Automatisera leverantörsmatchning. Förbered nordisk expansion.</p>
           </div>
         </div>
       </div>
 
       <div style="text-align: center; margin-top: 16px;" class="stagger">
-        <p style="color: var(--text-muted); font-size: 15px;">Let's talk · carol@amicievent.com · amicievent.com</p>
+        <p style="color: var(--text-muted); font-size: 15px;" data-i18n="s13_footer">Hör av dig · carol@amicievent.com · amicievent.com</p>
       </div>
     </div>
   </div>
@@ -1882,6 +1989,447 @@
 </nav>
 
 <script>
+  // ==================== TRANSLATIONS ====================
+  const translations = {
+    sv: {
+      // Slide 0: Cover
+      s0_headline: 'Företagsevent,<br>utan <span class="accent">kaoset</span>',
+      s0_sub: 'Eventplattformen för företag utan eget eventteam. Ett verktyg för att boka kockar, lokaler, transport och utrustning.',
+      s0_meta_raising: 'Tar in: <span>10M SEK</span>',
+      s0_meta_market: 'Marknad: <span>Sverige → Europa</span>',
+
+      // Slide 1: Problem
+      s1_label: 'Problemet',
+      s1_headline: '"Kan du fixa något trevligt<br>för <span class="accent">40 personer?</span>"',
+      s1_sub: 'Uppgiften hamnar hos kontorschefer och assistenter utan erfarenhet av event, utan leverantörsnätverk och utan koll på vad saker borde kosta. Det som borde ta en eftermiddag blir veckor av bortkastad tid.',
+      s1_stat1_title: 'Plattformar per event',
+      s1_stat1_desc: 'En middag kräver kock, lokal, transport och utrustning. Allt från olika plattformar, utan samordning.',
+      s1_stat2_val: '7–14 dagar',
+      s1_stat2_title: 'Dagar förlorade på koordinering',
+      s1_stat2_desc: 'Söka leverantörer, mejla offerter, jämföra alternativ utan referens. Utan nätverk blir en enkel bokning veckor av fram och tillbaka.',
+      s1_stat3_title: 'Byråpåslag för att slippa',
+      s1_stat3_desc: 'Det enda alternativet är en byrå som lägger på 20–35% på hela eventet. Företag betalar tusentals kronor extra bara för att de saknar nätverket att göra det själva.',
+
+      // Slide 2: Why Now
+      s2_label: 'Varför nu',
+      s2_headline: 'Eventbudgetarna växer. Verktygen <span class="accent">hänger inte med.</span>',
+      s2_c1_stat_label: 'CAGR-tillväxt',
+      s2_c1_title: 'Sveriges eventmarknad växer snabbast i Europa',
+      s2_c1_desc: 'Snabbast växande i Europa. Företag lägger mer än någonsin på teamevent, kundmiddagar och kulturaktiviteter.',
+      s2_c2_stat_label: 'Från botten i digitalisering',
+      s2_c2_title: 'Branschen är fortfarande analog',
+      s2_c2_desc: 'Plattformar löser en kategori åt gången. Byråer hanterar allt, men via samtal, mejl och påslag. Ingen plattform kopplar ihop alla leverantörer i ett flöde.',
+      s2_c3_stat_label: 'Billigare att bygga idag',
+      s2_c3_title: 'AI låter små team bygga stort',
+      s2_c3_desc: 'AI-verktyg låter ett litet team röra sig fem gånger snabbare. Det som förut krävde tio personer och ett års runway kan Amici bygga med två.',
+
+      // Slide 3: Traction
+      s3_label: 'Traktion',
+      s3_headline: 'Vi körde varje event för hand. <span class="accent">Med&nbsp;flit.</span>',
+      s3_sub: 'Innan vi byggde plattformen drev vi en concierge-tjänst, vilket lärde oss hur företag faktiskt köper event.',
+      s3_t1_title: 'Började med kockbokningar',
+      s3_t1_desc: 'Kopplade ihop privatkunder med kockar. Tidig traktion, men vi insåg att den riktiga efterfrågan kom från företag.',
+      s3_t2_title: 'Pivoterade till B2B',
+      s3_t2_desc: 'Byggde V2 från grunden för företagskunder: autentisering, transaktionella mejl och en adminplattform för att kunna skala.',
+      s3_t3_title: 'Skala upp sälj och marknadsföring',
+      s3_t3_desc: 'Driva trafik till den nya plattformen. Anställa dedikerade sälj- och marknadsföringsresurser för att nå företag utanför vårt befintliga nätverk.',
+      s3_t4_title: 'Nästa steg: expandera över vertikaler',
+      s3_t4_desc: 'Plattformen stödjer redan flera leverantörskategorier. Den här rundan finansierar jämn täckning över vertikaler, med dedikerad prissättning och flöden för varje kategori. AI-drivna arbetsflöden håller kommunikationen tydlig för både kunder och leverantörer.',
+      s3_trusted: 'Anlitade av',
+
+      // Slide 4: Insights
+      s4_label: 'Insikter',
+      s4_headline: 'Vad vi lärde oss <span class="accent">av att köra event</span>',
+      s4_sub: 'Vi har organiserat event hands-on. Det här är mönstren vi såg om och om igen på köparsidan.',
+      s4_c1_stat: 'Första steget',
+      s4_c1_stat_label: 'Googla',
+      s4_c1_title: 'Köparen börjar från noll varje gång',
+      s4_c1_desc: 'Det är kontorschefen, HR-ansvarige eller assistenten. Inget leverantörsnätverk, ingen eventutbildning. De googlar, frågar runt och hoppas på det bästa. Varje gång.',
+      s4_c2_stat_label: 'Leverantörer per event',
+      s4_c2_title: 'Många event kräver fler än en leverantör',
+      s4_c2_desc: 'Ett företagsevent behöver ofta kock, lokal, ibland transport och utrustning. Det innebär att hantera flera leverantörsrelationer utan samordning.',
+      s4_c3_stat_label: 'Per event, från start till mål',
+      s4_c3_title: 'Kunskapsgapet gör allt långsammare',
+      s4_c3_desc: 'Hitta leverantörer från noll, jämföra offerter, synka scheman, jaga bekräftelser. Utan erfarenhet eller nätverk lägger kontorschefen veckor på att sy ihop alltihop.',
+      s4_quote: 'Det verkliga värdet ligger inte i att matcha en enskild leverantör. Det är att samla hela eventet på ett ställe.',
+      s4_quote_sub: 'Det är det ingen annan gör för mellanmarknaden. Därför byggde vi en plattform för flera tjänster, inte ännu en marknadsplats för enstaka leverantörer.',
+
+      // Slide 5: Product
+      s5_label: 'Produktvision',
+      s5_headline: 'Det som tar timmar idag tar <span class="accent">minuter med Amici</span>',
+      s5_step1: 'Beskriv ditt event',
+      s5_conn1: 'AI briefar varje leverantör',
+      s5_step2: 'Leverantörer svarar',
+      s5_conn2: 'AI sammanställer i en vy',
+      s5_step3: 'Granska och boka',
+      s5_branch1_title: 'Lägg till en koordinator',
+      s5_branch1_desc: 'Ett proffs hanterar leverantörslogistiken åt dig',
+      s5_branch2_title: 'Koordinera själv',
+      s5_branch2_desc: 'Hantera leverantörerna direkt via Amici',
+      s5_time_label: 'Tid att boka ett event',
+      s5_time_old_val: '7–14 dagar',
+      s5_time_old_label: 'Idag (gör det själv)',
+      s5_time_old_desc: 'Timmar av aktivt arbete utspritt över veckor av väntan',
+      s5_time_new_label: 'Med Amici',
+      s5_time_new_desc: 'Minuter av aktivt arbete. Resten är leverantörer som svarar.',
+      s5_time_summary: 'Du lägger några minuter på att beskriva ditt event. Vi matchar dig med rätt leverantörer och presenterar deras offerter sida vid sida. Ingen jakt på offerter, inget jonglerade med leverantörer, inga kalkylark.',
+
+      // Slide 6: Vision Mockups
+      s6_label: 'Produktvision',
+      s6_headline: 'Alla leverantörer. <span class="accent">Ett ställe.</span>',
+      s6_sub: 'Beskriv ditt event. Vi matchar dig med verifierade leverantörer, samlar in deras offerter och presenterar ett tydligt förslag. Du jämför, bokar och kör.',
+      s6_arrow_desc: 'AI skapar branschspecifika briefer och distribuerar dem i leverantörsnätverket. Leverantörerna har 24 timmar på sig att skicka sina förslag.',
+
+      // Slide 7: Supplier Engine
+      s7_label: 'Produktvision',
+      s7_headline: 'En leverantörsmotor som alla kan <span class="accent">plugga&nbsp;in&nbsp;i</span>',
+      s7_sub: 'I takt med att vårt leverantörsnätverk växer kan andra plattformar, byråer och företagsverktyg koppla in sig via API eller embed. Matchningen och kvaliteten vi bygger blir infrastruktur som alla kan använda.',
+      s7_node_chef: 'Kock',
+      s7_node_venue: 'Lokal',
+      s7_node_transport: 'Transport',
+      s7_node_equipment: 'Utrustning',
+      s7_node_staff: 'Personal',
+
+      // Slide 8: Competitive Landscape
+      s8_label: 'Konkurrenslandskapet',
+      s8_headline: 'Sweetspoten som <span class="accent">ingen äger</span>',
+      s8_sub: 'Mellan gratis-men-jobbigt gör-det-själv och dyra-men-smidiga byråer finns ett stort gap. Där lever Amici.',
+      s8_diy_desc: 'Gratis men jobbigt. Timmar av googlande, ringande, koordinerande.',
+      s8_single_title: 'Enskilda plattformar',
+      s8_single_desc: 'En tjänst löst. Resten får du fortfarande jonglera själv.',
+      s8_amici_desc: 'Alla dina leverantörer, en plattform. Lägg till en koordinator när du behöver.',
+      s8_agency_title: 'Traditionella byråer',
+      s8_agency_desc: 'Fullservice men manuellt. Byggt för stora företagsbudgetar.',
+      s8_scale_left: '← Billigare, mer jobb',
+      s8_scale_right: 'Enklare, dyrare →',
+      s8_compete: '<strong style="color: var(--text-primary);">Varför byråer inte kan konkurrera:</strong> Byråer säljer arbetstimmar. Varje event de kör kostar mer personaltid. Amici säljer mjukvara och nätverkseffekter. Varje event vi förmedlar körs på samma plattform till nästan noll marginalkostnad.',
+
+      // Slide 9: Market
+      s9_label: 'Marknad',
+      s9_headline: 'Stor marknad. <span class="accent">Fokuserad start.</span>',
+      s9_tam_desc: 'Alla företagsevent i mellanmarknaden i Sverige',
+      s9_sam_desc: 'Event med flera leverantörer vi kan serva',
+      s9_som_desc: 'År 1–2, Stockholm',
+      s9_cagr_title: 'CAGR Sverige',
+      s9_cagr_desc: 'Snabbast växande eventmarknad i Europa (2021–2030).',
+      s9_target_title: 'Målsegment',
+      s9_target_desc: 'Företag med 20–500 anställda, utan eventpersonal.',
+      s9_bottomup: '<strong style="color: var(--text-primary);">Beräkning nerifrån och upp:</strong> 30K företag × 4 event/år × 60K SEK snittutgift = 7,2 mdr SEK adresserbar marknad. Sverige växer med 9,1% CAGR, europeiska marknaden med 8,7%.',
+
+      // Slide 10: Business Model
+      s10_label: 'Affärsmodell',
+      s10_headline: 'Kommission idag. <span class="accent">Skalning imorgon.</span>',
+      s10_now_label: 'Nu',
+      s10_now_stat_label: 'kommission på leverantörssidan',
+      s10_now_desc: 'Leverantörer betalar 20% kommission på bokningar. Kunder ser transparenta, direkta priser utan påslag.',
+      s10_next_label: 'Nästa',
+      s10_next_stat: 'Multitjänst',
+      s10_next_stat_label: 'paketerade kommissioner',
+      s10_next_desc: 'I takt med att vi breddar leverantörskategorierna växer intäkten per event. En bokning kan inkludera kock + lokal + transport + utrustning.',
+      s10_later_label: 'Senare',
+      s10_later_stat_label: 'koordinator-tillägg & leverantörsverktyg',
+      s10_later_desc: 'Koordinator-tillägg: kunder bokar professionella koordinatorer via Amici för komplexa event (extra kommission). Leverantörs-SaaS: lyfta listningar, analys, prioriterad matchning. Plus volymrabatter till leverantörer.',
+      s10_scalability: 'Byråer säljer arbetstimmar. Amici säljer mjukvara och nätverkseffekter.',
+      s10_cac_desc: 'Nätverkseffekter ackumuleras',
+      s10_rev: '↑ Intäkt/event',
+      s10_rev_desc: 'Fler tjänster per bokning',
+      s10_repeat_desc: 'Årlig återköpsfrekvens per kund',
+
+      // Slide 11: Team
+      s11_label: 'Teamet',
+      s11_headline: 'Byggt lean. <span class="accent">Förblir lean.</span>',
+      s11_sub: 'Ett lean grundarteam med djup domänexpertis och fart att matcha. Fyra personer byggde en plattform redo för marknad.',
+      s11_carol_desc: 'Driver verksamheten. Ansvarar för partnerskap, kundrelationer och tillväxt. Landade Hermès, Prada, Sail Racing och Chimi.',
+      s11_anders_role: 'Kock & medgrundare',
+      s11_anders_desc: 'Professionell kock med djupt branschnätverk. Känner alla toppkockar i Stockholm. Förtroende byggt under år på leverantörssidan.',
+      s11_daniel_role: 'Produkt & Design',
+      s11_daniel_desc: 'Senior produktdesigner och PM. Byggde hela plattformen vid sidan av en heltidsroll.',
+      s11_edin_role: 'Utveckling',
+      s11_edin_desc: 'Senior fullstack-utvecklare. Byggde produktionsinfrastrukturen från grunden vid sidan av en heltidsroll.',
+      s11_fit: '<strong style="color: var(--text-primary);">Founder-market fit:</strong> Anders äger utbudssidan (Sveriges toppkockar litar på honom). Carol äger efterfrågesidan. Daniel och Edin byggde och levererar produkten. Skräddarsytt för det här problemet.',
+      s11_hiring_label: 'Rekryterar med den här rundan',
+      s11_hiring_desc: 'Säljansvarig och marknadsförare för kundförvärv i Stockholm. Grundarteamet fortsätter fokusera på produkt och utbud.',
+
+      // Slide 12: Platform
+      s12_label: 'Plattformen',
+      s12_headline: 'Fyra personer byggde detta. <span class="accent">Tänk vad finansiering kan frigöra.</span>',
+      s12_sub: 'Varje funktion byggs en gång och skeppas till alla produkter. En kodbas, delade paket, noll duplicering.',
+      s12_c1_stat_label: 'Delade komponenter',
+      s12_c1_title: 'Ett designsystem, alla produkter',
+      s12_c1_desc: 'Ett enda komponentbibliotek driver alla fyra applikationerna. Ändra en knapp en gång, den uppdateras överallt. Ingen designdrift, inga bortslösade cykler.',
+      s12_c2_stat_label: 'Appar, en kodbas',
+      s12_c2_title: 'Leverera funktioner på dagar, inte månader',
+      s12_c2_desc: 'Kundplattform, leverantörsportal, admindashboard och marknadsföringssajt delar kod, konfiguration och typer. Nya leverantörskategorier pluggas in utan ombyggnad.',
+      s12_c3_stat_label: 'Teknisk skuld',
+      s12_c3_title: 'Byggt för de kommande fem åren',
+      s12_c3_desc: '39 versionerade databasmigreringar. Automatiserad deployment-pipeline. Typsäkert från databas till UI. Den här kodbasen skalar med verksamheten, inte emot den.',
+      s12_debt: 'De flesta startups samlar på sig teknisk skuld från dag ett. Amici arkitektuerades för att undvika det. Det innebär snabbare iteration, lägre burn och lägre risk för investerare.',
+
+      // Slide 13: The Ask
+      s13_label: 'Investeringen',
+      s13_headline: 'Plattformen är byggd. Dags att <span class="accent">hitta kunder.</span>',
+      s13_roadmap_label: 'Tvåårig roadmap',
+      s13_y1_label: 'År 1: Bevisa efterfrågan',
+      s13_y1_desc: '<strong style="color: var(--text-primary);">Anställ en säljansvarig och marknadsförare</strong> för att driva kundförvärv. Väx aktiva kunder i Stockholm. <strong style="color: var(--text-primary);">Onboarda leverantörer</strong> i alla kategorier. Bevisa att matchningsmodellen fungerar i skala.',
+      s13_y2_label: 'År 2: Skala plattformen',
+      s13_y2_desc: '<strong style="color: var(--text-primary);">Öka tech- och designkapaciteten.</strong> Fortsätt sälj och marknadsföring. Expandera till Göteborg och Malmö. Automatisera leverantörsmatchning. Förbered nordisk expansion.',
+      s13_footer: 'Hör av dig · carol@amicievent.com · amicievent.com',
+    },
+
+    en: {
+      // Slide 0: Cover
+      s0_headline: 'Company events,<br>without the <span class="accent">chaos</span>',
+      s0_sub: 'The event platform for businesses without an event team. One tool to book chefs, venues, transport, and equipment.',
+      s0_meta_raising: 'Raising: <span>10M SEK</span>',
+      s0_meta_market: 'Market: <span>Sweden → Europe</span>',
+
+      // Slide 1: Problem
+      s1_label: 'The Problem',
+      s1_headline: '"Can you organize something<br>nice for <span class="accent">40 people?</span>"',
+      s1_sub: 'The task falls on office managers and assistants with no event experience, no supplier network, and no idea what things should cost. What should take an afternoon turns into weeks of wasted time.',
+      s1_stat1_title: 'Platforms per event',
+      s1_stat1_desc: 'One dinner requires a chef, venue, transport, and equipment. Each from a different platform, with zero coordination.',
+      s1_stat2_val: '7–14 days',
+      s1_stat2_title: 'Days lost coordinating',
+      s1_stat2_desc: 'Searching for suppliers, emailing quotes, comparing options with no benchmark. Without a network, a simple booking spirals into weeks of back-and-forth.',
+      s1_stat3_title: 'Agency markup to avoid it',
+      s1_stat3_desc: 'The only alternative is an agency that marks up the entire event by 20-35%. Companies pay thousands extra just because they lack the network to do it themselves.',
+
+      // Slide 2: Why Now
+      s2_label: 'Why Now',
+      s2_headline: 'Event spend is booming. The tools <span class="accent">haven\'t caught up.</span>',
+      s2_c1_stat_label: 'CAGR growth',
+      s2_c1_title: 'Sweden\'s event market is surging',
+      s2_c1_desc: 'Fastest-growing in Europe. Companies are spending more on team events, client dinners, and culture than ever before.',
+      s2_c2_stat_label: 'From bottom in digitization',
+      s2_c2_title: 'The industry is still analog',
+      s2_c2_desc: 'Single-service platforms handle one category. Agencies handle everything, but through calls, emails, and markups. No platform connects all suppliers in one flow.',
+      s2_c3_stat_label: 'Cheaper to build today',
+      s2_c3_title: 'AI lets small teams build big',
+      s2_c3_desc: 'AI-native tooling lets a small team move five times faster than before. What used to take ten people and a year of runway, Amici can build with two.',
+
+      // Slide 3: Traction
+      s3_label: 'Traction',
+      s3_headline: 'We ran every event by hand. <span class="accent">On&nbsp;purpose.</span>',
+      s3_sub: 'Before building the platform, we operated as a concierge service, which taught us how companies actually buy events.',
+      s3_t1_title: 'Started with chef bookings',
+      s3_t1_desc: 'Started connecting private customers with chefs. Early traction, but we learned the real demand was coming from businesses.',
+      s3_t2_title: 'Pivoted to B2B',
+      s3_t2_desc: 'Built V2 from scratch for business customers: authentication, transactional emails, and an admin platform to operate at scale.',
+      s3_t3_title: 'Level up sales and marketing',
+      s3_t3_desc: 'Drive traffic to the new platform. Hire dedicated sales and marketing to reach companies outside our existing network.',
+      s3_t4_title: 'Next: expand across verticals',
+      s3_t4_desc: 'The platform supports multiple supplier categories today. This raise will fund equal coverage across verticals, with dedicated pricing and flows for each. AI-powered workflows will keep communication clear and consistent for both customers and suppliers.',
+      s3_trusted: 'Trusted by',
+
+      // Slide 4: Insights
+      s4_label: 'Insights',
+      s4_headline: 'What running events <span class="accent">taught us</span>',
+      s4_sub: 'We\'ve organized events hands-on. These are the patterns we kept seeing on the buyer side.',
+      s4_c1_stat: 'First step',
+      s4_c1_stat_label: 'Google it',
+      s4_c1_title: 'The buyer starts from zero every time',
+      s4_c1_desc: 'It\'s the office manager, HR lead, or EA. No supplier network, no event training. They Google, ask around, and hope for the best. Every single time.',
+      s4_c2_stat_label: 'Vendors per event',
+      s4_c2_title: 'Many events need more than one supplier',
+      s4_c2_desc: 'A company event often needs a chef, a venue, sometimes transport and equipment. That means managing multiple vendor relationships with no coordination.',
+      s4_c3_stat_label: 'Per event, start to finish',
+      s4_c3_title: 'The knowledge gap makes everything slower',
+      s4_c3_desc: 'Finding suppliers from scratch, comparing quotes, aligning schedules, chasing confirmations. Without event experience or a network, the office manager spends weeks stitching it all together.',
+      s4_quote: 'The real value isn\'t matching a single supplier. It\'s bringing the entire event together in one place.',
+      s4_quote_sub: 'That\'s what nobody else is doing for the mid-market. This is why we built a multi-service platform, not another single-vendor marketplace.',
+
+      // Slide 5: Product
+      s5_label: 'Product Vision',
+      s5_headline: 'What takes hours today takes <span class="accent">minutes with Amici</span>',
+      s5_step1: 'Describe your event',
+      s5_conn1: 'AI briefs each supplier',
+      s5_step2: 'Suppliers respond',
+      s5_conn2: 'AI curates into one view',
+      s5_step3: 'Review and book',
+      s5_branch1_title: 'Add a coordinator',
+      s5_branch1_desc: 'A pro handles supplier logistics for you',
+      s5_branch2_title: 'Coordinate yourself',
+      s5_branch2_desc: 'Manage suppliers directly through Amici',
+      s5_time_label: 'Time to book an event',
+      s5_time_old_val: '7–14 days',
+      s5_time_old_label: 'Today (DIY)',
+      s5_time_old_desc: 'Hours of active work scattered across weeks of waiting',
+      s5_time_new_label: 'With Amici',
+      s5_time_new_desc: 'Minutes of active work. The rest is suppliers responding.',
+      s5_time_summary: 'You spend a few minutes describing your event. We match you with the right suppliers and present their offers side by side. No chasing quotes, no juggling vendors, no spreadsheet tracking.',
+
+      // Slide 6: Vision Mockups
+      s6_label: 'Product Vision',
+      s6_headline: 'Every supplier. <span class="accent">One place.</span>',
+      s6_sub: 'Describe your event. We match you with verified suppliers, collect their offers, and present one clear proposal. You compare, book, and go.',
+      s6_arrow_desc: 'AI creates vertical-specific briefs and distributes them across the supplier network. Suppliers have 24 hours to send their proposals.',
+
+      // Slide 7: Supplier Engine
+      s7_label: 'Product Vision',
+      s7_headline: 'A supplier engine anyone can <span class="accent">plug&nbsp;into</span>',
+      s7_sub: 'As our supplier network grows, other platforms, agencies, and corporate tools can tap into it via API or embed. The matching and quality we build becomes infrastructure anyone can use.',
+      s7_node_chef: 'Chef',
+      s7_node_venue: 'Venue',
+      s7_node_transport: 'Transport',
+      s7_node_equipment: 'Equipment',
+      s7_node_staff: 'Staff',
+
+      // Slide 8: Competitive Landscape
+      s8_label: 'Competitive Landscape',
+      s8_headline: 'The sweet spot <span class="accent">nobody owns</span>',
+      s8_sub: 'Between free-but-painful DIY and expensive-but-easy agencies, there\'s a massive gap. That\'s where Amici lives.',
+      s8_diy_desc: 'Free but painful. Hours of Googling, calling, coordinating.',
+      s8_single_title: 'Single platforms',
+      s8_single_desc: 'One service solved. Still juggling the rest yourself.',
+      s8_amici_desc: 'All your suppliers, one platform. Add a coordinator when you need one.',
+      s8_agency_title: 'Traditional agencies',
+      s8_agency_desc: 'Full-service but manual. Built for large enterprise budgets.',
+      s8_scale_left: '← Cheaper, more work',
+      s8_scale_right: 'Easier, more expensive →',
+      s8_compete: '<strong style="color: var(--text-primary);">Why agencies can\'t compete:</strong> Agencies sell human hours. Every event they run costs more staff time. Amici sells software and network effects. Every event we facilitate runs on the same platform at near-zero marginal cost.',
+
+      // Slide 9: Market
+      s9_label: 'Market',
+      s9_headline: 'Big market. <span class="accent">Focused start.</span>',
+      s9_tam_desc: 'All mid-market corporate events in Sweden',
+      s9_sam_desc: 'Multi-supplier events we can serve',
+      s9_som_desc: 'Year 1-2 Stockholm capture',
+      s9_cagr_title: 'Sweden CAGR',
+      s9_cagr_desc: 'Fastest-growing event market in Europe (2021-2030).',
+      s9_target_title: 'Target segment',
+      s9_target_desc: 'Companies with 20-500 employees, no event staff.',
+      s9_bottomup: '<strong style="color: var(--text-primary);">Bottom-up math:</strong> 30K companies × 4 events/year × 60K SEK avg. spend = 7.2B SEK addressable market. Sweden growing at 9.1% CAGR, European market at 8.7% overall.',
+
+      // Slide 10: Business Model
+      s10_label: 'Business Model',
+      s10_headline: 'Commission today. <span class="accent">Scale tomorrow.</span>',
+      s10_now_label: 'Now',
+      s10_now_stat_label: 'supplier-side commission',
+      s10_now_desc: 'Suppliers pay a 20% commission on bookings. Customers see transparent, direct pricing with no markup.',
+      s10_next_label: 'Next',
+      s10_next_stat: 'Multi-service',
+      s10_next_stat_label: 'bundled commissions',
+      s10_next_desc: 'As we deepen coverage across supplier categories, revenue per event grows. One booking can include chef + venue + transport + equipment.',
+      s10_later_label: 'Later',
+      s10_later_stat_label: 'coordinator add-on & supplier tools',
+      s10_later_desc: 'Event coordinator add-on: customers book professional coordinators through Amici for complex events (additional commission). Supplier SaaS: featured listings, analytics, priority matching. Plus supplier kickbacks on volume.',
+      s10_scalability: 'Agencies sell human hours. Amici sells software and network effects.',
+      s10_cac_desc: 'Network effects compound',
+      s10_rev: '↑ Rev/event',
+      s10_rev_desc: 'More services per booking',
+      s10_repeat_desc: 'Annual repeat per client',
+
+      // Slide 11: Team
+      s11_label: 'The Team',
+      s11_headline: 'Built lean. <span class="accent">Staying lean.</span>',
+      s11_sub: 'A lean founding team with deep domain expertise and the speed to match. Four people built a platform that\'s ready for market.',
+      s11_carol_desc: 'Runs the business. Drives partnerships, client relationships, and growth. Landed Hermès, Prada, Sail Racing, and Chimi.',
+      s11_anders_role: 'Chef & Co-founder',
+      s11_anders_desc: 'Professional chef with deep industry network. Knows every top chef in Stockholm. Trust built over years on the supply side.',
+      s11_daniel_role: 'Product & Design',
+      s11_daniel_desc: 'Senior product designer and PM. Built the entire platform alongside a full-time role.',
+      s11_edin_role: 'Engineering',
+      s11_edin_desc: 'Senior full-stack developer. Built production infrastructure from scratch alongside a full-time role.',
+      s11_fit: '<strong style="color: var(--text-primary);">Founder-market fit:</strong> Anders owns the supply side (Sweden\'s top chefs trust him). Carol owns the demand side. Daniel and Edin built and ship the product. Purpose-built for this problem.',
+      s11_hiring_label: 'Hiring with this round',
+      s11_hiring_desc: 'Sales lead and marketing hire to drive customer acquisition in Stockholm. Founding team stays focused on product and supply.',
+
+      // Slide 12: Platform
+      s12_label: 'The Platform',
+      s12_headline: 'Four people built this. <span class="accent">Imagine what funding unlocks.</span>',
+      s12_sub: 'Every feature is built once and ships across every product. One codebase, shared packages, zero duplication.',
+      s12_c1_stat_label: 'Shared components',
+      s12_c1_title: 'One design system, every product',
+      s12_c1_desc: 'A single component library powers all four applications. Change a button once, it updates everywhere. No design drift, no wasted cycles.',
+      s12_c2_stat_label: 'Apps, one codebase',
+      s12_c2_title: 'Ship features in days, not months',
+      s12_c2_desc: 'Customer platform, supplier portal, admin dashboard, and marketing site all share code, config, and types. New supplier categories plug in without rebuilding.',
+      s12_c3_stat_label: 'Legacy debt',
+      s12_c3_title: 'Built for the next five years',
+      s12_c3_desc: '39 versioned database migrations. Automated deployment pipeline. Type-safe from database to UI. This codebase scales with the business, not against it.',
+      s12_debt: 'Most startups accumulate technical debt from day one. Amici was architected to avoid it. That means faster iteration, lower burn, and less risk for investors.',
+
+      // Slide 13: The Ask
+      s13_label: 'The Ask',
+      s13_headline: 'Platform built. Time to <span class="accent">find customers.</span>',
+      s13_roadmap_label: 'Two-year roadmap',
+      s13_y1_label: 'Year 1: Prove demand',
+      s13_y1_desc: '<strong style="color: var(--text-primary);">Hire a sales lead and marketing hire</strong> to drive customer acquisition. Grow active customers in Stockholm. <strong style="color: var(--text-primary);">Onboard suppliers</strong> across categories. Prove the matching model works at scale.',
+      s13_y2_label: 'Year 2: Scale the platform',
+      s13_y2_desc: '<strong style="color: var(--text-primary);">Add dedicated tech and design capacity.</strong> Continue sales and marketing. Expand to Gothenburg and Malmö. Automate supplier matching. Prepare for Nordic expansion.',
+      s13_footer: 'Let\'s talk · carol@amicievent.com · amicievent.com',
+    }
+  };
+
+  // ==================== LANGUAGE SWITCHING ====================
+  let currentLang = 'sv';
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    const t = translations[lang];
+    if (!t) return;
+
+    // Update all data-i18n elements
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) {
+        el.innerHTML = t[key];
+      }
+    });
+
+    // Update html lang attribute
+    document.documentElement.lang = lang;
+
+    // Update language indicator
+    document.getElementById('langIndicator').textContent = lang.toUpperCase();
+
+    // Update active state in dropdown
+    document.querySelectorAll('.lang-option').forEach(opt => {
+      opt.classList.toggle('active', opt.getAttribute('data-lang') === lang);
+    });
+
+    // Persist
+    localStorage.setItem('amici-lang', lang);
+
+    // Update URL
+    const url = new URL(window.location);
+    url.searchParams.set('lang', lang);
+    history.replaceState(null, '', url);
+  }
+
+  // Language selector toggle
+  const langSelector = document.getElementById('langSelector');
+  const langToggle = document.getElementById('langToggle');
+
+  langToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    langSelector.classList.toggle('open');
+  });
+
+  // Language option clicks
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setLanguage(opt.getAttribute('data-lang'));
+      langSelector.classList.remove('open');
+    });
+  });
+
+  // Close dropdown on outside click
+  document.addEventListener('click', (e) => {
+    if (!langSelector.contains(e.target)) {
+      langSelector.classList.remove('open');
+    }
+  });
+
+  // Determine initial language: URL param > localStorage > default (sv)
+  const langParam = new URLSearchParams(window.location.search).get('lang');
+  const savedLang = localStorage.getItem('amici-lang');
+  const initialLang = langParam || savedLang || 'sv';
+  setLanguage(initialLang);
+
+  // ==================== SLIDE NAVIGATION ====================
   const slides = document.querySelectorAll('.slide');
   const totalSlides = slides.length;
   let currentSlide = 0;

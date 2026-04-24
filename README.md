@@ -25,14 +25,17 @@ The deck is a single self-contained HTML file. No build step, no dependencies, n
 3. Why Now
 4. Journey So Far (traction)
 5. What We've Learned (insights)
-6. How It Works (product)
-7. Competitive Landscape
-8. The Vision — product mockups
-9. The Vision — supplier engine
+6. Product flow (instant pricing)
+7. Product vision — mockups
+8. Product vision — supplier engine
+9. Competitive Landscape
 10. Market Opportunity
 11. Business Model
 12. Team
-13. The Ask
+13. The Platform (technical foundation)
+14. The Ask
+
+The deck is bilingual (Swedish default, English available via the top-right toggle). All text edits must update both `translations.sv` and `translations.en` in the `<script>` block in `index.html`.
 
 ## Design system
 

@@ -11,7 +11,7 @@ Agencies sell human hours. Amici sells software and network effects. Every event
 ## How the model works
 
 ### Supplier matching flow
-Customer describes event → Suppliers respond to Amici with offers → Amici packages and presents the full event proposal to the customer. The customer sees one coherent event proposal, not scattered individual bids.
+Customer describes event → Amici matches the event against the supplier network and prices it instantly from pre-negotiated rates → Customer adjusts inputs (guests, date, format) and watches prices update live → Customer books. The customer sees one coherent proposal with live, transparent pricing, not scattered individual bids or delayed quote rounds.
 
 ### Coordination responsibility
 Amici never coordinates. The responsibility sits with either the customer (who self-coordinates) or a professional event coordinator (booked as an add-on through Amici). From each supplier's perspective, their point of contact is always the customer.
@@ -50,6 +50,7 @@ To be defined later. The platform should have a smart rule set that determines w
 ## What can be digitized
 
 - Supplier matching and discovery
+- Instant pricing from pre-negotiated supplier rates
 - Offer packaging and presentation to customers
 - Standardized communication (event briefs, booking confirmations, payment)
 - Timeline and logistics templates for common event types

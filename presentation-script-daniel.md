@@ -1,112 +1,112 @@
-# Presentation Script — Daniel
+# Presentationsmanus — Daniel
 
-Slides 4–9 and 13 | Practice version | English
+Slides 4–9 och 13 | Övningsversion | Svenska
 
 ---
 
 ## Slide 4: Traction
 
-Before we built anything, we ran events by hand. On purpose.
+Innan vi byggde någonting körde vi varje event för hand. Med flit.
 
-Carol and Anders were already connected to some of the best chefs in Sweden. So we started there: matching companies with chefs through their existing network. No marketing spend, zero paid acquisition. Every booking came through word of mouth.
+Carol och Anders hade redan kontakter med några av Sveriges bästa kockar. Så vi började där: kopplade ihop företag med kockar via deras befintliga nätverk. Noll marknadsföringskostnader, noll betald annonsering. Varje bokning kom via rykte och rekommendationer.
 
-And the clients were not small. Hermès, Prada, Sail Racing, Chimi. These are companies with high standards. They chose us because we delivered.
+Och kunderna var inte precis vilka som helst. Hermès, Prada, Sail Racing, Chimi. Företag med höga krav. De valde oss för att vi levererade.
 
-But what we kept hearing was: "Can you do more than just the chef?" Every single client wanted a venue. Then transport. Then something else. They didn't want a chef booking. They wanted their whole event taken care of.
+Men det vi hörde om och om igen var: "Kan ni hjälpa till med mer än bara kocken?" Varje kund ville ha en lokal också. Och transport. Och lite till. De ville inte ha en kockbokning, de ville ha hela eventet löst.
 
-That told us what to build. So we built it. A platform with the first three supplier categories in one digital flow: chef, venue, rentals. Authentication, admin tools, payments included.
+Det berättade för oss vad vi behövde bygga. Så vi byggde det. En plattform med de tre första leverantörskategorierna i ett och samma flöde: kock, lokal och hyrgods. Med autentisering, adminverktyg och betalning inkluderat.
 
-And now we're at the next step: building the tool customers have been asking for. A full-time team lets us run the product, the partnerships, and the sales effort in parallel.
-
----
-
-## Slide 5: Insights
-
-Every event we ran taught us the same thing about the buyer.
-
-They're not event professionals. They're the office manager, the HR lead, the assistant who got handed this. No supplier network. No reference point for pricing. They Google, ask around, and hope for the best.
-
-And when they came to us for a chef, they always wanted more. First the chef, then the venue, then transport. Every time, the need expanded beyond a single service. That's not a coincidence. That's the shape of the market.
-
-The third thing is the one that actually makes this a business: they come back. And when they do, they start from zero again. No institutional memory. No sense of whether the price is fair. The next event resets completely.
-
-That's why a platform matters. Not just to make the first booking easier. But to capture the repeat cycle, build the supplier relationships, and give buyers a reference frame they can trust.
-
-One customer said it best: not "can you find a chef?" but "can you handle the whole thing?" That's what we built Amici to answer.
+Och nu är vi på nästa steg: att bygga verktyget kunderna faktiskt efterfrågar. Med ett heltidsteam kan vi driva produkt, partnerskap och sälj parallellt.
 
 ---
 
-## Slide 6: Product Vision — The Flow
+## Slide 5: Insikter
 
-So here's how Amici works.
+Varje event vi körde lärde oss samma sak om köparsidan.
 
-You describe your event. Number of guests, format, date. The platform matches you against verified suppliers and shows you prices right away. Not in 24 hours. Not after a round of quote requests. Right away.
+Det är inte eventproffs. Det är kontorschefen, HR-ansvarige, eller assistenten som fick uppdraget. Inget leverantörsnätverk, ingen erfarenhet av vad saker borde kosta. De googlar, frågar runt och hoppas på det bästa. Varje gång.
 
-You adjust inputs, and the total updates live. More guests, different date, different format: the price updates as you go. When you're ready, you book.
+Och när de kom till oss för en kock ville de alltid ha mer. Först kocken, sen lokalen, sen transporten. Varje gång expanderade behovet bortom en enda tjänst. Det är ingen slump. Det är så marknaden ser ut.
 
-After booking, you have a choice. If you want someone to handle the supplier logistics for you, you add a coordinator. That's a professional who manages everything. If you'd rather handle it yourself, you do that through the platform directly.
+Det tredje mönstret är det som faktiskt gör det här till ett riktigt bolag: de kommer tillbaka. Och när de gör det börjar de från noll igen. Ingen institutionell minne. Ingen känsla för om priset är rimligt. Nästa event startar på ruta ett.
 
-And here's something we built that investors consistently react to: once you've run an event, you can recreate it. Book from the same suppliers, keep what worked, swap out what didn't. The platform remembers, even when you don't.
+Det är därför en plattform spelar roll. Inte bara för att göra den första bokningen enklare. Utan för att fånga återköpscykeln, bygga leverantörsrelationerna, och ge köparna ett referensramverk de kan lita på.
 
-What used to take 7 to 14 days of active work, spread across weeks of waiting, now takes minutes.
-
----
-
-## Slide 7: Product Vision — All Suppliers, One Place
-
-This is what the customer sees.
-
-You describe the event. The platform pulls from our verified supplier network and shows you pre-negotiated prices right away. You're not waiting for suppliers to respond. We've done that work in advance.
-
-The left side is the customer view on mobile. The right side is what the supplier sees in their dashboard.
-
-No back-and-forth. No emailing five venues and hoping someone replies. The pricing is there. You adjust, you book.
+En kund sa det rakt ut: inte "kan du hitta en kock?" utan "kan du ta hand om hela grejen?" Det är vad vi byggde Amici för att svara på.
 
 ---
 
-## Slide 8: Product Vision — The Supplier Engine
+## Slide 6: Produktvision — Flödet
 
-Here's where this gets interesting for investors.
+Så här fungerar Amici.
 
-As the supplier network grows, it becomes infrastructure. Any platform, any agency, any corporate tool that needs to connect people with event suppliers can plug into Amici through an API or an embed.
+Du beskriver ditt event. Antal gäster, format, datum. Plattformen matchar dig mot verifierade leverantörer och visar priser direkt. Inte inom 24 timmar. Inte efter en offertrunda. Direkt.
 
-The chef network, the venues, the transport providers, the equipment rental, the staff: all of it accessible through one integration.
+Du justerar inputs och totalsumman uppdateras live. Fler gäster, annat datum, annat format: priset uppdateras medan du gör det. När du är nöjd bokar du.
 
-We're not just building a booking tool. We're building the layer that sits underneath the event industry's supply side. That's a very different company.
+Efter bokningen har du ett val. Vill du att någon annan hanterar leverantörslogistiken åt dig, lägger du till en koordinator. Det är ett proffs som tar hand om allt. Vill du sköta det själv gör du det direkt via plattformen.
 
----
+Och sedan finns det en funktion som investerare brukar fastna för: när du väl har kört ett event kan du återskapa det. Boka om från leverantörer du redan testat, behåll det som funkade, byt ut det du vill ändra. Plattformen kommer ihåg, även när du inte gör det.
 
-## Slide 9: Competitive Landscape
-
-The market has two ends. On the left, you do it yourself: Google, phone calls, spreadsheets, hours of coordination. It's free but it's painful.
-
-On the right, you hire a traditional agency. Full service, professionally managed, and priced accordingly. Built for companies with big event budgets and dedicated procurement teams.
-
-In the middle there are single-service platforms. You can book a venue on one, a caterer on another. But you're still juggling four different vendors and no one is accountable for the whole thing.
-
-Amici sits between single platforms and traditional agencies. All your suppliers, one platform. Add a coordinator if you need one.
-
-The reason agencies can't respond to this: they sell hours. Every event they run costs more staff time. Amici sells software and network effects. Every event we facilitate runs on the same platform at near-zero marginal cost. That's why the unit economics look completely different.
+Det som tidigare tog 7 till 14 dagar av aktivt arbete, utspritt över veckors väntan, tar nu minuter.
 
 ---
 
-## Slide 13: The Platform
+## Slide 7: Produktvision — Alla leverantörer. Ett ställe.
 
-I want to give you a concrete sense of what Edin built, because it directly affects how capital-efficient we are.
+Det här är vad kunden ser.
 
-The platform is a monorepo. One codebase. Four separate applications: the customer platform, the supplier portal, the admin dashboard, and the marketing site. They share code, configuration, and types.
+Du beskriver eventet. Plattformen hämtar från vårt verifierade leverantörsnätverk och visar förhandlade priser direkt. Du väntar inte på att leverantörer ska svara. Det arbetet har vi gjort i förväg.
 
-84 shared components across those four apps. Change a button in one place, it updates everywhere. New supplier categories plug in without rebuilding the core.
+Till vänster ser du kundvyn på mobil. Till höger ser du vad leverantören ser i sin dashboard.
 
-39 versioned database migrations. An automated deployment pipeline. Type-safe from the database all the way up to the UI.
-
-Most startups accumulate technical debt from day one. Edin architected this from the ground up to avoid it. That means faster iteration, lower burn, and lower risk for you as an investor. Four people built this. Imagine what a funded team does with it.
+Ingen fram och tillbaka. Inga mejl till fem olika lokaler i hopp om att någon svarar. Priserna finns där. Du justerar, du bokar.
 
 ---
 
-## Notes for practice
+## Slide 8: Produktvision — Leverantörsmotorn
 
-- **Slide 5 (Insights):** the customer quote is your landing moment. Pause before it.
-- **Slide 6 (Flow):** walk through the steps slowly, investors need to visualize the UX.
-- **Slide 9 (Competitive):** the "agencies sell hours / Amici sells software" line is your sharpest point. Deliver it cleanly and let it land before moving on.
-- **Slide 13 (Platform):** if Edin is in the room, you can hand him this slide. If not, lead with the business implication ("capital-efficient") not the technical architecture.
+Här börjar det bli intressant för er som investerare.
+
+I takt med att leverantörsnätverket växer blir det infrastruktur. Vilken plattform, byrå eller vilket företagsverktyg som helst som behöver koppla ihop användare med eventsuppliers kan plugga in sig i Amici via API eller embed.
+
+Kocknätverket, lokalerna, transportleverantörerna, utrustningsuthyrningen, personalen: allt tillgängligt via en enda integration.
+
+Vi bygger inte bara ett bokningsverktyg. Vi bygger lagret som sitter under eventspelarnas supply-sida. Det är ett annat sorts bolag.
+
+---
+
+## Slide 9: Konkurrenslandskapet
+
+Marknaden har två ytterligheter. Till vänster gör du allt själv: googlar, ringer runt, koordinerar i ett kalkylblad. Det är gratis men jobbigt.
+
+Till höger anlitar du en traditionell byrå. Fullservice, professionellt hanterat, och prissatt därefter. Byggt för företag med stora eventbudgetar och dedikerade inköpsteam.
+
+Däremellan finns enskilda plattformar. Du kan boka en lokal på en, en cateringleverantör på en annan. Men du jonglerar fortfarande fyra olika leverantörer och ingen är ansvarig för helheten.
+
+Amici sitter mellan enskilda plattformar och traditionella byråer. Alla dina leverantörer, en plattform. Lägg till en koordinator om du behöver det.
+
+Anledningen till att byråer inte kan svara på det här: de säljer arbetstimmar. Varje event de kör kostar mer personaltid. Amici säljer mjukvara och nätverkseffekter. Varje event vi förmedlar körs på samma plattform till nästan noll marginalkostnad. Därför ser enhetsekonomin helt annorlunda ut.
+
+---
+
+## Slide 13: Plattformen
+
+Jag vill ge er en konkret bild av vad Edin byggt, för det påverkar direkt hur kapitaleffektiva vi är.
+
+Plattformen är ett monorepo. En kodbas. Fyra separata applikationer: kundplattformen, leverantörsportalen, admindashboarden och marknadsföringssajten. De delar kod, konfiguration och typer.
+
+84 delade komponenter across de fyra apparna. Ändra en knapp på ett ställe och den uppdateras överallt. Nya leverantörskategorier kopplas in utan att vi behöver bygga om kärnan.
+
+39 versionerade databasmigreringar. En automatiserad deployment-pipeline. Typsäkert från databasen hela vägen upp till UI:t.
+
+De flesta startups samlar på sig teknisk skuld från dag ett. Edin byggde det här från grunden för att undvika det. Det innebär snabbare iteration, lägre burn och lägre risk för er som investerare. Fyra personer byggde det här. Tänk vad ett finansierat team kan göra med det.
+
+---
+
+## Anteckningar för övning
+
+- **Slide 5 (Insikter):** kundcitatet är din landningsmomenten. Ta en paus innan du säger det.
+- **Slide 6 (Flödet):** gå igenom stegen långsamt, investerare behöver visualisera UX:en.
+- **Slide 9 (Konkurrensen):** "Byråer säljer arbetstimmar / Amici säljer mjukvara och nätverkseffekter" är din skarpaste poäng. Leverera den rent och låt den landa innan du går vidare.
+- **Slide 13 (Plattformen):** om Edin är i rummet kan du lämna över den här sliden till honom. Annars, börja med affärsimplikationen ("kapitaleffektivt") snarare än den tekniska arkitekturen.

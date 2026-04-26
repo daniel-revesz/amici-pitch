@@ -968,6 +968,13 @@
     margin-top: 10px;
   }
 
+  .source-link {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .source-link:hover { text-decoration: underline; }
+
   /* BRAND LOGOS */
   .brand-row {
     display: flex;
@@ -1449,20 +1456,18 @@
           <div class="card-stat">9.1%</div>
           <div class="card-stat-label" data-i18n="s2_c1_stat_label">CAGR-tillväxt</div>
           <h3 data-i18n="s2_c1_title">Sveriges eventmarknad växer snabbast i Europa</h3>
-          <p data-i18n="s2_c1_desc">Snabbast växande i Europa. Företag lägger mer än någonsin på teamevent, kundmiddagar och kulturaktiviteter.</p>
-          <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">Source: Allied Market Research, Europe Events Industry Forecast 2021-2030</p>
+          <p data-i18n="s2_c1_desc">Snabbast växande i Europa. Fler event per år, större budgetar, och ändå bokas de fortfarande via mejl och telefon.</p>
         </div>
         <div class="card">
-          <div class="card-stat">#3</div>
-          <div class="card-stat-label" data-i18n="s2_c2_stat_label">Från botten i digitalisering</div>
+          <div class="card-stat">0</div>
+          <div class="card-stat-label" data-i18n="s2_c2_stat_label">Heldigitala alternativ till byråer</div>
           <h3 data-i18n="s2_c2_title">Branschen är fortfarande analog</h3>
           <p data-i18n="s2_c2_desc">Plattformar löser en kategori åt gången. Byråer hanterar allt, men via samtal, mejl och påslag. Ingen plattform kopplar ihop alla leverantörer i ett flöde.</p>
-          <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">Source: McKinsey Global Institute, Industry Digitization Index</p>
         </div>
         <div class="card">
           <div class="card-stat">10x</div>
           <div class="card-stat-label" data-i18n="s2_c3_stat_label">Billigare att bygga idag</div>
-          <h3 data-i18n="s2_c3_title">AI låter små team bygga stort</h3>
+          <h3 data-i18n="s2_c3_title">Med AI kan ett litet team bygga stort</h3>
           <p data-i18n="s2_c3_desc">AI-verktyg låter ett litet team röra sig fem gånger snabbare. Det som förut krävde tio personer och ett års runway kan Amici bygga med två.</p>
         </div>
       </div>
@@ -1473,7 +1478,7 @@
   <!-- SLIDE 4: JOURNEY SO FAR -->
   <div class="slide has-header" data-slide="3">
     <div class="slide-header">
-      <div class="section-label stagger" data-i18n="s3_label">Traktion</div>
+      <div class="section-label stagger" data-i18n="s3_label">Traction</div>
       <h2 class="headline stagger" data-i18n="s3_headline">Vi körde varje event för hand. <span class="accent">Med&nbsp;flit.</span></h2>
       <p class="subheadline stagger" data-i18n="s3_sub">Innan vi byggde plattformen drev vi en concierge-tjänst, vilket lärde oss hur företag faktiskt köper event.</p>
     </div>
@@ -1484,22 +1489,22 @@
           <div class="timeline-item">
             <div class="timeline-dot filled">✓</div>
             <div class="timeline-content">
-              <h3 data-i18n="s3_t1_title">Började med kockbokningar</h3>
-              <p data-i18n="s3_t1_desc">Kopplade ihop privatkunder med kockar. Tidig traktion, men vi insåg att den riktiga efterfrågan kom från företag.</p>
+              <h3 data-i18n="s3_t1_title">Bästa kockarna. Noll marknadsföring.</h3>
+              <p data-i18n="s3_t1_desc">Kopplade ihop kunder med Sveriges bästa kockar via Carol och Anders befintliga nätverk. Allt via rykte och rekommendationer, utan ett öre på marknadsföring. Varje kund vi pratade med ville ha mer: inte bara kock, utan ett komplett verktyg för hela eventet.</p>
             </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot filled">✓</div>
             <div class="timeline-content">
-              <h3 data-i18n="s3_t2_title">Pivoterade till B2B</h3>
-              <p data-i18n="s3_t2_desc">Byggde V2 från grunden för företagskunder: autentisering, transaktionella mejl och en adminplattform för att kunna skala.</p>
+              <h3 data-i18n="s3_t2_title">Byggde MVP: kock, lokal och hyrgods</h3>
+              <p data-i18n="s3_t2_desc">Tog insikterna och byggde en digital plattform med de tre första leverantörskategorierna i ett flöde. Autentisering, transaktionella mejl, adminverktyg och betalning inkluderat.</p>
             </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot">→</div>
             <div class="timeline-content">
-              <h3 data-i18n="s3_t3_title">Grundarteam på heltid, sälj och marknad igång</h3>
-              <p data-i18n="s3_t3_desc">Hela grundarteamet går på heltid. Första sälj- och marknadsföringsrekryteringarna driver kundförvärv parallellt, medan vi fördjupar leverantörstäckningen över alla vertikaler.</p>
+              <h3 data-i18n="s3_t3_title">Bygger verktyget kunderna efterfrågar</h3>
+              <p data-i18n="s3_t3_desc">Visionen kräver en mer avancerad produkt, fler leverantörskategorier och ett dedikerat sälj- och marknadsteam. Med ett heltidsteam kan vi bygga allt det parallellt.</p>
             </div>
           </div>
         </div>
@@ -1524,8 +1529,8 @@
   <div class="slide has-header" data-slide="4">
     <div class="slide-header">
       <div class="section-label stagger" data-i18n="s4_label">Insikter</div>
-      <h2 class="headline stagger" data-i18n="s4_headline">Vad vi lärde oss <span class="accent">av att köra event</span></h2>
-      <p class="subheadline stagger" data-i18n="s4_sub">Vi har organiserat event hands-on. Det här är mönstren vi såg om och om igen på köparsidan.</p>
+      <h2 class="headline stagger" data-i18n="s4_headline">Samma mönster, <span class="accent">varje gång</span></h2>
+      <p class="subheadline stagger" data-i18n="s4_sub">Varje event vi körde bekräftade samma sak om köparsidan.</p>
     </div>
     <div class="slide-inner">
       <div class="card-grid cols-3 stagger">
@@ -1533,25 +1538,24 @@
           <div class="card-stat" data-i18n="s4_c1_stat">Första steget</div>
           <div class="card-stat-label" data-i18n="s4_c1_stat_label">Googla</div>
           <h3 data-i18n="s4_c1_title">Köparen börjar från noll varje gång</h3>
-          <p data-i18n="s4_c1_desc">Det är kontorschefen, HR-ansvarige eller assistenten. Inget leverantörsnätverk, ingen eventutbildning. De googlar, frågar runt och hoppas på det bästa. Varje gång.</p>
+          <p data-i18n="s4_c1_desc">Det är kontorschefen, HR-ansvarige eller assistenten. Inget leverantörsnätverk, ingen erfarenhet. De googlar, frågar runt och hoppas på det bästa. Varje gång.</p>
         </div>
         <div class="card">
-          <div class="card-stat">3–5</div>
-          <div class="card-stat-label" data-i18n="s4_c2_stat_label">Leverantörer per event</div>
-          <h3 data-i18n="s4_c2_title">Många event kräver fler än en leverantör</h3>
-          <p data-i18n="s4_c2_desc">Ett företagsevent behöver ofta kock, lokal, ibland transport och utrustning. Det innebär att hantera flera leverantörsrelationer utan samordning.</p>
+          <div class="card-stat-label" data-i18n="s4_c2_stat_label">Gång på gång</div>
+          <h3 data-i18n="s4_c2_title">Kunden ville alltid ha mer</h3>
+          <p data-i18n="s4_c2_desc">De kom för kocken. Sen frågade de om lokalen. Sedan om transporten. Varje gång expanderade behovet bortom en enda tjänst. Det berättade oss vad vi egentligen behövde bygga.</p>
         </div>
         <div class="card">
           <div class="card-stat">7–14 days</div>
-          <div class="card-stat-label" data-i18n="s4_c3_stat_label">Per event, från start till mål</div>
-          <h3 data-i18n="s4_c3_title">Kunskapsgapet gör allt långsammare</h3>
-          <p data-i18n="s4_c3_desc">Hitta leverantörer från noll, jämföra offerter, synka scheman, jaga bekräftelser. Utan erfarenhet eller nätverk lägger kontorschefen veckor på att sy ihop alltihop.</p>
+          <div class="card-stat-label" data-i18n="s4_c3_stat_label">Per event, från start till slut</div>
+          <h3 data-i18n="s4_c3_title">Och nästa gång börjar de om igen</h3>
+          <p data-i18n="s4_c3_desc">Utan erfarenhet eller nätverk saknar kontorschefen referensramar för vad saker borde kosta eller ta tid. Och nästa gång ett event ska bokas börjar det om från noll.</p>
         </div>
       </div>
 
       <div class="quote-block stagger" style="margin-top: 16px; border-color: var(--accent);">
         <p style="font-size: 18px; color: var(--text-primary); font-style: normal; font-weight: 700; line-height: 1.5;" data-i18n="s4_quote">Det verkliga värdet ligger inte i att matcha en enskild leverantör. Det är att samla hela eventet på ett ställe.</p>
-        <p style="font-size: 15px; color: var(--text-secondary); margin-top: 8px; font-style: normal;" data-i18n="s4_quote_sub">Det är det ingen annan gör för mellanmarknaden. Därför byggde vi en plattform för flera tjänster, inte ännu en marknadsplats för enstaka leverantörer.</p>
+        <p style="font-size: 15px; color: var(--text-secondary); margin-top: 8px; font-style: normal;" data-i18n="s4_quote_sub">Inte "kan du hitta en kock?" utan "kan du ta hand om hela grejen?" Det är vad vi hörde, gång på gång.</p>
       </div>
     </div>
   </div>
@@ -1607,6 +1611,18 @@
                 <h3 style="font-family: var(--font-display); font-size: 14px; font-weight: 700; margin: 0 0 4px 0;" data-i18n="s5_branch2_title">Koordinera själv</h3>
                 <p style="font-size: 12px; color: var(--text-secondary); margin: 0;" data-i18n="s5_branch2_desc">Hantera leverantörerna direkt via Amici</p>
               </div>
+            </div>
+            <!-- Converging dotted lines from both branches -->
+            <div style="position: relative; width: 100%; height: 24px;">
+              <div style="position: absolute; top: 0; left: calc(25% - 3px); width: 1px; height: 100%; background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) 4px, transparent 4px, transparent 8px);"></div>
+              <div style="position: absolute; top: 0; right: calc(25% - 3px); width: 1px; height: 100%; background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) 4px, transparent 4px, transparent 8px);"></div>
+              <div style="position: absolute; bottom: 0; left: calc(25% - 3px); right: calc(25% - 3px); height: 1px; background: repeating-linear-gradient(to right, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) 4px, transparent 4px, transparent 8px);"></div>
+            </div>
+            <div style="width: 1px; height: 14px; background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) 4px, transparent 4px, transparent 8px); margin: 0 auto;"></div>
+            <!-- Merged outcome -->
+            <div class="card" style="padding: 14px 16px; text-align: center; width: 100%; border-color: rgba(59,130,246,0.3);">
+              <h3 style="font-family: var(--font-display); font-size: 14px; font-weight: 700; margin: 0 0 4px 0;" data-i18n="s5_merge_title">Återskapa ett tidigare event</h3>
+              <p style="font-size: 12px; color: var(--text-secondary); margin: 0;" data-i18n="s5_merge_desc">Boka om från leverantörer du redan testat. Behåll det som funkade, byt ut det du vill ändra.</p>
             </div>
           </div>
         </div>
@@ -1665,7 +1681,7 @@
 
       <!-- Arrow description text -->
       <div style="text-align: center; max-width: 270px; margin-top: -2px;">
-        <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;" data-i18n="s6_arrow_desc">AI matchar ditt event mot leverantörsnätverket och prissätter realtid utifrån färdigförhandlade rater. Inget väntande, inga offertrundor.</div>
+        <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;" data-i18n="s6_arrow_desc">AI matchar ditt event mot leverantörsnätverket och prissätter i realtid utifrån förhandlade priser. Inget väntande, inga offertrundor.</div>
       </div>
     </div>
   </div>
@@ -1790,7 +1806,6 @@
               <div>
                 <div style="font-size: 15px; font-weight: 700; font-family: var(--font-display);" data-i18n="s9_cagr_title">CAGR Sverige</div>
                 <p style="font-size: 14px; color: var(--text-secondary);" data-i18n="s9_cagr_desc">Snabbast växande eventmarknad i Europa (2021–2030).</p>
-                <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Allied Market Research</p>
               </div>
             </div>
           </div>
@@ -1800,14 +1815,12 @@
               <div>
                 <div style="font-size: 15px; font-weight: 700; font-family: var(--font-display);" data-i18n="s9_target_title">Målsegment</div>
                 <p style="font-size: 14px; color: var(--text-secondary);" data-i18n="s9_target_desc">Företag med 20–500 anställda, utan eventpersonal.</p>
-                <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">SCB</p>
               </div>
             </div>
           </div>
         </div>
         <div class="card" style="margin-top: 16px; text-align: center; border-color: rgba(34,197,94,0.2);">
-          <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;" data-i18n="s9_bottomup"><strong style="color: var(--text-primary);">Beräkning nerifrån och upp:</strong> 30K företag × 4 event/år × 60K SEK snittutgift = 7,2 mdr SEK adresserbar marknad. Sverige växer med 9,1% CAGR, europeiska marknaden med 8,7%.</p>
-          <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px;">Sources: SCB Structural Business Statistics, Allied Market Research Europe Events Industry Forecast 2021-2030</p>
+          <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;" data-i18n="s9_bottomup"><strong style="color: var(--text-primary);">Beräkning nerifrån och upp:</strong> 30K företag × 4 event/år × 60K SEK snittutgift = 7,2 mdr SEK adresserbar marknad.</p>
         </div>
       </div>
     </div>
@@ -1908,7 +1921,7 @@
     <div class="slide-header">
       <div class="section-label stagger" data-i18n="s12_label">Plattformen</div>
       <h2 class="headline stagger" data-i18n="s12_headline">Fyra personer byggde detta. <span class="accent">Tänk vad finansiering kan frigöra.</span></h2>
-      <p class="subheadline stagger" data-i18n="s12_sub">Varje funktion byggs en gång och skeppas till alla produkter. En kodbas, delade paket, noll duplicering.</p>
+      <p class="subheadline stagger" data-i18n="s12_sub">Varje feature byggs en gång och rullas ut till alla produkter. En kodbas, delade paket, noll duplicering.</p>
     </div>
     <div class="slide-inner">
       <div class="card-grid cols-3 stagger">
@@ -1916,12 +1929,12 @@
           <div class="card-stat">84</div>
           <div class="card-stat-label" data-i18n="s12_c1_stat_label">Delade komponenter</div>
           <h3 data-i18n="s12_c1_title">Ett designsystem, alla produkter</h3>
-          <p data-i18n="s12_c1_desc">Ett enda komponentbibliotek driver alla fyra applikationerna. Ändra en knapp en gång, den uppdateras överallt. Ingen designdrift, inga bortslösade cykler.</p>
+          <p data-i18n="s12_c1_desc">Ett enda komponentbibliotek driver alla fyra applikationerna. Ändra en knapp en gång, den uppdateras överallt. Konsekvent design, inga bortkastade iterationer.</p>
         </div>
         <div class="card">
           <div class="card-stat">4</div>
           <div class="card-stat-label" data-i18n="s12_c2_stat_label">Appar, en kodbas</div>
-          <h3 data-i18n="s12_c2_title">Leverera funktioner på dagar, inte månader</h3>
+          <h3 data-i18n="s12_c2_title">Leverera features på dagar, inte månader</h3>
           <p data-i18n="s12_c2_desc">Kundplattform, leverantörsportal, admindashboard och marknadsföringssajt delar kod, konfiguration och typer. Nya leverantörskategorier pluggas in utan ombyggnad.</p>
         </div>
         <div class="card">
@@ -1933,7 +1946,7 @@
       </div>
       <div class="stagger" style="margin-top: 14px;">
         <div class="card" style="border-left: 2px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;">
-          <p style="font-size: 15px; color: var(--text-secondary);" data-i18n="s12_debt">De flesta startups samlar på sig teknisk skuld från dag ett. Amici arkitektuerades för att undvika det. Det innebär snabbare iteration, lägre burn och lägre risk för investerare.</p>
+          <p style="font-size: 15px; color: var(--text-secondary);" data-i18n="s12_debt">De flesta startups samlar på sig teknisk skuld från dag ett. Amici byggdes från grunden för att undvika det. Det innebär snabbare iteration, lägre burn och lägre risk för investerare.</p>
         </div>
       </div>
     </div>
@@ -2008,42 +2021,42 @@
       s2_headline: 'Eventbudgetarna växer. Verktygen <span class="accent">hänger inte med.</span>',
       s2_c1_stat_label: 'CAGR-tillväxt',
       s2_c1_title: 'Sveriges eventmarknad växer snabbast i Europa',
-      s2_c1_desc: 'Snabbast växande i Europa. Företag lägger mer än någonsin på teamevent, kundmiddagar och kulturaktiviteter.',
-      s2_c2_stat_label: 'Från botten i digitalisering',
+      s2_c1_desc: 'Snabbast växande i Europa. Fler event per år, större budgetar, och ändå bokas de fortfarande via mejl och telefon.',
+      s2_c2_stat_label: 'Heldigitala alternativ till byråer',
       s2_c2_title: 'Branschen är fortfarande analog',
       s2_c2_desc: 'Plattformar löser en kategori åt gången. Byråer hanterar allt, men via samtal, mejl och påslag. Ingen plattform kopplar ihop alla leverantörer i ett flöde.',
       s2_c3_stat_label: 'Billigare att bygga idag',
-      s2_c3_title: 'AI låter små team bygga stort',
+      s2_c3_title: 'Med AI kan ett litet team bygga stort',
       s2_c3_desc: 'AI-verktyg låter ett litet team röra sig fem gånger snabbare. Det som förut krävde tio personer och ett års runway kan Amici bygga med två.',
 
       // Slide 3: Traction
-      s3_label: 'Traktion',
+      s3_label: 'Traction',
       s3_headline: 'Vi körde varje event för hand. <span class="accent">Med&nbsp;flit.</span>',
       s3_sub: 'Innan vi byggde plattformen drev vi en concierge-tjänst, vilket lärde oss hur företag faktiskt köper event.',
-      s3_t1_title: 'Började med kockbokningar',
-      s3_t1_desc: 'Kopplade ihop privatkunder med kockar. Tidig traktion, men vi insåg att den riktiga efterfrågan kom från företag.',
-      s3_t2_title: 'Pivoterade till B2B',
-      s3_t2_desc: 'Byggde V2 från grunden för företagskunder: autentisering, transaktionella mejl och en adminplattform för att kunna skala.',
-      s3_t3_title: 'Grundarteam på heltid, sälj och marknad igång',
-      s3_t3_desc: 'Hela grundarteamet går på heltid. Första sälj- och marknadsföringsrekryteringarna driver kundförvärv parallellt, medan vi fördjupar leverantörstäckningen över alla vertikaler.',
+      s3_t1_title: 'Bästa kockarna. Noll marknadsföring.',
+      s3_t1_desc: 'Kopplade ihop kunder med Sveriges bästa kockar via Carol och Anders befintliga nätverk. Allt via rykte och rekommendationer, utan ett öre på marknadsföring. Varje kund vi pratade med ville ha mer: inte bara kock, utan ett komplett verktyg för hela eventet.',
+      s3_t2_title: 'Byggde MVP: kock, lokal och hyrgods',
+      s3_t2_desc: 'Tog insikterna och byggde en digital plattform med de tre första leverantörskategorierna i ett flöde. Autentisering, transaktionella mejl, adminverktyg och betalning inkluderat.',
+      s3_t3_title: 'Bygger verktyget kunderna efterfrågar',
+      s3_t3_desc: 'Visionen kräver en mer avancerad produkt, fler leverantörskategorier och ett dedikerat sälj- och marknadsteam. Med ett heltidsteam kan vi bygga allt det parallellt.',
       s3_trusted: 'Anlitade av',
 
       // Slide 4: Insights
       s4_label: 'Insikter',
-      s4_headline: 'Vad vi lärde oss <span class="accent">av att köra event</span>',
-      s4_sub: 'Vi har organiserat event hands-on. Det här är mönstren vi såg om och om igen på köparsidan.',
+      s4_headline: 'Samma mönster, <span class="accent">varje gång</span>',
+      s4_sub: 'Varje event vi körde bekräftade samma sak om köparsidan.',
       s4_c1_stat: 'Första steget',
       s4_c1_stat_label: 'Googla',
       s4_c1_title: 'Köparen börjar från noll varje gång',
-      s4_c1_desc: 'Det är kontorschefen, HR-ansvarige eller assistenten. Inget leverantörsnätverk, ingen eventutbildning. De googlar, frågar runt och hoppas på det bästa. Varje gång.',
-      s4_c2_stat_label: 'Leverantörer per event',
-      s4_c2_title: 'Många event kräver fler än en leverantör',
-      s4_c2_desc: 'Ett företagsevent behöver ofta kock, lokal, ibland transport och utrustning. Det innebär att hantera flera leverantörsrelationer utan samordning.',
-      s4_c3_stat_label: 'Per event, från start till mål',
-      s4_c3_title: 'Kunskapsgapet gör allt långsammare',
-      s4_c3_desc: 'Hitta leverantörer från noll, jämföra offerter, synka scheman, jaga bekräftelser. Utan erfarenhet eller nätverk lägger kontorschefen veckor på att sy ihop alltihop.',
+      s4_c1_desc: 'Det är kontorschefen, HR-ansvarige eller assistenten. Inget leverantörsnätverk, ingen erfarenhet. De googlar, frågar runt och hoppas på det bästa. Varje gång.',
+      s4_c2_stat_label: 'Gång på gång',
+      s4_c2_title: 'Kunden ville alltid ha mer',
+      s4_c2_desc: 'De kom för kocken. Sen frågade de om lokalen. Sedan om transporten. Varje gång expanderade behovet bortom en enda tjänst. Det berättade oss vad vi egentligen behövde bygga.',
+      s4_c3_stat_label: 'Per event, från start till slut',
+      s4_c3_title: 'Och nästa gång börjar de om igen',
+      s4_c3_desc: 'Utan erfarenhet eller nätverk saknar kontorschefen referensramar för vad saker borde kosta eller ta tid. Och nästa gång ett event ska bokas börjar det om från noll.',
       s4_quote: 'Det verkliga värdet ligger inte i att matcha en enskild leverantör. Det är att samla hela eventet på ett ställe.',
-      s4_quote_sub: 'Det är det ingen annan gör för mellanmarknaden. Därför byggde vi en plattform för flera tjänster, inte ännu en marknadsplats för enstaka leverantörer.',
+      s4_quote_sub: 'Inte "kan du hitta en kock?" utan "kan du ta hand om hela grejen?" Det är vad vi hörde, gång på gång.',
 
       // Slide 5: Product
       s5_label: 'Produktvision',
@@ -2057,6 +2070,8 @@
       s5_branch1_desc: 'Ett proffs hanterar leverantörslogistiken åt dig',
       s5_branch2_title: 'Koordinera själv',
       s5_branch2_desc: 'Hantera leverantörerna direkt via Amici',
+      s5_merge_title: 'Återskapa ett tidigare event',
+      s5_merge_desc: 'Boka om från leverantörer du redan testat. Behåll det som funkade, byt ut resten.',
       s5_time_label: 'Tid att boka ett event',
       s5_time_old_val: '7–14 dagar',
       s5_time_old_label: 'Idag (gör det själv)',
@@ -2070,7 +2085,7 @@
       s6_label: 'Produktvision',
       s6_headline: 'Alla leverantörer. <span class="accent">Ett ställe.</span>',
       s6_sub: 'Beskriv ditt event. Se förhandlade priser från verifierade leverantörer direkt. Justera inputs, jämför och boka på minuter.',
-      s6_arrow_desc: 'AI matchar ditt event mot leverantörsnätverket och prissätter realtid utifrån färdigförhandlade rater. Inget väntande, inga offertrundor.',
+      s6_arrow_desc: 'AI matchar ditt event mot leverantörsnätverket och prissätter i realtid utifrån förhandlade priser. Inget väntande, inga offertrundor.',
 
       // Slide 7: Supplier Engine
       s7_label: 'Produktvision',
@@ -2106,7 +2121,7 @@
       s9_cagr_desc: 'Snabbast växande eventmarknad i Europa (2021–2030).',
       s9_target_title: 'Målsegment',
       s9_target_desc: 'Företag med 20–500 anställda, utan eventpersonal.',
-      s9_bottomup: '<strong style="color: var(--text-primary);">Beräkning nerifrån och upp:</strong> 30K företag × 4 event/år × 60K SEK snittutgift = 7,2 mdr SEK adresserbar marknad. Sverige växer med 9,1% CAGR, europeiska marknaden med 8,7%.',
+      s9_bottomup: '<strong style="color: var(--text-primary);">Beräkning nerifrån och upp:</strong> 30K företag × 4 event/år × 60K SEK snittutgift = 7,2 mdr SEK adresserbar marknad.',
 
       // Slide 10: Business Model
       s10_label: 'Affärsmodell',
@@ -2145,17 +2160,17 @@
       // Slide 12: Platform
       s12_label: 'Plattformen',
       s12_headline: 'Fyra personer byggde detta. <span class="accent">Tänk vad finansiering kan frigöra.</span>',
-      s12_sub: 'Varje funktion byggs en gång och skeppas till alla produkter. En kodbas, delade paket, noll duplicering.',
+      s12_sub: 'Varje feature byggs en gång och rullas ut till alla produkter. En kodbas, delade paket, noll duplicering.',
       s12_c1_stat_label: 'Delade komponenter',
       s12_c1_title: 'Ett designsystem, alla produkter',
-      s12_c1_desc: 'Ett enda komponentbibliotek driver alla fyra applikationerna. Ändra en knapp en gång, den uppdateras överallt. Ingen designdrift, inga bortslösade cykler.',
+      s12_c1_desc: 'Ett enda komponentbibliotek driver alla fyra applikationerna. Ändra en knapp en gång, den uppdateras överallt. Konsekvent design, inga bortkastade iterationer.',
       s12_c2_stat_label: 'Appar, en kodbas',
-      s12_c2_title: 'Leverera funktioner på dagar, inte månader',
+      s12_c2_title: 'Leverera features på dagar, inte månader',
       s12_c2_desc: 'Kundplattform, leverantörsportal, admindashboard och marknadsföringssajt delar kod, konfiguration och typer. Nya leverantörskategorier pluggas in utan ombyggnad.',
       s12_c3_stat_label: 'Teknisk skuld',
       s12_c3_title: 'Byggt för de kommande fem åren',
       s12_c3_desc: '39 versionerade databasmigreringar. Automatiserad deployment-pipeline. Typsäkert från databas till UI. Den här kodbasen skalar med verksamheten, inte emot den.',
-      s12_debt: 'De flesta startups samlar på sig teknisk skuld från dag ett. Amici arkitektuerades för att undvika det. Det innebär snabbare iteration, lägre burn och lägre risk för investerare.',
+      s12_debt: 'De flesta startups samlar på sig teknisk skuld från dag ett. Amici byggdes från grunden för att undvika det. Det innebär snabbare iteration, lägre burn och lägre risk för investerare.',
 
       // Slide 13: The Ask
       s13_label: 'Investeringen',
@@ -2192,8 +2207,8 @@
       s2_headline: 'Event spend is booming. The tools <span class="accent">haven\'t caught up.</span>',
       s2_c1_stat_label: 'CAGR growth',
       s2_c1_title: 'Sweden\'s event market is surging',
-      s2_c1_desc: 'Fastest-growing in Europe. Companies are spending more on team events, client dinners, and culture than ever before.',
-      s2_c2_stat_label: 'From bottom in digitization',
+      s2_c1_desc: 'Fastest-growing in Europe. More events per year, bigger budgets — still booked by email and phone.',
+      s2_c2_stat_label: 'Fully digital alternatives to agencies',
       s2_c2_title: 'The industry is still analog',
       s2_c2_desc: 'Single-service platforms handle one category. Agencies handle everything, but through calls, emails, and markups. No platform connects all suppliers in one flow.',
       s2_c3_stat_label: 'Cheaper to build today',
@@ -2204,30 +2219,30 @@
       s3_label: 'Traction',
       s3_headline: 'We ran every event by hand. <span class="accent">On&nbsp;purpose.</span>',
       s3_sub: 'Before building the platform, we operated as a concierge service, which taught us how companies actually buy events.',
-      s3_t1_title: 'Started with chef bookings',
-      s3_t1_desc: 'Started connecting private customers with chefs. Early traction, but we learned the real demand was coming from businesses.',
-      s3_t2_title: 'Pivoted to B2B',
-      s3_t2_desc: 'Built V2 from scratch for business customers: authentication, transactional emails, and an admin platform to operate at scale.',
-      s3_t3_title: 'Founders full-time, sales and marketing live',
-      s3_t3_desc: 'The full founding team goes full-time. First sales and marketing hires drive customer acquisition in parallel while we deepen supplier coverage across every vertical.',
+      s3_t1_title: 'Top chefs. Zero marketing spend.',
+      s3_t1_desc: 'Matched clients with Sweden\'s best chefs through Carol and Anders\' existing network. Every booking through reputation and referrals, no marketing budget. Every customer we spoke to wanted more: not just a chef, but a complete tool for the entire event.',
+      s3_t2_title: 'Built an MVP: chef, venue, and rentals',
+      s3_t2_desc: 'Took those learnings and built a digital platform with the first three supplier categories in one flow. Authentication, transactional emails, admin tools, and payments included.',
+      s3_t3_title: 'Building the tool customers are asking for',
+      s3_t3_desc: 'The vision calls for a more advanced product, more supplier categories, and a dedicated sales and marketing team. With a full-time founding team, we can build all of it in parallel.',
       s3_trusted: 'Trusted by',
 
       // Slide 4: Insights
       s4_label: 'Insights',
-      s4_headline: 'What running events <span class="accent">taught us</span>',
-      s4_sub: 'We\'ve organized events hands-on. These are the patterns we kept seeing on the buyer side.',
+      s4_headline: 'Same pattern, <span class="accent">every time</span>',
+      s4_sub: 'Every event we ran confirmed the same thing about the buyer side.',
       s4_c1_stat: 'First step',
       s4_c1_stat_label: 'Google it',
       s4_c1_title: 'The buyer starts from zero every time',
-      s4_c1_desc: 'It\'s the office manager, HR lead, or EA. No supplier network, no event training. They Google, ask around, and hope for the best. Every single time.',
-      s4_c2_stat_label: 'Vendors per event',
-      s4_c2_title: 'Many events need more than one supplier',
-      s4_c2_desc: 'A company event often needs a chef, a venue, sometimes transport and equipment. That means managing multiple vendor relationships with no coordination.',
+      s4_c1_desc: 'It\'s the office manager, HR lead, or EA. No supplier network, no experience. They Google, ask around, and hope for the best. Every single time.',
+      s4_c2_stat_label: 'Every single time',
+      s4_c2_title: 'The customer always wanted more',
+      s4_c2_desc: 'They came for the chef. Then asked about the venue. Then transport. Every time, the need grew beyond a single service. That told us what we actually needed to build.',
       s4_c3_stat_label: 'Per event, start to finish',
-      s4_c3_title: 'The knowledge gap makes everything slower',
-      s4_c3_desc: 'Finding suppliers from scratch, comparing quotes, aligning schedules, chasing confirmations. Without event experience or a network, the office manager spends weeks stitching it all together.',
+      s4_c3_title: 'And next time, they start over again',
+      s4_c3_desc: 'Without experience or a network, the office manager has no frame of reference for what things should cost or how long they take. And when the next event comes up, they start from scratch again.',
       s4_quote: 'The real value isn\'t matching a single supplier. It\'s bringing the entire event together in one place.',
-      s4_quote_sub: 'That\'s what nobody else is doing for the mid-market. This is why we built a multi-service platform, not another single-vendor marketplace.',
+      s4_quote_sub: 'Not "can you find us a chef?" but "can you handle the whole thing?" That\'s what we kept hearing.',
 
       // Slide 5: Product
       s5_label: 'Product Vision',
@@ -2241,6 +2256,8 @@
       s5_branch1_desc: 'A pro handles supplier logistics for you',
       s5_branch2_title: 'Coordinate yourself',
       s5_branch2_desc: 'Manage suppliers directly through Amici',
+      s5_merge_title: 'Recreate a past event',
+      s5_merge_desc: 'Rebook from suppliers you\'ve already tried. Keep what worked, swap out the rest.',
       s5_time_label: 'Time to book an event',
       s5_time_old_val: '7–14 days',
       s5_time_old_label: 'Today (DIY)',
@@ -2290,7 +2307,7 @@
       s9_cagr_desc: 'Fastest-growing event market in Europe (2021-2030).',
       s9_target_title: 'Target segment',
       s9_target_desc: 'Companies with 20-500 employees, no event staff.',
-      s9_bottomup: '<strong style="color: var(--text-primary);">Bottom-up math:</strong> 30K companies × 4 events/year × 60K SEK avg. spend = 7.2B SEK addressable market. Sweden growing at 9.1% CAGR, European market at 8.7% overall.',
+      s9_bottomup: '<strong style="color: var(--text-primary);">Bottom-up math:</strong> 30K companies × 4 events/year × 60K SEK avg. spend = 7.2B SEK addressable market.',
 
       // Slide 10: Business Model
       s10_label: 'Business Model',

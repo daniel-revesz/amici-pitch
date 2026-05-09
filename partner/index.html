@@ -351,8 +351,8 @@
   }
 
   .team-avatar {
-    width: 44px;
-    height: 44px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--accent-soft), rgba(59, 130, 246, 0.3));
     margin: 0 auto 10px;
@@ -524,6 +524,18 @@
   .slide-green .section-label { color: #22C55E; }
   .slide-green .section-label::before { background: #22C55E; }
   .slide-green .headline .accent { color: #22C55E; }
+  .slide-green .card-stat { color: #22C55E; }
+  .slide-green .card-stat-label { border-color: rgba(34,197,94,0.15); }
+
+  .slide-red .section-label { color: #EF4444; }
+  .slide-red .section-label::before { background: #EF4444; }
+  .slide-red .headline .accent { color: #EF4444; }
+
+  .slide-yellow .section-label { color: #F59E0B; }
+  .slide-yellow .section-label::before { background: #F59E0B; }
+  .slide-yellow .headline .accent { color: #F59E0B; }
+  .slide-yellow .team-avatar { background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(245,158,11,0.3)); color: #F59E0B; border-color: rgba(245,158,11,0.3); }
+  .slide-yellow .team-role { color: #F59E0B; }
 
   /* QUOTE BLOCK */
   .quote-block {
@@ -592,74 +604,61 @@
   </div>
 
 
-  <!-- SLIDE 2: VAD AMICI ÄR -->
-  <div class="slide has-header" data-slide="1">
-    <div class="slide-header">
-      <div class="section-label stagger">Produkten</div>
-      <h2 class="headline stagger">Eventbranschen har ett <span class="accent">infrastrukturproblem.</span></h2>
-      <p class="subheadline stagger">Företag utan eventpersonal lägger veckor på att boka event. Amici löser det: beskriv ditt event, se priser direkt från verifierade leverantörer, boka på minuter.</p>
-    </div>
-    <div class="slide-inner">
-      <div class="card-grid cols-3 stagger">
-        <div class="card">
-          <div class="card-stat">Beskriv</div>
-          <div class="card-stat-label">ditt event</div>
-          <h3>Gäster, datum, format</h3>
-          <p>AI matchar leverantörer och prissätter direkt utifrån förhandlade priser i nätverket.</p>
-        </div>
-        <div class="card">
-          <div class="card-stat">Se</div>
-          <div class="card-stat-label">priser direkt</div>
-          <h3>Justerbara i realtid</h3>
-          <p>Förhandlade priser från verifierade leverantörer. Ändra gäster eller format och se summan uppdateras live.</p>
-        </div>
-        <div class="card">
-          <div class="card-stat">Boka</div>
-          <div class="card-stat-label">på minuter</div>
-          <h3>En plattform. En betalning.</h3>
-          <p>Ingen mejlrunda, inga offerter, ingen koordinering via telefon. Klart.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- SLIDE 3: VARFÖR NU -->
-  <div class="slide has-header" data-slide="2">
+  <!-- SLIDE 2: MARKNADEN (why-now + market numbers) -->
+  <div class="slide has-header slide-green" data-slide="1">
     <div class="slide-header">
       <div class="section-label stagger">Marknaden</div>
       <h2 class="headline stagger">Budgetarna växer. Verktygen <span class="accent">hänger inte med.</span></h2>
     </div>
     <div class="slide-inner">
-      <div class="card-grid cols-3 stagger">
-        <div class="card">
-          <div class="card-stat">9.1%</div>
+      <div class="card-grid cols-3 stagger" style="margin-top: 14px;">
+        <div class="card" style="padding: 18px;">
+          <div class="card-stat" style="font-size: 28px;">9.1%</div>
           <div class="card-stat-label">CAGR-tillväxt</div>
           <h3>Sveriges eventmarknad växer snabbast i Europa</h3>
-          <p>Snabbast växande i Europa. Fler event per år, större budgetar, och ändå bokas de fortfarande via mejl och telefon.</p>
+          <p>Fler event per år, större budgetar, och ändå bokas de fortfarande via mejl och telefon.</p>
         </div>
-        <div class="card">
-          <div class="card-stat">0</div>
+        <div class="card" style="padding: 18px;">
+          <div class="card-stat" style="font-size: 28px;">0</div>
           <div class="card-stat-label">Heldigitala alternativ till byråer</div>
           <h3>Branschen är fortfarande analog</h3>
-          <p>Plattformar löser en kategori åt gången. Byråer hanterar allt, men via samtal, mejl och påslag. Ingen plattform kopplar ihop alla leverantörer i ett flöde.</p>
+          <p>Plattformar löser en kategori. Byråer gör allt men manuellt. Ingen kopplar ihop alla leverantörer i ett flöde.</p>
         </div>
-        <div class="card">
-          <div class="card-stat">10x</div>
+        <div class="card" style="padding: 18px;">
+          <div class="card-stat" style="font-size: 28px;">10x</div>
           <div class="card-stat-label">Billigare att bygga idag</div>
           <h3>Med AI kan ett litet team bygga stort</h3>
-          <p>AI-verktyg låter ett litet team röra sig fem gånger snabbare. Det som förut krävde tio personer och ett års runway kan Amici bygga med två.</p>
+          <p>AI-verktyg låter ett litet team röra sig snabbt. Det som krävde tio personer kan vi bygga med två.</p>
+        </div>
+      </div>
+      <div class="stagger" style="margin-top: 14px;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 12px; border: 1px solid rgba(34,197,94,0.15); border-radius: var(--radius); overflow: hidden;">
+          <div style="flex: 1; padding: 20px 24px; text-align: center; border-right: 1px solid rgba(34,197,94,0.1);">
+            <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">200B SEK</div>
+            <div style="font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">TAM (EU)</div>
+          </div>
+          <div style="flex: 1; padding: 20px 24px; text-align: center; border-right: 1px solid rgba(34,197,94,0.1);">
+            <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">7.2B SEK</div>
+            <div style="font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">TAM (SE)</div>
+          </div>
+          <div style="flex: 1; padding: 20px 24px; text-align: center;">
+            <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: #22C55E; margin-bottom: 4px;">1.8B SEK</div>
+            <div style="font-size: 12px; color: #22C55E; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; opacity: 0.7;">SAM</div>
+          </div>
+        </div>
+        <div style="text-align: center; padding: 8px 0;">
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.4;">30K företag × 4 event/år × 60K SEK snittutgift = 7,2 mdr SEK adresserbar marknad i Sverige</p>
         </div>
       </div>
     </div>
   </div>
 
 
-  <!-- SLIDE 4: TRACTION -->
-  <div class="slide has-header" data-slide="3">
+  <!-- SLIDE 3: TRACTION -->
+  <div class="slide has-header" data-slide="2">
     <div class="slide-header">
       <div class="section-label stagger">Traction</div>
-      <h2 class="headline stagger">Vi körde varje event för hand. <span class="accent">Med&nbsp;flit.</span></h2>
+      <h2 class="headline stagger">Vi har hittills kört <span class="accent">utan marknadsföring.</span></h2>
       <p class="subheadline stagger">Innan vi byggde plattformen drev vi concierge-operationer för att förstå hur företag faktiskt köper event.</p>
     </div>
     <div class="slide-inner">
@@ -703,8 +702,178 @@
   </div>
 
 
-  <!-- SLIDE 5: POSITIONERING -->
+  <!-- SLIDE 4: PRODUKTEN — MVP -->
+  <div class="slide has-header" data-slide="3">
+    <div class="slide-header">
+      <div class="section-label stagger">Produkten</div>
+      <h2 class="headline stagger">Vi har redan <span class="accent">byggt en MVP.</span></h2>
+      <p class="subheadline stagger">Plattformen är live. Inte ett koncept.</p>
+    </div>
+    <div class="slide-inner">
+      <div class="stagger" style="display: flex; gap: 40px; align-items: flex-start;">
+        <!-- Platform mockup image -->
+        <div style="flex: 2; min-width: 0;">
+          <img src="./platform-mockup-4.png" alt="Amici platform" style="width: 100%; border-radius: 12px; display: block;" />
+        </div>
+        <!-- What's built -->
+        <div style="flex: 0 0 auto; min-width: 0;">
+          <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 14px;">Vad som är byggt</div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: inline-flex; align-items: center; gap: 9px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 14px; white-space: nowrap;">
+              <div style="width: 7px; height: 7px; border-radius: 50%; background: #22C55E; flex-shrink: 0;"></div>
+              <div style="font-family: var(--font-display); font-size: 14px; font-weight: 700;">Multi-leverantörsflöde</div>
+            </div>
+            <div style="display: inline-flex; align-items: center; gap: 9px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 14px; white-space: nowrap;">
+              <div style="width: 7px; height: 7px; border-radius: 50%; background: #22C55E; flex-shrink: 0;"></div>
+              <div style="font-family: var(--font-display); font-size: 14px; font-weight: 700;">Adminverktyg</div>
+            </div>
+            <div style="display: inline-flex; align-items: center; gap: 9px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 14px; white-space: nowrap;">
+              <div style="width: 7px; height: 7px; border-radius: 50%; background: #22C55E; flex-shrink: 0;"></div>
+              <div style="font-family: var(--font-display); font-size: 14px; font-weight: 700;">Automatiserade mejl</div>
+            </div>
+            <div style="display: inline-flex; align-items: center; gap: 9px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 14px; white-space: nowrap;">
+              <div style="width: 7px; height: 7px; border-radius: 50%; background: #22C55E; flex-shrink: 0;"></div>
+              <div style="font-family: var(--font-display); font-size: 14px; font-weight: 700;">Betalningar</div>
+            </div>
+            <div style="display: inline-flex; align-items: center; gap: 9px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 14px; white-space: nowrap;">
+              <div style="width: 7px; height: 7px; border-radius: 50%; background: #22C55E; flex-shrink: 0;"></div>
+              <div style="font-family: var(--font-display); font-size: 14px; font-weight: 700;">Skalbar infrastruktur</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SLIDE 5: PRODUKTVISION — ROADMAP -->
   <div class="slide has-header" data-slide="4">
+    <div class="slide-header">
+      <div class="section-label stagger">Produktvision</div>
+      <h2 class="headline stagger">Byggt för att <span class="accent">växa med branschen.</span></h2>
+      <p class="subheadline stagger">Plattformen expanderar kategori för kategori. Tidig partner hjälper oss prioritera vad som byggs härnäst.</p>
+    </div>
+    <div class="slide-inner">
+      <div class="stagger" style="width: 100%; margin-top: 16px;">
+        <!-- Horizontal timeline -->
+        <div style="position: relative; display: flex; gap: 0;">
+          <!-- Connecting line centred on the dots (80px top + 6px half-dot = 86px) -->
+          <div style="position: absolute; left: 0; right: 0; top: 86px; height: 2px; transform: translateY(-50%); background: linear-gradient(to right, rgba(59,130,246,0.9) 0%, rgba(59,130,246,0.1) 100%); z-index: 0;"></div>
+
+          <!-- Transport (above) -->
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; z-index: 1;">
+            <div style="height: 80px; display: flex; align-items: flex-end; padding-bottom: 10px; text-align: center;">
+              <span style="font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--text-primary);">Transport</span>
+            </div>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(59,130,246,0.7); flex-shrink: 0;"></div>
+            <div style="height: 80px;"></div>
+          </div>
+
+          <!-- Personal (below) -->
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; z-index: 1;">
+            <div style="height: 80px;"></div>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(59,130,246,0.65); flex-shrink: 0;"></div>
+            <div style="height: 80px; display: flex; align-items: flex-start; padding-top: 10px; text-align: center;">
+              <span style="font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--text-primary);">Personal</span>
+            </div>
+          </div>
+
+          <!-- Koordinator (above) -->
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; z-index: 1;">
+            <div style="height: 80px; display: flex; align-items: flex-end; padding-bottom: 10px; text-align: center;">
+              <span style="font-family: var(--font-display); font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.85);">Koordinator</span>
+            </div>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--accent); flex-shrink: 0;"></div>
+            <div style="height: 80px;"></div>
+          </div>
+
+          <!-- RSVP (below) -->
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; z-index: 1;">
+            <div style="height: 80px;"></div>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--accent); flex-shrink: 0;"></div>
+            <div style="height: 80px; display: flex; align-items: flex-start; padding-top: 10px; text-align: center;">
+              <span style="font-family: var(--font-display); font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.7);">RSVP</span>
+            </div>
+          </div>
+
+          <!-- Leverantörsportal (above) -->
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; z-index: 1;">
+            <div style="height: 80px; display: flex; align-items: flex-end; padding-bottom: 10px; text-align: center;">
+              <span style="font-family: var(--font-display); font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.55);">Leverantörs-portal</span>
+            </div>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--accent); flex-shrink: 0;"></div>
+            <div style="height: 80px;"></div>
+          </div>
+
+          <!-- AI matching (below) -->
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; z-index: 1;">
+            <div style="height: 80px;"></div>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--accent); flex-shrink: 0;"></div>
+            <div style="height: 80px; display: flex; align-items: flex-start; padding-top: 10px; text-align: center;">
+              <span style="font-family: var(--font-display); font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.4);">AI matching</span>
+            </div>
+          </div>
+
+          <!-- Tool integrations (above) -->
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; z-index: 1;">
+            <div style="height: 80px; display: flex; align-items: flex-end; padding-bottom: 10px; text-align: center;">
+              <span style="font-family: var(--font-display); font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.3);">Tool integrations</span>
+            </div>
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--accent); flex-shrink: 0;"></div>
+            <div style="height: 80px;"></div>
+          </div>
+
+        </div>
+        <div class="card" style="margin-top: 20px; text-align: center; border-color: rgba(59,130,246,0.15); padding: 14px 24px;">
+          <p style="font-size: 14px; color: var(--text-secondary);">Tidig partner hjälper oss prioritera vad som byggs härnäst — och kan få features byggda specifikt för sin verksamhet.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SLIDE 6: PRODUKTVISION — API -->
+  <div class="slide has-header" data-slide="5">
+    <div class="glow-orb" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+    <div class="slide-header">
+      <div class="section-label stagger">Produktvision</div>
+      <h2 class="headline stagger">En leverantörsmotor som alla kan <span class="accent">koppla&nbsp;in&nbsp;sig&nbsp;i.</span></h2>
+      <p class="subheadline stagger">Byråer, plattformar och företagsverktyg kan koppla in sig via API för att direkt söka matchningar mot vårt leverantörsnätverk. Instant resultat från vår databas.</p>
+    </div>
+    <div class="slide-inner">
+      <div class="vision-flow stagger">
+        <div class="vision-node api">API</div>
+        <svg class="flow-lines" width="80" height="20" viewBox="0 0 80 20" style="flex-shrink: 0;">
+          <line class="flow-line" x1="80" y1="10" x2="0" y2="10" />
+        </svg>
+        <div class="vision-node amici">Amici</div>
+        <svg class="flow-lines" width="80" height="240" viewBox="0 0 80 240" style="flex-shrink: 0;">
+          <line class="flow-line" x1="40" y1="120" x2="0" y2="120" />
+          <line class="flow-line-down" x1="40" y1="24" x2="40" y2="120" />
+          <line class="flow-line-up" x1="40" y1="216" x2="40" y2="120" />
+          <line class="flow-line" x1="80" y1="24" x2="40" y2="24" />
+          <line class="flow-line" x1="80" y1="72" x2="40" y2="72" />
+          <line class="flow-line" x1="80" y1="120" x2="40" y2="120" />
+          <line class="flow-line" x1="80" y1="168" x2="40" y2="168" />
+          <line class="flow-line" x1="80" y1="216" x2="40" y2="216" />
+        </svg>
+        <div class="vision-nodes-right">
+          <div class="vision-node">Kock</div>
+          <div class="vision-node">Lokal</div>
+          <div class="vision-node">Transport</div>
+          <div class="vision-node">Utrustning</div>
+          <div class="vision-node">Personal</div>
+        </div>
+      </div>
+      <div class="card stagger" style="margin-top: 24px; max-width: 700px; margin-left: auto; margin-right: auto; border-color: rgba(59,130,246,0.2); text-align: center;">
+        <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.5;">En byrå kan bädda in Amicis leverantörsmotor i sitt eget arbetsflöde. Skicka en förfrågan, få matchningar direkt. Det vi bygger blir infrastruktur som hela branschen kan använda.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SLIDE 7: POSITIONERING -->
+  <div class="slide has-header" data-slide="6">
     <div class="slide-header">
       <div class="section-label stagger">Positionering</div>
       <h2 class="headline stagger">Vi konkurrerar <span class="accent">inte</span> med byråer.</h2>
@@ -739,98 +908,8 @@
   </div>
 
 
-  <!-- SLIDE 6: VISIONEN -->
-  <div class="slide has-header" data-slide="5">
-    <div class="glow-orb" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
-    <div class="slide-header">
-      <div class="section-label stagger">Produktvision</div>
-      <h2 class="headline stagger">En leverantörsmotor som alla kan <span class="accent">koppla&nbsp;in&nbsp;sig&nbsp;i</span></h2>
-      <p class="subheadline stagger">I takt med att leverantörsnätverket växer kan byråer, plattformar och företagsverktyg koppla in sig via API eller embed. Matchningen och kvaliteten vi bygger blir infrastruktur som alla kan använda.</p>
-    </div>
-    <div class="slide-inner">
-      <div class="vision-flow stagger">
-        <div class="vision-node api">API</div>
-        <svg class="flow-lines" width="80" height="20" viewBox="0 0 80 20" style="flex-shrink: 0;">
-          <line class="flow-line" x1="80" y1="10" x2="0" y2="10" />
-        </svg>
-        <div class="vision-node amici">Amici</div>
-        <svg class="flow-lines" width="80" height="240" viewBox="0 0 80 240" style="flex-shrink: 0;">
-          <line class="flow-line" x1="40" y1="120" x2="0" y2="120" />
-          <line class="flow-line-down" x1="40" y1="24" x2="40" y2="120" />
-          <line class="flow-line-up" x1="40" y1="216" x2="40" y2="120" />
-          <line class="flow-line" x1="80" y1="24" x2="40" y2="24" />
-          <line class="flow-line" x1="80" y1="72" x2="40" y2="72" />
-          <line class="flow-line" x1="80" y1="120" x2="40" y2="120" />
-          <line class="flow-line" x1="80" y1="168" x2="40" y2="168" />
-          <line class="flow-line" x1="80" y1="216" x2="40" y2="216" />
-        </svg>
-        <div class="vision-nodes-right">
-          <div class="vision-node">Kock</div>
-          <div class="vision-node">Lokal</div>
-          <div class="vision-node">Transport</div>
-          <div class="vision-node">Utrustning</div>
-          <div class="vision-node">Personal</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- SLIDE 7: MARKNAD -->
-  <div class="slide has-header slide-green" data-slide="6">
-    <div class="slide-header">
-      <div class="section-label stagger">Marknad</div>
-      <h2 class="headline stagger">Stor marknad. <span class="accent">Fokuserad start.</span></h2>
-    </div>
-    <div class="slide-inner">
-      <div style="max-width: 800px; margin: 0 auto;" class="stagger">
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; margin-bottom: 24px;">
-          <div style="background: rgba(34,197,94,0.03); border: 1px solid rgba(34,197,94,0.10); border-radius: var(--radius) 0 0 var(--radius); padding: 24px; text-align: center;">
-            <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 8px;">TAM (EU)</div>
-            <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: var(--text-primary);">200B SEK</div>
-            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">Alla företagsevent i mellanmarknaden i Europa</p>
-          </div>
-          <div style="background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.15); border-left: none; padding: 24px; text-align: center;">
-            <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 8px;">TAM (SE)</div>
-            <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: var(--text-primary);">7.2B SEK</div>
-            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">Alla företagsevent i mellanmarknaden i Sverige</p>
-          </div>
-          <div style="background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); border-left: none; border-radius: 0 var(--radius) var(--radius) 0; padding: 24px; text-align: center;">
-            <div style="font-size: 13px; color: #22C55E; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 8px;">SAM</div>
-            <div style="font-family: var(--font-numbers); font-size: 32px; font-weight: 600; color: var(--text-primary);">1.8B SEK</div>
-            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 8px;">Event med flera leverantörer vi kan serva</p>
-          </div>
-        </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-          <div class="card">
-            <div style="display: flex; align-items: baseline; gap: 12px;">
-              <div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600; color: #22C55E;">9.1%</div>
-              <div>
-                <div style="font-size: 15px; font-weight: 700; font-family: var(--font-display);">CAGR Sverige</div>
-                <p style="font-size: 14px; color: var(--text-secondary);">Snabbast växande eventmarknad i Europa (2021–2030).</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div style="display: flex; align-items: baseline; gap: 12px;">
-              <div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 600; color: #22C55E;">30K+</div>
-              <div>
-                <div style="font-size: 15px; font-weight: 700; font-family: var(--font-display);">Målsegment</div>
-                <p style="font-size: 14px; color: var(--text-secondary);">Företag med 20–500 anställda, utan eventpersonal.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card" style="margin-top: 16px; text-align: center; border-color: rgba(34,197,94,0.2);">
-          <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.4;"><strong style="color: var(--text-primary);">Beräkning nerifrån och upp:</strong> 30K företag × 4 event/år × 60K SEK snittutgift = 7,2 mdr SEK adresserbar marknad.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
   <!-- SLIDE 8: SAMARBETSMODELLEN -->
-  <div class="slide has-header" data-slide="7">
+  <div class="slide has-header slide-red" data-slide="7">
     <div class="slide-header">
       <div class="section-label stagger">Samarbetet</div>
       <h2 class="headline stagger">Vad du bidrar med. <span class="accent">Vad du får.</span></h2>
@@ -839,7 +918,6 @@
     <div class="slide-inner">
       <div class="stagger">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-          <!-- Left: What you bring -->
           <div class="card" style="border-color: rgba(255,255,255,0.12);">
             <div style="font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 16px;">Vad du bidrar med</div>
             <div style="display: flex; flex-direction: column; gap: 12px;">
@@ -861,7 +939,7 @@
                 <div style="width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px;">💬</div>
                 <div>
                   <div style="font-size: 15px; font-weight: 700; font-family: var(--font-display); margin-bottom: 2px;">Produktfeedback</div>
-                  <p style="font-size: 14px; color: var(--text-secondary);">Direkt input på vad som ska byggas, inklusive funktioner du vill ha i din egna verksamhet.</p>
+                  <p style="font-size: 14px; color: var(--text-secondary);">Direkt input på vad som ska byggas, inklusive funktioner du vill ha i din verksamhet.</p>
                 </div>
               </div>
               <div style="display: flex; align-items: flex-start; gap: 12px;">
@@ -873,33 +951,32 @@
               </div>
             </div>
           </div>
-          <!-- Right: What you get -->
-          <div class="card" style="border-color: rgba(59, 130, 246, 0.25);">
-            <div style="font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 16px;">Vad du får</div>
+          <div class="card" style="border-color: rgba(239,68,68,0.25);">
+            <div style="font-size: 12px; color: #EF4444; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 16px;">Vad du får</div>
             <div style="display: flex; flex-direction: column; gap: 12px;">
               <div style="display: flex; align-items: flex-start; gap: 12px;">
-                <div style="width: 28px; height: 28px; border-radius: 8px; background: var(--accent-soft); border: 1px solid rgba(59,130,246,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px;">📈</div>
+                <div style="width: 28px; height: 28px; border-radius: 8px; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px;">📈</div>
                 <div>
                   <div style="font-size: 15px; font-weight: 700; font-family: var(--font-display); margin-bottom: 2px;">Ägarandel i Amici</div>
                   <p style="font-size: 14px; color: var(--text-secondary);">Du blir delägare i plattformen du är med och bygger.</p>
                 </div>
               </div>
               <div style="display: flex; align-items: flex-start; gap: 12px;">
-                <div style="width: 28px; height: 28px; border-radius: 8px; background: var(--accent-soft); border: 1px solid rgba(59,130,246,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px;">🛠</div>
+                <div style="width: 28px; height: 28px; border-radius: 8px; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px;">🛠</div>
                 <div>
                   <div style="font-size: 15px; font-weight: 700; font-family: var(--font-display); margin-bottom: 2px;">Inflytande på produkten</div>
                   <p style="font-size: 14px; color: var(--text-secondary);">Din input formar vad vi bygger härnäst. Tidig partner sätter standarden.</p>
                 </div>
               </div>
               <div style="display: flex; align-items: flex-start; gap: 12px;">
-                <div style="width: 28px; height: 28px; border-radius: 8px; background: var(--accent-soft); border: 1px solid rgba(59,130,246,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px;">⭐</div>
+                <div style="width: 28px; height: 28px; border-radius: 8px; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px;">⭐</div>
                 <div>
                   <div style="font-size: 15px; font-weight: 700; font-family: var(--font-display); margin-bottom: 2px;">Förtur som koordinatorpartner</div>
                   <p style="font-size: 14px; color: var(--text-secondary);">Amici-kunder som vill ha hjälp att koordinera sitt event lotsas till dig.</p>
                 </div>
               </div>
               <div style="display: flex; align-items: flex-start; gap: 12px;">
-                <div style="width: 28px; height: 28px; border-radius: 8px; background: var(--accent-soft); border: 1px solid rgba(59,130,246,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px;">🔼</div>
+                <div style="width: 28px; height: 28px; border-radius: 8px; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px;">🔼</div>
                 <div>
                   <div style="font-size: 15px; font-weight: 700; font-family: var(--font-display); margin-bottom: 2px;">Möjlighet att öka din ägarandel</div>
                   <p style="font-size: 14px; color: var(--text-secondary);">Ju mer du bidrar till plattformens tillväxt, desto mer kan du äga.</p>
@@ -908,7 +985,7 @@
             </div>
           </div>
         </div>
-        <div class="card" style="border-color: rgba(59, 130, 246, 0.3); text-align: center;">
+        <div class="card" style="border-color: rgba(239,68,68,0.3); text-align: center;">
           <p style="font-size: 16px; color: var(--text-primary); font-weight: 700; margin-bottom: 8px;">Ju mer du bidrar, desto mer äger du.</p>
           <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.5;">Partnerbidraget — expertis, nätverk, plattformsanvändning — är grunden för hur ägarandelen kan växa över tid. Modellen formas tillsammans med tidig partner.</p>
         </div>
@@ -917,88 +994,8 @@
   </div>
 
 
-  <!-- SLIDE 9: PRODUKTEN (PARTNER LENS) -->
-  <div class="slide has-header" data-slide="8">
-    <div class="slide-header">
-      <div class="section-label stagger">Produktvision</div>
-      <h2 class="headline stagger">En plattform du <span class="accent">får vara med och forma.</span></h2>
-      <p class="subheadline stagger">Tidig partner har direkt input på vart produkten tar vägen. Funktioner du använder i din verksamhet kan bli delar av plattformen.</p>
-    </div>
-    <div class="slide-inner">
-      <div class="two-col stagger" style="align-items: start; gap: 48px;">
-        <!-- Left: product flow -->
-        <div>
-          <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 16px;">Hur det fungerar idag</div>
-          <div style="display: flex; flex-direction: column; align-items: center; gap: 0; max-width: 300px;">
-            <div class="card" style="padding: 12px 24px; text-align: center; width: 220px;">
-              <h3 style="font-family: var(--font-display); font-size: 15px; font-weight: 700; margin: 0;">Beskriv ditt event</h3>
-            </div>
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 0;">
-              <div style="width: 1px; height: 8px; background: var(--border);"></div>
-              <div style="font-size: 11px; color: var(--text-muted); font-style: italic; padding: 2px 0;">AI matchar och prissätter direkt</div>
-              <div style="width: 1px; height: 8px; background: var(--border);"></div>
-            </div>
-            <div class="card" style="padding: 12px 24px; text-align: center; width: 220px;">
-              <h3 style="font-family: var(--font-display); font-size: 15px; font-weight: 700; margin: 0;">Se priser direkt</h3>
-            </div>
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 0;">
-              <div style="width: 1px; height: 8px; background: var(--border);"></div>
-              <div style="font-size: 11px; color: var(--text-muted); font-style: italic; padding: 2px 0;">Priser uppdateras när du ändrar</div>
-              <div style="width: 1px; height: 8px; background: var(--border);"></div>
-            </div>
-            <div class="card" style="padding: 12px 24px; text-align: center; width: 220px;">
-              <h3 style="font-family: var(--font-display); font-size: 15px; font-weight: 700; margin: 0;">Justera och boka</h3>
-            </div>
-            <div style="width: 1px; height: 16px; background: var(--border);"></div>
-            <div style="position: relative; width: 100%; height: 32px; max-width: 220px;">
-              <div style="position: absolute; top: 0; left: calc(25% - 3px); right: calc(25% - 3px); height: 1px; background: var(--border);"></div>
-              <div style="position: absolute; top: 0; left: calc(25% - 3px); width: 1px; height: 100%; background: var(--border);"></div>
-              <div style="position: absolute; top: 0; right: calc(25% - 3px); width: 1px; height: 100%; background: var(--border);"></div>
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 220px;">
-              <div class="card" style="padding: 10px 12px; text-align: center; border-color: rgba(59,130,246,0.3);">
-                <h3 style="font-family: var(--font-display); font-size: 13px; font-weight: 700; margin: 0 0 2px 0;">Koordinatorpartner</h3>
-                <p style="font-size: 11px; color: var(--text-secondary); margin: 0; color: var(--accent);">Du hanterar eventet</p>
-              </div>
-              <div class="card" style="padding: 10px 12px; text-align: center;">
-                <h3 style="font-family: var(--font-display); font-size: 13px; font-weight: 700; margin: 0 0 2px 0;">Kunden koordinerar</h3>
-                <p style="font-size: 11px; color: var(--text-secondary); margin: 0;">Direkt via Amici</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Right: feature areas -->
-        <div>
-          <div style="font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 16px;">Funktionsområden du har input på</div>
-          <div style="display: flex; flex-direction: column; gap: 10px;">
-            <div class="card" style="border-left: 2px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 14px 18px;">
-              <div style="font-family: var(--font-display); font-size: 15px; font-weight: 700; margin-bottom: 3px;">Leverantörsmatchning och prissättning</div>
-              <p style="font-size: 14px; color: var(--text-secondary);">Vilka kategorier som prioriteras och hur matchningen fungerar.</p>
-            </div>
-            <div class="card" style="border-left: 2px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 14px 18px;">
-              <div style="font-family: var(--font-display); font-size: 15px; font-weight: 700; margin-bottom: 3px;">Koordinatorflödet</div>
-              <p style="font-size: 14px; color: var(--text-secondary);">Hur Amici-kunder lotsas till dig och hur du hanterar eventet via plattformen.</p>
-            </div>
-            <div class="card" style="border-left: 2px solid rgba(59,130,246,0.4); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 14px 18px;">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 3px;">
-                <div style="font-family: var(--font-display); font-size: 15px; font-weight: 700;">Gästlista, inbjudningar och RSVP</div>
-                <span style="font-size: 11px; background: rgba(245,158,11,0.15); color: #F59E0B; border: 1px solid rgba(245,158,11,0.3); padding: 2px 8px; border-radius: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;">Under utforskning</span>
-              </div>
-              <p style="font-size: 14px; color: var(--text-secondary);">Klassisk gästlisthantering. Tidig partner hjälper oss forma kravbilden.</p>
-            </div>
-            <div class="card" style="border-left: 2px solid rgba(59,130,246,0.4); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 14px 18px;">
-              <div style="font-family: var(--font-display); font-size: 15px; font-weight: 700; margin-bottom: 3px;">Leverantörskategorier att bygga ut</div>
-              <p style="font-size: 14px; color: var(--text-secondary);">Vilka kategorier vi lägger till härnäst baseras delvis på partnerfeedback.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- SLIDE 10: TEAMET -->
-  <div class="slide has-header" data-slide="9">
+  <!-- SLIDE 9: TEAMET -->
+  <div class="slide has-header slide-yellow" data-slide="8">
     <div class="slide-header">
       <div class="section-label stagger">Teamet</div>
       <h2 class="headline stagger">Byggt lean. <span class="accent">Nu går vi på heltid.</span></h2>
@@ -1007,92 +1004,82 @@
     <div class="slide-inner">
       <div class="team-grid stagger">
         <div class="team-member">
-          <div class="team-avatar">CC</div>
+          <div class="team-avatar"><img src="./carol.png" alt="Carol Chmaissani" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;"></div>
           <h3>Carol Chmaissani</h3>
           <div class="team-role">CEO & Medgrundare</div>
           <div class="team-desc">Driver försäljning, partnerskap och kundrelationer. Bakgrund inom premiumvarumärken och B2B-konton.</div>
         </div>
         <div class="team-member">
-          <div class="team-avatar">AI</div>
+          <div class="team-avatar"><img src="./anders.png" alt="Anders Isaksson" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;"></div>
           <h3>Anders Isaksson</h3>
           <div class="team-role">Kock & Medgrundare</div>
           <div class="team-desc">Professionell kock med djupt nätverk i branschen. Förtroendet på leverantörssidan är byggt på år av relationer.</div>
         </div>
         <div class="team-member">
-          <div class="team-avatar">DR</div>
+          <div class="team-avatar"><img src="./daniel.png" alt="Daniel Revesz" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;"></div>
           <h3>Daniel Revesz</h3>
           <div class="team-role">Produkt & Design</div>
           <div class="team-desc">Senior produktdesigner och PM med bakgrund inom konsumentappar och B2B-plattformar.</div>
         </div>
         <div class="team-member">
-          <div class="team-avatar">ES</div>
+          <div class="team-avatar"><img src="./edin.png" alt="Edin Skeja" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;"></div>
           <h3>Edin Skeja</h3>
           <div class="team-role">Utveckling</div>
           <div class="team-desc">Senior fullstack-utvecklare specialiserad på skalbar infrastruktur och moderna webbapplikationer.</div>
         </div>
       </div>
       <div class="card stagger" style="margin-top: 14px; border-color: rgba(59, 130, 246, 0.2);">
-        <p style="font-size: 15px; color: var(--text-secondary);"><strong style="color: var(--text-primary);">Founder-market fit:</strong> Anders äger utbudssidan (Sveriges toppkockar litar på honom). Carol äger efterfrågesidan. Daniel och Edin byggde och levererar produkten. Skräddarsytt för det här problemet.</p>
+        <p style="font-size: 15px; color: var(--text-secondary);"><strong style="color: var(--text-primary);">Founder-market fit:</strong> Anders äger utbudssidan (Sveriges toppkockar litar på honom). Carol äger efterfrågesidan. Daniel och Edin byggde och levererar produkten.</p>
       </div>
     </div>
   </div>
 
 
-  <!-- SLIDE 11: NÄSTA STEG -->
-  <div class="slide has-header" data-slide="10">
+  <!-- SLIDE 10: SAMMANFATTNING -->
+  <div class="slide has-header" data-slide="9">
     <div class="glow-orb" style="bottom: -200px; left: 50%; transform: translateX(-50%);"></div>
     <div class="slide-header">
-      <div class="section-label stagger">Nästa steg</div>
-      <h2 class="headline stagger">Lätt att börja. <span class="accent">Stort att bygga.</span></h2>
+      <div class="section-label stagger">Sammanfattning</div>
+      <h2 class="headline stagger">Stor marknad. Rätt produkt. <span class="accent">Nu letar vi rätt partner.</span></h2>
     </div>
     <div class="slide-inner">
-      <div class="stagger" style="max-width: 800px; margin: 0 auto;">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-          <!-- What we ask -->
-          <div class="card" style="border-color: rgba(255,255,255,0.12);">
-            <div style="font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 16px;">Vad vi ber om</div>
-            <div style="display: flex; flex-direction: column; gap: 12px;">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <div style="width: 24px; height: 24px; border-radius: 6px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 13px;">🗓</div>
-                <p style="font-size: 15px; color: var(--text-secondary);">1–2 möten per månad</p>
-              </div>
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <div style="width: 24px; height: 24px; border-radius: 6px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 13px;">💡</div>
-                <p style="font-size: 15px; color: var(--text-secondary);">Dela din branschkunskap och ditt nätverk</p>
-              </div>
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <div style="width: 24px; height: 24px; border-radius: 6px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 13px;">🔍</div>
-                <p style="font-size: 15px; color: var(--text-secondary);">Berätta vad du vill se i produkten</p>
-              </div>
-            </div>
+      <div class="stagger">
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+          <div class="card" style="border-color: rgba(34,197,94,0.2);">
+            <div style="font-size: 12px; color: #22C55E; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(34,197,94,0.15);">Marknaden</div>
+            <div style="font-family: var(--font-numbers); font-size: 28px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">7.2B SEK</div>
+            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px;">adresserbar marknad i Sverige</div>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.5;">Växer 9.1% per år. Ingen digital lösning finns. Fortfarande bokat via mejl och telefon.</p>
           </div>
-          <!-- What you get -->
-          <div class="card" style="border-color: rgba(59, 130, 246, 0.25);">
-            <div style="font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 16px;">Vad du får i utbyte</div>
-            <div style="display: flex; flex-direction: column; gap: 12px;">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <div style="width: 24px; height: 24px; border-radius: 6px; background: var(--accent-soft); border: 1px solid rgba(59,130,246,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 13px;">📈</div>
-                <p style="font-size: 15px; color: var(--text-secondary);">Ägarandel i Amici</p>
-              </div>
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <div style="width: 24px; height: 24px; border-radius: 6px; background: var(--accent-soft); border: 1px solid rgba(59,130,246,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 13px;">⭐</div>
-                <p style="font-size: 15px; color: var(--text-secondary);">Förtur som koordinatorpartner</p>
-              </div>
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <div style="width: 24px; height: 24px; border-radius: 6px; background: var(--accent-soft); border: 1px solid rgba(59,130,246,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 13px;">🛠</div>
-                <p style="font-size: 15px; color: var(--text-secondary);">Direkt inflytande på produktens riktning</p>
-              </div>
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <div style="width: 24px; height: 24px; border-radius: 6px; background: var(--accent-soft); border: 1px solid rgba(59,130,246,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 13px;">🔼</div>
-                <p style="font-size: 15px; color: var(--text-secondary);">Möjlighet att öka din ägarandel via plattformen</p>
-              </div>
+          <div class="card" style="border-color: rgba(245,158,11,0.2);">
+            <div style="font-size: 12px; color: #F59E0B; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(245,158,11,0.15);">Teamet</div>
+            <div style="display: flex; flex-direction: column; gap: 7px; margin-bottom: 12px;">
+              <div style="font-size: 14px; color: var(--text-primary);"><strong>Carol</strong> <span style="color: var(--text-muted); font-size: 13px;">CEO</span></div>
+              <div style="font-size: 14px; color: var(--text-primary);"><strong>Anders</strong> <span style="color: var(--text-muted); font-size: 13px;">Kock & utbud</span></div>
+              <div style="font-size: 14px; color: var(--text-primary);"><strong>Daniel</strong> <span style="color: var(--text-muted); font-size: 13px;">Produkt</span></div>
+              <div style="font-size: 14px; color: var(--text-primary);"><strong>Edin</strong> <span style="color: var(--text-muted); font-size: 13px;">Tech</span></div>
+            </div>
+            <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.4;">Founder-market fit på varje sida av marknaden.</p>
+          </div>
+          <div class="card" style="border-color: rgba(59,130,246,0.2);">
+            <div style="font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(59,130,246,0.15);">Vad vi bygger</div>
+            <div style="font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 10px;">Plattformen är live.</div>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.5;">Företag hittar, prissätter och bokar event på minuter. Byråer och plattformar kan koppla in sig via API.</p>
+          </div>
+          <div class="card" style="border-color: rgba(239,68,68,0.35);">
+            <div style="font-size: 12px; color: #EF4444; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(239,68,68,0.15);">Vad du får</div>
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 2px;">
+              <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-primary); font-weight: 600;"><span style="color: #EF4444;">→</span> Ägarandel i Amici</div>
+              <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-primary); font-weight: 600;"><span style="color: #EF4444;">→</span> Förtur som koordinatorpartner</div>
+              <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-primary); font-weight: 600;"><span style="color: #EF4444;">→</span> Direkt inflytande på produkten</div>
+              <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-primary); font-weight: 600;"><span style="color: #EF4444;">→</span> Möjlighet att öka din ägarandel</div>
             </div>
           </div>
         </div>
-        <div class="card" style="border-color: rgba(59, 130, 246, 0.2); text-align: center;">
+        <div class="card" style="border-color: rgba(59,130,246,0.3); text-align: center;">
           <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 4px;">Vi för samtal med flera intresserade byråer. <strong style="color: var(--text-primary);">Tidig partner sätter standarden för hur vi bygger det här tillsammans.</strong></p>
         </div>
-        <div style="text-align: center; margin-top: 20px;">
+        <div style="text-align: center; margin-top: 16px;">
           <p style="color: var(--text-muted); font-size: 15px;">Hör av dig · carol@amicievent.com · amicievent.com</p>
         </div>
       </div>
@@ -1105,7 +1092,7 @@
 <!-- NAVIGATION -->
 <nav class="nav">
   <div class="nav-dots" id="navDots"></div>
-  <span class="slide-counter" id="slideCounter">1 / 11</span>
+  <span class="slide-counter" id="slideCounter">1 / 10</span>
 </nav>
 
 <script>
